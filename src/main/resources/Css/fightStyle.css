@@ -1,0 +1,84 @@
+/* Estilo base para la barra de progreso */
+.progress-bar {
+    -fx-accent: green; /* Color base cuando la barra está llena */
+}
+
+/* Estilo para la barra de progreso con relleno amarillo */
+.progress-bar.yellow {
+    -fx-accent: yellow; /* Cambia el color del relleno a amarillo */
+}
+
+/* Estilo para la barra de progreso con relleno rojo */
+.progress-bar.red {
+    -fx-accent: red; /* Cambia el color del relleno a rojo */
+}
+
+#botonAtaque {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#7ebcea, #2f4b8f),
+            linear-gradient(#426ab7, #263e75),
+            linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-text-fill: white;
+}
+
+#botonFe {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#f2b300, #d98500),
+            linear-gradient(#eaac00, #be7d00),
+            linear-gradient(#e29f00, #b47200);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-text-fill: white;
+}
+
+#botonMagia {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#66ccff, #005c99),
+            linear-gradient(#3399ff, #005c99),
+            linear-gradient(#66ccff, #005c99);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-text-fill: white;
+}
+
+#botonEscapar {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#ff6666, #b30000),
+            linear-gradient(#ff6666, #b30000),
+            linear-gradient(#ff6666, #b30000);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-text-fill: white;
+}
+#botonAtaque:hover,
+#botonMagia:hover,
+#botonFe:hover,
+#botonEscapar:hover {
+    -fx-background-color: linear-gradient(to bottom, #2E8B57, #4CAF50);
+}
+
+#jugadorVida {
+    -fx-font-weight: bold;
+    -fx-fill: linear-gradient(to right, #00b4db, #0083b0); /* Gradiente azul */
+}
+
+#nombreJugador {
+    -fx-font-weight: bold;
+    -fx-fill: linear-gradient(to right, #00b4db, #0083b0); /* Gradiente azul */
+}
+
+#monstruoVida {
+    -fx-font-weight: bold;
+    -fx-fill: linear-gradient(to right, #ff416c, #ff4b2b); /* Gradiente rojo */
+}
+
+#nombreMonstruo {
+    -fx-font-weight: bold;
+    -fx-fill: linear-gradient(to right, #ff416c, #ff4b2b); /* Gradiente rojo */
+}

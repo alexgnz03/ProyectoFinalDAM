@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Monstruo.jrfxml" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="477884c7-6829-4f19-aedb-4fa38d3b4193">
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="money" class="java.lang.Integer"/>
+	<parameter name="skill" class="java.lang.String"/>
+	<parameter name="vida" class="java.lang.Double"/>
+	<parameter name="vida_maxima" class="java.lang.Double"/>
+	<parameter name="ataque" class="java.lang.Double"/>
+	<parameter name="defensa" class="java.lang.Double"/>
+	<parameter name="ataque_magico" class="java.lang.Double"/>
+	<parameter name="defensa_magica" class="java.lang.Double"/>
+	<parameter name="velocidad" class="java.lang.Double"/>
+	<parameter name="fecha_generacion" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="0" width="162" height="50" uuid="8298a744-fc78-47c0-85c8-f5a4c04114ef"/>
+				<box>
+					<pen lineStyle="Dashed" lineColor="#F71F1B"/>
+				</box>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Monstruo]]></text>
+			</staticText>
+			<image>
+				<reportElement x="200" y="0" width="130" height="80" uuid="e1a229d7-5650-4bd3-9dba-167ed221c1c8"/>
+				<imageExpression><![CDATA["src/main/resources/Menu/Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="370" y="0" width="180" height="80" uuid="cf3abaec-4f9d-46ce-9ead-9dac36ba8616"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Alexander, Héctor, Rafael]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="4" width="100" height="30" uuid="002f9666-f639-4d6f-ad26-ab8394e76efd"/>
+				<text><![CDATA[Fecha del reporte:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="170" y="4" width="100" height="30" uuid="48b6897f-ed9f-47c3-9dc7-bf442582d4d6"/>
+				<textFieldExpression><![CDATA[$P{fecha_generacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="5" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="215" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="10" width="100" height="30" uuid="ede32223-7010-48a3-bc40-b138f39cf4ab"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="60" width="100" height="30" uuid="adcba5c5-9554-4d2e-8980-4f4d12473488"/>
+				<text><![CDATA[Dinero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="110" width="100" height="30" uuid="577bb5eb-4cc8-4406-8e63-11f31de2a43e"/>
+				<text><![CDATA[Vida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="170" width="100" height="30" uuid="a0c9120f-c26f-4de7-9fc0-5ad829c75986"/>
+				<text><![CDATA[Vida maxima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="10" width="100" height="30" uuid="f4c94cee-5605-40da-b4d2-db16bb9138c7"/>
+				<text><![CDATA[Ataque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="50" width="100" height="30" uuid="a6bbb184-96e7-4c45-8d31-99752ac175c4"/>
+				<text><![CDATA[Defensa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="90" width="100" height="30" uuid="0f90c1bb-82ae-446c-bf3d-05e069453328"/>
+				<text><![CDATA[Ataque mágico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="130" width="100" height="30" uuid="884f216c-9ad6-46ae-9b9b-92c6a6ada92a"/>
+				<text><![CDATA[Defensa mágica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="170" width="100" height="30" uuid="df1e80c7-269e-4a51-8aac-7733a0eddbff"/>
+				<text><![CDATA[Velocidad]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="170" y="170" width="100" height="30" uuid="02c31568-1a3f-420b-93f4-a9ef58903e0d"/>
+				<textFieldExpression><![CDATA[$P{vida_maxima}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="110" width="100" height="30" uuid="8b976fa7-8893-4f74-9fbd-dc02f243f097"/>
+				<textFieldExpression><![CDATA[$P{vida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="60" width="100" height="30" uuid="918713cf-77bb-4669-a80f-817d59dffd2d"/>
+				<textFieldExpression><![CDATA[$P{money}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="10" width="100" height="30" uuid="40b1381c-d01a-48bd-9431-4a22b38d5cc8"/>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="170" width="100" height="30" uuid="3e49c0d2-bdda-4179-95f5-145da9f969f4"/>
+				<textFieldExpression><![CDATA[$P{velocidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="130" width="100" height="30" uuid="5b577c3a-7dad-49cf-9ed8-3f6291da2a55"/>
+				<textFieldExpression><![CDATA[$P{defensa_magica}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="90" width="100" height="30" uuid="491056d3-d1e1-4514-80e9-cf3f407e95bd"/>
+				<textFieldExpression><![CDATA[$P{ataque_magico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="50" width="100" height="30" uuid="938d8128-d19e-41b0-b333-09cb4bcb7396"/>
+				<textFieldExpression><![CDATA[$P{defensa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="10" width="100" height="30" uuid="3fc438f7-ea0f-4f60-bd50-35794bacf262"/>
+				<textFieldExpression><![CDATA[$P{ataque}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

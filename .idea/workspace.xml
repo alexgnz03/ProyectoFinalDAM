@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="IESCanariasSimulator:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="55b84a9d-f83e-4c96-8cb2-7eedd279b055" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Enum" />
+        <option value="UML Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2ajSZJ02aHkVQKETlrH6ZkU2hWH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AppLauncher.executor": "Run",
+    "Application.Main (1).executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainMenuController.executor": "Run",
+    "Application.World.executor": "Run",
+    "Application.engine.minijuego.Main.executor": "Run",
+    "Application.engine.peleitas.Main.executor": "Run",
+    "DefaultPlantUmlFileTemplate": "UML Class",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/cooph/Music/ProyectoFinalDAM/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.4275862",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\cooph\Music\ProyectoFinalDAM\src\main\resources" />
+      <recent name="C:\Users\cooph\Music\ProyectoFinalDAM\src\main\resources\GUI" />
+      <recent name="C:\Users\cooph\Music\ProyectoFinalDAM\src\main\resources\Maps\B_LaSalud" />
+      <recent name="C:\Users\cooph\Documents\GitHub\IESCanariasSimulator\src\main\java\engine\combate\peleitas" />
+      <recent name="C:\Users\cooph\Documents\GitHub\IESCanariasSimulator\src\main\resources\reports" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cooph\Music\ProyectoFinalDAM\src\main\resources\Maps" />
+      <recent name="C:\Users\cooph\Music\ProyectoFinalDAM\src\main\resources\Effects" />
+      <recent name="C:\Users\cooph\Documents\GitHub\IESCanariasSimulator\src\main\resources\Menu" />
+      <recent name="C:\Users\cooph\Documents\GitHub\IESCanariasSimulator\src\main\resources\Effects" />
+      <recent name="C:\Users\cooph\Documents\GitHub\IESCanariasSimulator\src\main\java\controllers" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="controllers" />
+      <recent name="engine.combate.peleitas" />
+      <recent name="engine" />
+      <recent name="" />
+      <recent name="rpgworld" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="IESCanariasSimulator" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exec.Main" />
+      <module name="IESCanariasSimulator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exec.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="engine.minijuego.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="engine.minijuego.Main" />
+      <module name="IESCanariasSimulator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="engine.minijuego.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="engine.peleitas.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="engine.peleitas.Main" />
+      <module name="IESCanariasSimulator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="engine.peleitas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.engine.minijuego.Main" />
+        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.engine.peleitas.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="55b84a9d-f83e-4c96-8cb2-7eedd279b055" name="Changes" comment="" />
+      <created>1704830550331</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704830550331</updated>
+      <workItem from="1704830551367" duration="4204000" />
+      <workItem from="1704930068957" duration="2974000" />
+      <workItem from="1705092886060" duration="69250000" />
+      <workItem from="1705519742376" duration="112798000" />
+      <workItem from="1705775038431" duration="13806000" />
+      <workItem from="1705852309420" duration="67000" />
+      <workItem from="1705863570509" duration="873000" />
+      <workItem from="1706020125764" duration="9614000" />
+      <workItem from="1706107548925" duration="6835000" />
+      <workItem from="1706200549751" duration="15540000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
