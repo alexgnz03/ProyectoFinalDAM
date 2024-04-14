@@ -9,14 +9,21 @@ import engine.objects.Player;
 import engine.objects.Elements;
 import engine.objects.NPC;
 import engine.ui.Dialog;
+import engine.ui.FPSMonitor;
 import engine.ui.inGameMenu.InGameMenu;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import com.google.gson.Gson;
 
@@ -126,6 +133,9 @@ public class Maps {
         this.scene = new Scene(mainPane, 800.0, 800.0); // Usar el nuevo Pane como raíz de la escena
         this.stage.setScene(this.scene);
         this.stage.show();
+
+        //Mostrar FPS
+        FPSMonitor fps = new FPSMonitor(stage);
     }
 
     public void playerBasics(){
@@ -183,7 +193,7 @@ public class Maps {
         player.addElements(element);
         element.addDialogs(dialog, "Parada de la 026");
         player.addNPC(npc);
-        npc.addDialogs(dialog, "...", "pepe", "cxzxc", "Hola mi amigo", "Cómo estás hoy pisha", "Yo muy bien");
+        npc.addDialogs(dialog, "...", "pepe", "cxzxc", "Hola mi amigo", "Cómo estás hoy", "Yo muy bien");
 
         System.out.println("Character x + y = " + player.getX() + " " + player.getY());
 

@@ -7,6 +7,12 @@ import javafx.scene.layout.Pane;
 
 public class IGMenuController {
 
+    private InGameMenu gameMenu;
+
+    public void setGameMenu(InGameMenu gameMenu){
+        this.gameMenu = gameMenu;
+    }
+
     @FXML
     private Pane view;
 
@@ -21,6 +27,7 @@ public class IGMenuController {
     @FXML
     void inventoryAction(ActionEvent event) {
         System.out.println("Mostrando inventario");
+        gameMenu.cargarInventario();
 
     }
 

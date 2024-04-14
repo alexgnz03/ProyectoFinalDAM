@@ -10,10 +10,16 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.event.ActionEvent;
 
 import java.util.List;
 
 public class IGInventoryController {
+
+    InGameMenu gameMenu;
+    public void setGameMenu(InGameMenu gameMenu){
+        this.gameMenu = gameMenu;
+    }
 
     @FXML
     private TableColumn<InventarioItem, String> nombreObjeto;
@@ -26,6 +32,9 @@ public class IGInventoryController {
 
     @FXML
     private TextArea descripcionObjeto;
+
+    @FXML
+    private ImageView objectImage;
 
     private ObjetosData objetosData;
 
@@ -52,4 +61,16 @@ public class IGInventoryController {
             }
         });
     }
+
+    @FXML
+    void salirAction(ActionEvent event) {
+        gameMenu.cargarMenu();
+
+    }
+
+    @FXML
+    void usarAction(ActionEvent event) {
+
+    }
+
 }

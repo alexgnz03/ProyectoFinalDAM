@@ -52,6 +52,8 @@ public class InGameMenu {
 
         cargarMenu();
         menuPane.setVisible(menuOpen);
+        menuPane.setLayoutX(465+2.5);
+        menuPane.setLayoutY(800+finalY+10);
 
         this.root = root;
         this.stage = stage;
@@ -102,14 +104,31 @@ public class InGameMenu {
 
     public void cargarMenu() {
         try {
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/InGameMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/InGameMenu.fxml"));
+
+            IGMenuController controller = new IGMenuController();
+            loader.setController(controller);
+            controller.setGameMenu(this);
+            if (menuPane == null) {
+                menuPane = loader.load();
+            } else {
+                Pane homePane = loader.load();
+                menuPane.getChildren().setAll(homePane);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cargarInventario() {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/InventoryMenu.fxml"));
-            //IGMenuController controller = new IGMenuController();
             IGInventoryController controller = new IGInventoryController();
             loader.setController(controller);
-            menuPane = loader.load();
-            menuPane.setLayoutX(465+2.5);
-            menuPane.setLayoutY(800+finalY+10);
+            controller.setGameMenu(this);
+            Pane inventarioPane = loader.load();
+            menuPane.getChildren().setAll(inventarioPane);
         } catch (IOException e) {
             e.printStackTrace();
         }
