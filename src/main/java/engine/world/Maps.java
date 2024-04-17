@@ -2,14 +2,17 @@ package engine.world;
 
 
 import dbo.ObjetosData;
+import dbo.PlayerData;
 import engine.combate.peleitas.FightController;
 import engine.minijuego.MinijuegoController;
 import engine.objects.Camera;
 import engine.objects.Player;
 import engine.objects.Elements;
 import engine.objects.NPC;
+import engine.tienda.TiendaController;
 import engine.ui.Dialog;
 import engine.ui.FPSMonitor;
+import engine.ui.PlayerState;
 import engine.ui.inGameMenu.InGameMenu;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
@@ -80,6 +83,8 @@ public class Maps {
 
     private Dialog dialog;
 
+    private PlayerState playerState;
+
     private int sumadorCombate = 0;
 
     private Stage stage;
@@ -99,7 +104,7 @@ public class Maps {
 
     }
 
-    private void timerStart(){
+    public void timerStart(){
         timer = new AnimationTimer() {
             public void handle(long l) {
                 mapsChanger();
@@ -153,6 +158,11 @@ public class Maps {
         //InGameMenu
         InGameMenu inGameMenu = new InGameMenu(this.dialogRoot, stage, this.scene);
 
+        //PlayerState
+        playerState = new PlayerState(this.dialogRoot, stage, this.scene);
+
+        this.dialogRoot.getChildren().add(playerState.getHealth());
+        this.dialogRoot.getChildren().add(playerState.getStamina());
         this.dialogRoot.getChildren().add(dialog.getDialog());
         this.dialogRoot.getChildren().add(dialog.getDialogText());
         this.dialogRoot.getChildren().add(inGameMenu.getSmartphone());
@@ -201,17 +211,23 @@ public class Maps {
 
         //Debug
         ObjetosData ob = new ObjetosData();
-        try {
-            ob.insertarDatosObjeto("monster blanco", "bebida energética sin azúcar", 23);
-            ob.mostrarDatosObjeto();
-            ob.insertarDatosInventario(8, 15);
-            ob.mostrarDatosInventario();
-        } catch (SQLException ex){
-            System.out.println("Error al insertar: " + ex);
-        }
+//        try {
+//            //ob.insertarDatosObjeto("refresco", "bebida refrescante", 5);
+//            ob.mostrarDatosObjeto();
+////            ob.insertarDatosInventario(8);
+////            ob.mostrarDatosInventario();
+//        } catch (SQLException ex){
+//            System.out.println("Error al insertar: " + ex);
+//        }
     }
 
     public void calleInstituto(Stage stage) {
+
+        try {
+            PlayerData.guardarDato(0, 20);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         i = 1;
 
@@ -628,6 +644,20 @@ public class Maps {
         player = new Player(this.root, scene, this.barrier, character_image);
     }
 
+    public void tienda(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tiendaMenu.fxml"));
+        TiendaController controller = new TiendaController();
+        controller.setStage(stage);
+        loader.setController(controller);
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 800, 800);
+        stage.setTitle("Tienda");
+        stage.setScene(scene);
+        stage.show();
+
+        player = new Player(this.root, scene, this.barrier, character_image);
+    }
+
     public void createObstacleTile(double w, double h, double x, double y) {
         ObstacleTile tile = new ObstacleTile(w, h, x, y);
         this.root.getChildren().add(tile);
@@ -827,8 +857,12 @@ public class Maps {
 
             x = 370;
             y = 725;
-            arcade(stage);
-            timer.start();
+            //arcade(stage);
+            try {
+                tienda(stage);
+            }catch (Exception ex){
+            }
+            //timer.start();
         }
 
         //arcade
@@ -1016,5 +1050,13 @@ public class Maps {
             //System.out.println("x: " + x + ", y: " + y + ", i: " + this.i);
         }
 
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
     }
 }

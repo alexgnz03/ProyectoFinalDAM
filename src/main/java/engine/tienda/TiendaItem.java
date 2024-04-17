@@ -1,19 +1,22 @@
-package engine.ui.inGameMenu;
+package engine.tienda;
 
-public class InventarioItem {
+public class TiendaItem {
+
     private int codigo;
     private String nombre;
-    private int cantidad;
+    private double precio;
     private String descripcion;
 
-    public InventarioItem(int codigo, String nombre, int cantidad, String descripcion) {
+    public TiendaItem(int codigo, String nombre, double precio, String descripcion) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.cantidad = cantidad;
+        this.precio = precio;
         this.descripcion = descripcion;
     }
 
     // Métodos getters y setters para acceder a las propiedades
+
+
     public int getCodigo() {
         return codigo;
     }
@@ -30,12 +33,12 @@ public class InventarioItem {
         this.nombre = nombre;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public String getDescripcion() {
@@ -45,4 +48,5 @@ public class InventarioItem {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
 }

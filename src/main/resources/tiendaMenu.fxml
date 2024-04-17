@@ -7,19 +7,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
-      <TableView layoutX="237.0" layoutY="175.0" prefHeight="408.0" prefWidth="562.0">
+      <ImageView fx:id="fondoImage" fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
+      <TableView fx:id="objetosTable" layoutX="237.0" layoutY="175.0" prefHeight="408.0" prefWidth="562.0">
         <columns>
-          <TableColumn prefWidth="468.79998779296875" text="Nombre" />
-          <TableColumn minWidth="0.0" prefWidth="93.5999755859375" text="Precio" />
+          <TableColumn fx:id="nombreColumn" prefWidth="468.79998779296875" text="Nombre" />
+          <TableColumn fx:id="precioColumn" minWidth="0.0" prefWidth="93.5999755859375" text="Precio" />
         </columns>
       </TableView>
-      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="237.0" layoutY="583.0" pickOnBounds="true" preserveRatio="true" />
-      <TextArea layoutX="387.0" layoutY="583.0" prefHeight="150.0" prefWidth="411.0" />
-      <Button layoutX="237.0" layoutY="733.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="411.0" text="Comprar" />
-      <Button layoutX="648.0" layoutY="733.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="150.0" text="Salir" />
+      <ImageView fx:id="objetoImage" fitHeight="150.0" fitWidth="150.0" layoutX="237.0" layoutY="583.0" pickOnBounds="true" preserveRatio="true" />
+      <TextArea fx:id="descripcionText" editable="false" layoutX="387.0" layoutY="583.0" prefHeight="150.0" prefWidth="411.0" />
+      <Button layoutX="237.0" layoutY="733.0" mnemonicParsing="false" onAction="#comprarAction" prefHeight="66.0" prefWidth="411.0" text="Comprar" />
+      <Button fx:id="salirButton" layoutX="648.0" layoutY="733.0" mnemonicParsing="false" onAction="#salirAction" prefHeight="66.0" prefWidth="150.0" text="Salir" />
    </children>
 </AnchorPane>
