@@ -15,6 +15,9 @@ import engine.ui.FPSMonitor;
 import engine.ui.PlayerState;
 import engine.ui.inGameMenu.InGameMenu;
 import javafx.animation.AnimationTimer;
+import javafx.animation.FadeTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,17 +27,20 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import com.google.gson.Gson;
+import javafx.util.Duration;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class Maps {
     private Pane root = new Pane();
@@ -48,7 +54,7 @@ public class Maps {
 
     private Elements elements;
 
-
+    private Random random = new Random();
 
     private Scene scene;
 
@@ -88,7 +94,7 @@ public class Maps {
     private int sumadorCombate = 0;
 
     private Stage stage;
-
+    private int sumador;
     private int i = 0;
 
     //Constructor
@@ -108,6 +114,7 @@ public class Maps {
         timer = new AnimationTimer() {
             public void handle(long l) {
                 mapsChanger();
+
             }
         };
         this.timer.start();
@@ -185,25 +192,24 @@ public class Maps {
         //Colisiones
         cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/paradaGuagua.json");
 
-        ImageView guaguaImage = new ImageView("parada026.png");
-        Elements element = new Elements(this.root, stage, scene, 2, 675, 30);
+        Elements element = new Elements(this.root, stage, 2, 675, 30);
 
         this.elements = element;
-        element.elementsBasics(guaguaImage, element.getX(), element.getY(), 50, 180, barrier);
+        element.elementsBasics(element.getX(), element.getY(), 50, 180, barrier);
 
         //NPCs
 
-        NPC npc = new NPC(this.root, stage, scene, 2, 630, 150,"left", barrier);
-        this.npc = npc;
+//        NPC npc = new NPC(this.root, stage, scene, 2, 630, 150,"left", barrier);
+//        this.npc = npc;
 
         playerBasics();
         player.setY(65);
         player.setX(550);
 
         player.addElements(element);
-        element.addDialogs(dialog, "Parada de la 026");
-        player.addNPC(npc);
-        npc.addDialogs(dialog, "...", "pepe", "cxzxc", "Hola mi amigo", "Cómo estás hoy", "Yo muy bien");
+        element.addDialogs(dialog, "Parada de la 026", "parada");
+//        player.addNPC(npc);
+//        npc.addDialogs(dialog, "...", "pepe", "cxzxc", "Hola mi amigo", "Cómo estás hoy", "Yo muy bien");
 
         System.out.println("Character x + y = " + player.getX() + " " + player.getY());
 
@@ -238,7 +244,7 @@ public class Maps {
 
         //NPCs
 
-        NPC npc3 = new NPC(this.root, stage, scene, 3, 300, 550, "right", barrier);
+        NPC npc3 = new NPC(this.root, stage, 3, 300, 550, "right", barrier);
 
         this.npc = npc3;
 
@@ -265,15 +271,15 @@ public class Maps {
 
         //NPCs
 
-        NPC npc = new NPC(this.root, stage, scene, 6, 100, 250, "right", barrier);
+        NPC npc = new NPC(this.root, stage,6, 100, 250, "right", barrier);
 
         this.npc = npc;
 
-        NPC npc2 = new NPC(this.root, stage, scene, 2, 400, 650,"left", barrier);
+        NPC npc2 = new NPC(this.root, stage, 2, 400, 650,"left", barrier);
 
         this.npc = npc2;
 
-        NPC npc3 = new NPC(this.root, stage, scene, 1, 50, 150,"up", barrier);
+        NPC npc3 = new NPC(this.root, stage, 1, 50, 150,"up", barrier);
 
         this.npc = npc3;
 
@@ -295,6 +301,15 @@ public class Maps {
     //Plaza Alteza
     public void plaza(Stage stage) {
 
+        //DEBUG
+        try {
+            PlayerData.guardarDato(7, 100);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        //
+
         i = 3;
 
         BackgroundImage = new Image("plaza.png");
@@ -305,7 +320,7 @@ public class Maps {
 
         //NPCs
 
-        NPC npc = new NPC(this.root, stage, scene, 7, 330, 540,"up", barrier);
+        NPC npc = new NPC(this.root, stage, 7, 330, 540,"up", barrier);
         this.npc = npc;
 
         playerBasics();
@@ -326,10 +341,10 @@ public class Maps {
 
         //NPCs
 
-        NPC npc = new NPC(this.root, stage, scene, 8, 40, 310,"right", barrier);
+        NPC npc = new NPC(this.root, stage, 8, 40, 310,"right", barrier);
         this.npc = npc;
 
-        NPC npc2 = new NPC(this.root, stage, scene, 5, 370, 530,"up", barrier);
+        NPC npc2 = new NPC(this.root, stage, 5, 370, 530,"up", barrier);
         this.npc = npc2;
 
         playerBasics();
@@ -351,11 +366,10 @@ public class Maps {
         //Colisiones
         cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/arcade.json");
 
-        ImageView arcadeImage = new ImageView("arcadeMachine.png");
-        Elements element = new Elements(this.root, stage, scene, 1, 545, 340);
+        Elements element = new Elements(this.root, stage, 1, 545, 340);
 
         this.elements = element;
-        element.elementsBasics(arcadeImage, element.getX(), element.getY(), 60, 87, barrier);
+        element.elementsBasics(element.getX(), element.getY(), 60, 87, barrier);
 
         playerBasics();
         player.addElements(element);
@@ -374,7 +388,7 @@ public class Maps {
         cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/institutoPlaza.json");
 
         //NPCs
-        NPC npc = new NPC(this.root, stage, scene, 1, 290, 265,"right", barrier);
+        NPC npc = new NPC(this.root, stage, 1, 290, 265,"right", barrier);
         this.npc = npc;
 
         playerBasics();
@@ -395,7 +409,7 @@ public class Maps {
         cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/placita.json");
 
         //NPCs
-        NPC npc = new NPC(this.root, stage, scene, 4, 425, 640,"down", barrier);
+        NPC npc = new NPC(this.root, stage, 4, 425, 640,"down", barrier);
         this.npc = npc;
 
         playerBasics();
@@ -417,15 +431,14 @@ public class Maps {
         cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/lobbyInstituto.json");
 
         //Elements
-        ImageView cartelImage = new ImageView("puerta.png");
-        Elements element = new Elements(this.root, stage, scene, 4, 204, 145);
+        Elements element = new Elements(this.root, stage, 4, 204, 145);
 
         this.elements = element;
-        element.elementsBasics(cartelImage, element.getX(), element.getY(), 60, 148, barrier);
+        element.elementsBasics(element.getX(), element.getY(), 60, 148, barrier);
 
         //NPCs
 
-        NPC npc = new NPC(this.root, stage, scene, 12, 370, 350,"left", barrier);
+        NPC npc = new NPC(this.root, stage, 12, 370, 350,"left", barrier);
 
         this.npc = npc;
 
@@ -449,23 +462,20 @@ public class Maps {
         //Colisiones
         cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/lobbyInstituto2.json");
 
-        ImageView cartelImage = new ImageView("cartelmovil.png");
-        Elements element = new Elements(this.root, stage, scene, 3, 425, 30);
+        Elements element = new Elements(this.root, stage,3, 425, 30);
 
-        ImageView cartelImage2 = new ImageView("cartelmovil.png");
-        Elements element2 = new Elements(this.root, stage, scene, 3, 650, 630);
+        Elements element2 = new Elements(this.root, stage, 3, 650, 630);
 
-        ImageView cartelImage3 = new ImageView("cartelmovil.png");
-        Elements element3 = new Elements(this.root, stage, scene, 3, 110, 30);
+        Elements element3 = new Elements(this.root, stage, 3, 110, 30);
 
         this.elements = element;
-        element.elementsBasics(cartelImage, element.getX(), element.getY(), 50, 70, barrier);
+        element.elementsBasics(element.getX(), element.getY(), 50, 70, barrier);
 
         this.elements = element2;
-        element2.elementsBasics(cartelImage2, element2.getX(), element2.getY(), 50, 70, barrier);
+        element2.elementsBasics(element2.getX(), element2.getY(), 50, 70, barrier);
 
         this.elements = element3;
-        element3.elementsBasics(cartelImage3, element3.getX(), element3.getY(), 50, 70, barrier);
+        element3.elementsBasics(element3.getX(), element3.getY(), 50, 70, barrier);
 
         playerBasics();
 
@@ -505,16 +515,15 @@ public class Maps {
 
         //NPCs
 
-        NPC npc = new NPC(this.root, stage, scene, 9, 80, 235,"right", barrier);
+        NPC npc = new NPC(this.root, stage, 9, 80, 235,"right", barrier);
         this.npc = npc;
 
         //Elements
 
-        ImageView cartelImage = new ImageView("cartelmovil.png");
-        Elements element = new Elements(this.root, stage, scene, 3, 450, 30);
+        Elements element = new Elements(this.root, stage, 3, 450, 30);
 
         this.elements = element;
-        element.elementsBasics(cartelImage, element.getX(), element.getY(), 50, 70, barrier);
+        element.elementsBasics(element.getX(), element.getY(), 50, 70, barrier);
 
         playerBasics();
 
@@ -536,11 +545,10 @@ public class Maps {
         cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/lobbyAulas.json");
 
         //Elements
-        ImageView cartelImage = new ImageView("puerta.png");
-        Elements element = new Elements(this.root, stage, scene, 4, 628, 32);
+        Elements element = new Elements(this.root, stage, 4, 628, 32);
 
         this.elements = element;
-        element.elementsBasics(cartelImage, element.getX(), element.getY(), 60, 148, barrier);
+        element.elementsBasics(element.getX(), element.getY(), 60, 148, barrier);
 
         playerBasics();
 
@@ -561,7 +569,7 @@ public class Maps {
 
         //NPCs
 
-        NPC npc = new NPC(this.root, stage, scene, 10, 375, 370,"up", barrier);
+        NPC npc = new NPC(this.root, stage, 10, 375, 370,"up", barrier);
         this.npc = npc;
 
         playerBasics();
@@ -582,7 +590,7 @@ public class Maps {
         cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/aula.json");
 
         //NPCs
-        NPC npc = new NPC(this.root, stage, scene, 11, 185, 235,"down", barrier);
+        NPC npc = new NPC(this.root, stage, 11, 185, 235,"down", barrier);
 
         this.npc = npc;
 
@@ -614,23 +622,38 @@ public class Maps {
     }
 
     public void combate(Stage stage, int i) throws Exception {
+        System.out.println("control 1: " + player.getX() + " i: " + i);
+        timer.stop();
+        player.getTimer().stop();
+        System.out.println("control 2: " + player.getX() + " i: " + i);
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fight.fxml"));
-        FightController fight = new FightController(1);
+        FightController fight = new FightController(1, player.getX(), player.getY());
+
+        System.out.println("control 3: " + player.getX() + " i: " + i);
         fight.setI(i);
         fight.setStage(stage);
+
+        System.out.println("control 4: " + player.getX() + " i: " + i);
         loader.setController(fight);
         Parent root = loader.load();
+
+        System.out.println("control 5: " + player.getX() + " i: " + i);
         Scene scene = new Scene(root, 800, 800);
         stage.setTitle("Fight");
+
+        System.out.println("control 6: " + player.getX() + " i: " + i);
         stage.setScene(scene);
         stage.show();
 
-        player = new Player(this.root, scene, this.barrier, character_image);
+        System.out.println("control 7: " + player.getX() + " i: " + i);
+
+        System.out.println("control 8: " + player.getX() + " i: " + i);
     }
 
     public void combateFinal(Stage stage, int i) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FinalFight.fxml"));
-        FightController fight = new FightController(2);
+        FightController fight = new FightController(2, x, y);
         fight.setStage(stage);
         fight.setCombateFran(true);
         fight.setI(i);
@@ -645,8 +668,32 @@ public class Maps {
     }
 
     public void tienda(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tiendaMenu.fxml"));
-        TiendaController controller = new TiendaController();
+        FadeOut(() -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tiendaMenu.fxml"));
+            TiendaController controller = new TiendaController();
+            controller.setStage(stage);
+            loader.setController(controller);
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Scene scene = new Scene(root, 800, 800);
+            stage.setTitle("Tienda");
+            stage.setScene(scene);
+            stage.show();
+
+            //controller.FadeIn();
+
+
+            player = new Player(this.root, scene, this.barrier, character_image);
+                });
+    }
+
+    public void mapsSelector(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MapsSelector.fxml"));
+        MapSelector controller = new MapSelector();
         controller.setStage(stage);
         loader.setController(controller);
         Parent root = loader.load();
@@ -654,8 +701,25 @@ public class Maps {
         stage.setTitle("Tienda");
         stage.setScene(scene);
         stage.show();
+    }
 
-        player = new Player(this.root, scene, this.barrier, character_image);
+    public static void FadeOut(Runnable onFadeOutComplete) {
+        Rectangle nuevoContenido = new Rectangle(800, 800, Color.BLACK);
+        nuevoContenido.setOpacity(0); // Iniciar con opacidad 0 para el FadeIn
+
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(5), nuevoContenido);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+        fadeIn.play();
+
+        // Agregar un evento para manejar el final de la transición
+        fadeIn.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                // Llamar a la acción después de que la transición haya terminado
+                onFadeOutComplete.run();
+            }
+        });
     }
 
     public void createObstacleTile(double w, double h, double x, double y) {
@@ -689,38 +753,37 @@ public class Maps {
         this.sumadorCombate = sumadorCombate;
     }
 
-//    private boolean shouldStartRandomCombat() {
-//        // Verificar si el personaje se está moviendo
-//        if (!isMoving()) {
-//            return false;
-//        }
-//        double probability = 0.001;
-//
-//        // Generar un número aleatorio entre 0 y 1
-//        double randomValue = random.nextDouble();
-//
-//        // Verificar si el número aleatorio es menor que la probabilidad
-//        return randomValue < probability;
-//    }
-//
-//    private void startRandomCombat() {
-//        System.out.println("¡Combate aleatorio!");
-//        System.out.println(x);
-//
-//        this.timer.stop();
-//        this.root = new Pane();
-//
-//        mapsInstance.setX(290);
-//        mapsInstance.setY(102);
-//        try {
-//            sumador += 1;
-//            mapsInstance.combate(stage, i);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    private boolean shouldStartRandomCombat() {
+        // Verificar si el personaje se está moviendo
+        if (!player.isMoving()) {
+            return false;
+        }
+        double probability = 0.001;
+
+        // Generar un número aleatorio entre 0 y 1
+        double randomValue = random.nextDouble();
+
+        // Verificar si el número aleatorio es menor que la probabilidad
+        return randomValue < probability;
+    }
+
+    private void startRandomCombat() {
+        System.out.println("¡Combate aleatorio!");
+        System.out.println(player.getX());
+
+        this.root = new Pane();
+
+        try {
+            combate(stage, i);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private void mapsChanger() {
+        if (shouldStartRandomCombat() && i != 6 && i != 9) {
+            startRandomCombat();
+        }
         //CalleInstituto
         if (player.getX() >= 137.0 && player.getX() <= 257.0 && player.getY() >= 757.0 && player.getY() <= 778.0 && i == 0) {
             // Hacer algo si las escenas son iguales
@@ -859,7 +922,7 @@ public class Maps {
             y = 725;
             //arcade(stage);
             try {
-                tienda(stage);
+                mapsSelector(stage);
             }catch (Exception ex){
             }
             //timer.start();
@@ -1044,7 +1107,6 @@ public class Maps {
             x = 710;
             y = 380;
             lobbyAulas2(stage);
-            timer.start();
         }
         else {
             //System.out.println("x: " + x + ", y: " + y + ", i: " + this.i);
@@ -1058,5 +1120,13 @@ public class Maps {
 
     public void setI(int i) {
         this.i = i;
+    }
+
+    public AnimationTimer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(AnimationTimer timer) {
+        this.timer = timer;
     }
 }

@@ -5,9 +5,9 @@ import java.io.*;
 public class PlayerData {
     private static final String ARCHIVO = "datosJugador.dat";
 
-    private static final int NUMERO_DE_DATOS = 7;
+    private static final int NUMERO_DE_DATOS = 8;
 
-    private static final int[] VALORES_POR_DEFECTO = {100, 10, 5, 10, 5, 5, 100};
+    private static final int[] VALORES_POR_DEFECTO = {100, 10, 5, 10, 5, 5, 100, 0};
 
     // 0.vidaActual
     // 1.ataque
@@ -16,6 +16,7 @@ public class PlayerData {
     // 4.defensaMagica
     // 5.velocidad
     // 6.stamina
+    // 7.dinero
 
     public PlayerData(){
         if (!existeArchivo()) {

@@ -10,18 +10,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55b84a9d-f83e-4c96-8cb2-7eedd279b055" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ProyectoFinalDAM.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dbo/PlayerData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/tienda/TiendaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/tienda/TiendaItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/ui/PlayerState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGStatsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/world/MapSelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/world/Maps2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/intercambiador.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidad01.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidad02.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidad03.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidad04.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidad05.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidadCatedral.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Properties/elements_rutas.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/playerInfoMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datosJugador.dat" beforeDir="false" afterPath="$PROJECT_DIR$/datosJugador.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/objetosdata.db" beforeDir="false" afterPath="$PROJECT_DIR$/objetosdata.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbo/ObjetosData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbo/ObjetosData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGInventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGInventoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/InventarioItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/InventarioItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbo/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbo/PlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/FightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/FightController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/FinPeleaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/FinPeleaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/objects/Elements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/objects/Elements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/objects/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/objects/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/objects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/objects/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/tienda/TiendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/tienda/TiendaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/InGameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/InGameMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/world/Maps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/world/Maps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Effects/notRun.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Effects/notRun.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/world/ObstacleTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/world/ObstacleTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/InGameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/InGameMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/arcadeMachine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/cartelmovil.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fight.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fight.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parada026.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/puerta.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/tiendaMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tiendaMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +99,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/cooph/Documents/GitHub/ProyectoFinalDAM",
+    "last_opened_file_path": "C:/Users/cooph/Documents/GitHub/ProyectoFinalDAM/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,11 +114,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources" />
+      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources\Maps\LaLaguna" />
+      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources\Properties" />
       <recent name="C:\Users\cooph\Music\ProyectoFinalDAM\src\main\resources" />
       <recent name="C:\Users\cooph\Music\ProyectoFinalDAM\src\main\resources\GUI" />
-      <recent name="C:\Users\cooph\Music\ProyectoFinalDAM\src\main\resources\Maps\B_LaSalud" />
-      <recent name="C:\Users\cooph\Documents\GitHub\IESCanariasSimulator\src\main\java\engine\combate\peleitas" />
-      <recent name="C:\Users\cooph\Documents\GitHub\IESCanariasSimulator\src\main\resources\reports" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\cooph\Music\ProyectoFinalDAM\src\main\resources\Maps" />
@@ -110,11 +131,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="engine.world" />
       <recent name="engine.ui" />
       <recent name="controllers" />
       <recent name="engine.combate.peleitas" />
       <recent name="engine" />
-      <recent name="" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">

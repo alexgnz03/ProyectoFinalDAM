@@ -134,6 +134,19 @@ public class InGameMenu {
         }
     }
 
+    public void cargarStats() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/playerInfoMenu.fxml"));
+            IGStatsController controller = new IGStatsController();
+            loader.setController(controller);
+            controller.setGameMenu(this);
+            Pane statsPane = loader.load();
+            menuPane.getChildren().setAll(statsPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     //Getters y Setters
     public ImageView getSmartphone() {
         return smartphone;

@@ -22,7 +22,9 @@ public class Player {
     private String standingUp = "Up2.png";
     private String standingLeft = "Left2.png";
     private String standingRight = "Right2.png";
+    private String shadowRoute = "shadow.png";
     private ImageView character_image;
+    private ImageView shadow = new ImageView(new Image(shadowRoute));
     private LinkedList<ObstacleTile> barrier;
     private boolean moveUp;
     private boolean moveRight;
@@ -71,6 +73,9 @@ public class Player {
         this.barrier = barrier;
         this.character_image = character_image;
         this.root = root;
+
+        shadow.setImage(new Image(shadowRoute));
+        this.root.getChildren().add(shadow);
 
         spritesStarter();
         scene.setOnKeyPressed(e -> handleKeyPress(e.getCode()));
@@ -132,8 +137,16 @@ public class Player {
                 }
 
                 Player.this.moveCharacter(dx, dy);
+
+                for (Elements elements : getElements()) {
+                    elements.trinidadInteraction(x, y);
+                }
+
+                shadow.setX(x-14.3);
+                shadow.setY(y+18);
             }
         };
+
         this.timer.start();
     }
 
@@ -163,6 +176,9 @@ public class Player {
     private void handleSpaceKeyPress() {
         for (NPC npc : getNPCs()) {
             npc.npcInteraction(x, y);
+        }
+        for (Elements elements : getElements()) {
+            elements.elementInteraction(x, y);
         }
     }
 
@@ -260,7 +276,7 @@ public class Player {
         walkingLeftImageList.add(new Image("Left3.png"));
     }
 
-    private boolean isMoving() {
+    public boolean isMoving() {
         return moveUp || moveDown || moveRight || moveLeft;
     }
 

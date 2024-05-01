@@ -61,7 +61,7 @@ public class NPC {
     }
 
 
-    public NPC(Pane root, Stage stage, Scene scene, int ID, double x, double y, String defaultDirection, LinkedList<ObstacleTile> barrier)
+    public NPC(Pane root, Stage stage, int ID, double x, double y, String defaultDirection, LinkedList<ObstacleTile> barrier)
     {
 
         this.root = root;

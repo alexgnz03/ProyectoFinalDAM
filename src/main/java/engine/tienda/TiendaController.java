@@ -1,21 +1,27 @@
 package engine.tienda;
 
 import dbo.ObjetosData;
+import dbo.PlayerData;
 import engine.ui.inGameMenu.InventarioItem;
 import engine.world.Maps;
+import engine.world.Maps2;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -24,6 +30,8 @@ public class TiendaController {
     Stage stage;
 
     Maps maps = new Maps();
+    Maps2 maps2 = new Maps2();
+    private int I;
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -49,6 +57,15 @@ public class TiendaController {
 
     @FXML
     private Button salirButton;
+
+    @FXML
+    private Label dineroLabel;
+
+    @FXML
+    private Label dineroQuant;
+
+    @FXML
+    private Label euroLabel;
 
     @FXML
     private AnchorPane view;
@@ -77,16 +94,69 @@ public class TiendaController {
                 descripcionText.setText(newValue.getDescripcion());
             }
         });
+        try {
+            dineroQuant.setText(String.valueOf(PlayerData.cargarDato(7)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void FadeIn() {
+        Rectangle nuevoContenido = new Rectangle(800, 800, Color.BLACK);
+        nuevoContenido.setOpacity(100); // Iniciar con opacidad 0 para el FadeIn
+
+        view.getChildren().add(nuevoContenido); // Agregar el nuevo contenido
+
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), nuevoContenido);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        fadeOut.play();
+    }
+
+    public void IrisTransition(){
+        Rectangle nuevoContenido = new Rectangle(800, 800, Color.BLACK);
+        nuevoContenido.setOpacity(100); // Iniciar con opacidad 0 para el FadeIn
+
+        view.getChildren().add(nuevoContenido); // Agregar el nuevo contenido
+
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.40), nuevoContenido);
+        scaleTransition.setFromX(1); // Escala inicial en X
+        scaleTransition.setFromY(1); // Escala inicial en Y
+        scaleTransition.setToX(0); // Escala final en X
+        scaleTransition.setToY(0); // Escala final en Y
+
+        // Invertimos el valor de la interpolación para simular un iris que se abre
+        scaleTransition.setInterpolator(Interpolator.LINEAR);
+
+        // Reproducimos la animación
+        scaleTransition.play();
+    }
+
+    private void devolverAMundo(){
+        switch (I) {
+            case 1:
+                maps2.setStage(stage);
+                maps2.trinidad03(stage);
+                maps2.timerStart();
+                break;
+            case 2:
+                maps.calleInstituto2(stage);
+                break;
+            default:
+                maps.calleInstituto(stage);
+        }
     }
 
     @FXML
-    void comprarAction(ActionEvent event) {
+    void comprarAction(ActionEvent event) throws IOException {
         // Obtener el objeto seleccionado
         TiendaItem objetoSeleccionado = objetosTable.getSelectionModel().getSelectedItem();
-        if (objetoSeleccionado != null) {
+        if (objetoSeleccionado != null && PlayerData.cargarDato(7) >= objetoSeleccionado.getPrecio()) {
             try {
                 // Insertar el objeto seleccionado en la tabla de inventario
                 objetosData.insertarDatosInventario(objetoSeleccionado.getCodigo()); // Asumiendo que siempre compras 1 unidad
+                PlayerData.guardarDato(7, (int) (PlayerData.cargarDato(7) - objetoSeleccionado.getPrecio()));
+                dineroQuant.setText(String.valueOf(PlayerData.cargarDato(7)));
             } catch (SQLException e) {
                 e.printStackTrace();
                 // Manejar cualquier error al insertar en la base de datos
@@ -96,9 +166,11 @@ public class TiendaController {
 
     @FXML
     void salirAction(ActionEvent event) {
-        maps.setStage(stage);
-        maps.arcade(stage);
-        maps.timerStart();
+        devolverAMundo();
+    }
+
+    public void setI(int i) {
+        I = i;
     }
 
 }

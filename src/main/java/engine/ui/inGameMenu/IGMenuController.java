@@ -32,6 +32,11 @@ public class IGMenuController {
     }
 
     @FXML
+    void statsAction(ActionEvent event) {
+        gameMenu.cargarStats();
+    }
+
+    @FXML
     void salirAction(ActionEvent event) {
 
     }

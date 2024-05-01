@@ -2,7 +2,9 @@ package engine.combate.peleitas;
 
 import controllers.FinalController;
 import controllers.MainMenuController;
+import dbo.PlayerData;
 import engine.MusicPlayer;
+import engine.objects.Player;
 import engine.world.Maps;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -13,8 +15,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -23,10 +28,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class FightController {
 
@@ -71,14 +73,18 @@ public class FightController {
     private Text monstruoDamage;
 
     @FXML
-    private Text jugadorDamage;
+    private Label qteTextLabel;
 
-    private int x;
+    @FXML
+    private Text jugadorDamage;
     private Jugador jugador = new Jugador();
     private Monstruo monstruo = new Monstruo();
     private Fran fran = new Fran();
+    boolean timerRunning;
     Stage stage;
     Maps maps = new Maps();
+
+    Player player;
     private int I;
     private int tipoDeCombate;
 
@@ -86,18 +92,30 @@ public class FightController {
 
     private boolean combateFran;
 
+    private Timeline qteTimeline;
+    private Random random;
+    private KeyCode qteKey;
+    private boolean qteActive;
+
+    double x;
+    double y;
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
-    public FightController(int tipoDeCombate){
+    public FightController(int tipoDeCombate, double x, double y){
         this.tipoDeCombate = tipoDeCombate;
+        this.x = x;
+        this.y = y;
+
         System.out.println("Valor de I en el constructor: " + tipoDeCombate);
     }
     @FXML
     private void initialize() {
         System.out.println("Inicializando la pelea...");
         System.out.println("Valor de I en el constructor: " + tipoDeCombate);
+        qteTextLabel.setVisible(false);
         if (tipoDeCombate == 1){
             double progresoJugador = jugador.getVida() / jugador.getVida_maxima();
             jugadorBarraVida.setProgress(progresoJugador);
@@ -137,7 +155,6 @@ public class FightController {
                 }
                 
         }
-        generarReporteMonstruo();
     }
 
     private void generarReporteMonstruo() {
@@ -148,6 +165,53 @@ public class FightController {
 
     }
 
+    private void iniciarQTE() {
+        qteActive = false;
+        random = new Random();
+        KeyCode[] letterKeys = {KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.L, KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R, KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X, KeyCode.Y, KeyCode.Z};
+        KeyCode[] specialKeys = {KeyCode.SPACE};
+        KeyCode[] allKeys = Arrays.copyOf(letterKeys, letterKeys.length + specialKeys.length);
+        System.arraycopy(specialKeys, 0, allKeys, letterKeys.length, specialKeys.length);
+
+        qteKey = allKeys[random.nextInt(allKeys.length)]; // Obtener una tecla aleatoria
+        mostrarQTEKey(qteKey);
+
+        // Hacer visible el label del QTE
+        qteTextLabel.setVisible(true);
+
+        // Configurar el temporizador para el QTE
+        qteTimeline = new Timeline(new KeyFrame(Duration.seconds(1.5), e -> {
+            // Detener el temporizador del QTE
+            qteTimeline.stop();
+
+            // Ocultar el label del QTE
+            qteTextLabel.setVisible(false);
+
+            // Determinar si el QTE fue exitoso o no
+            boolean qteSuccess = qteActive;
+
+            // Realizar el ataque y ajustar el daño según el éxito o fracaso del QTE
+            int damage = jugador.magicSkill(monstruo, 1, qteSuccess);
+
+            // Aplicar el daño al enemigo
+            accion(damage);
+
+            // Resto del código para manejar el ataque...
+        }));
+        qteTimeline.play();
+
+        // Manejar evento de teclado para detectar si el usuario presiona la tecla correcta durante el QTE
+        fightPane.setOnKeyPressed(event -> {
+            if (event.getCode() == qteKey) {
+                // El usuario presionó la tecla correcta
+                qteActive = true;
+            }
+        });
+    }
+    private void mostrarQTEKey(KeyCode keyCode) {
+        // Mostrar la tecla en algún lugar de la pantalla
+        qteTextLabel.setText(keyCode.toString());
+    }
 
     @FXML
     void actionButtonEvent(ActionEvent event) throws IOException {
@@ -162,14 +226,8 @@ public class FightController {
             timeline.play();
 
         } else if (event.getSource().equals(botonMagia)) {
-            accion(jugador.damageSkill(monstruo, 0));
-            MusicPlayer efectos;
-            efectos = new MusicPlayer("/Effects/ataqueCritico.mp3");
-            efectos.play();
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.75), event3 -> {
-                efectos.stop();
-            }));
-            timeline.play();
+            // Iniciar el Quick Time Event
+            iniciarQTE();
         } else if (event.getSource().equals(botonFe)) {
             accion(jugador.damageSkill(monstruo, 1));
             MusicPlayer efectos;
@@ -190,7 +248,13 @@ public class FightController {
                     efectos.stop();
                 }));
                 timeline2.play();
-                devolverAMundo();
+                System.out.println("control 9: " + x + " i: " + I);
+                try {
+                    PlayerData.guardarDato(0, (int) jugador.getVida());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                devolverAMundo(x, y);
             } else {
                 prioridadMonstruo = true;
                 accion(15);
@@ -310,7 +374,13 @@ public class FightController {
                     efectos.stop();
                 }));
                 timeline2.play();
-                devolverAMundo();
+                System.out.println("control 9-2: " + x + " i: " + I);
+                try {
+                    PlayerData.guardarDato(0, (int) jugador.getVida());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                devolverAMundo(x, y);
             }
         });
     }
@@ -325,7 +395,18 @@ public class FightController {
         }
     }
 
-    private void devolverAMundo(){
+    private void devolverAMundo(double x, double y){
+        System.out.println("control 10: " + x + " i: " + I);
+        maps.setStage(stage);
+        maps.setX(x - 24);
+        maps.setY(y - 24);
+
+        if (maps.getTimer() != null){
+            maps.getTimer().stop();
+        }
+
+        System.out.println("control 11: " + x + " i: " + I);
+
         switch (I) {
             case 1:
                 maps.calleInstituto(stage);
@@ -343,16 +424,12 @@ public class FightController {
                 maps.arcade(stage);
                 break;
             case 6:
-                maps.setX(50);
-                maps.setY(600);
                 maps.paradaGuagua(stage);
                 break;
             case 7:
                 maps.institutoPlaza(stage);
                 break;
             case 8:
-                maps.setX(130);
-                maps.setY(450);
                 maps.placita(stage);
                 break;
             case 9:
@@ -373,21 +450,13 @@ public class FightController {
             case 14:
                 maps.lobbyAulas2(stage);
                 break;
-            case 15:
-                System.out.println(combateFran);
-                if (combateFran == true){
-                    try {
-                        mainMenuPantalla(stage);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                } else {
-                    maps.aula(stage);
-                }
-                break;
             default:
                 maps.calleInstituto(stage);
         }
+
+        maps.timerStart();
+        System.out.println("control 12: " + x + " i: " + I);
+
     }
 
 

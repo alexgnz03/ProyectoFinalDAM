@@ -1,11 +1,13 @@
 package engine.combate.peleitas;
 
+import dbo.PlayerData;
 import engine.MusicPlayer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class Jugador {
@@ -25,13 +27,17 @@ public class Jugador {
         this.money = 0;
         this.jugador_image = null;
         this.skill = new String[]{"Habilidad1", "Habilidad2"};
-        this.vida = 50.0;
-        this.vida_maxima = 50.0;
-        this.ataque = 10.0;
-        this.defensa = 5.0;
-        this.ataque_magico = 8.0;
-        this.defensa_magica = 3.0;
-        this.velocidad = 20;
+        try {
+            this.vida = (double) PlayerData.cargarDato(0);
+            this.vida_maxima = 100;
+            this.ataque = PlayerData.cargarDato(1);
+            this.defensa = PlayerData.cargarDato(0);
+            this.ataque_magico = PlayerData.cargarDato(3);
+            this.defensa_magica = PlayerData.cargarDato(4);
+            this.velocidad = PlayerData.cargarDato(5);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public int getMoney() {
@@ -136,6 +142,43 @@ public class Jugador {
 
         return (int) damage;
 
+    }
+
+    public int magicSkill(Monstruo monstruo, int skill, boolean qteSuccess) {
+        double ataqueMagico = this.ataque_magico;
+        double defensaMagicaMonstruo = monstruo.getDefensa_magica();
+        double vidaMonstruo = monstruo.getVida();
+        int critico = new java.util.Random().nextInt(99) + 1;
+
+        double damageExtra = 1.0;
+
+//        int fallo = new java.util.Random().nextInt(99) + 1;
+//        if (fallo > 90) return 0;
+
+        if (skill == 1) {
+            damageExtra = 0.75;
+            if (critico > 92) {
+                damageExtra = 1.5;
+            }
+        }
+
+        System.out.println("QTE: " + qteSuccess);
+        // Ajustar el multiplicador de daño dependiendo de si se acierta o no el QTE
+        if (qteSuccess) {
+            // Si se acierta el QTE, reducir el daño
+            damageExtra *= 1.5; // Reducir el daño a la mitad
+        } else {
+            // Si se falla el QTE, reducir el daño aún más
+            damageExtra *= 0.25; // Reducir el daño a una cuarta parte
+        }
+
+        double damage = Math.max(0, ataqueMagico * damageExtra - defensaMagicaMonstruo) + new Random().nextInt(5);
+        //si la vida restante del monstruo menos el daño hecho por el monstruo es igual o menor a 0, el daño sera igual a la vida restante del Monstruo.
+        if (vidaMonstruo - damage <= 0){
+            damage = vidaMonstruo;
+        }
+
+        return (int) damage;
     }
 
     public int damageSkill (Monstruo monstruo, int skill){

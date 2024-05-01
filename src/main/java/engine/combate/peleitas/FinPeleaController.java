@@ -43,14 +43,17 @@ public class FinPeleaController {
             dineroObtenido = monstruo.getMoney();
             resultadoTexto.setText("Victoria");
             mensajeTexto.setText("Felicidades!");
+            System.out.println("Felicidades fin de combate");
 
         } else if (jugador.Muerto()) {
             resultadoTexto.setText("Derrota");
             mensajeTexto.setText("No te rindas!");
+            System.out.println("Felicidades fin de combate 2");
 
         } else {
             resultadoTexto.setText("Escapaste");
             mensajeTexto.setText("Corre!");
+            System.out.println("Felicidades fin de combate 3");
         }
 
         jugador.sumaDinero(dineroObtenido);
