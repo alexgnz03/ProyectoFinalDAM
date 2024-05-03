@@ -181,7 +181,7 @@ public class Jugador {
         return (int) damage;
     }
 
-    public int damageSkill (Monstruo monstruo, int skill){
+    public int damageSkill (Monstruo monstruo, int skill, int potencia){
         double ataqueMagico = this.ataque_magico;
         double defensaMagicaMonstruo = monstruo.getDefensa_magica();
         double vidaMonstruo = monstruo.getVida();
@@ -195,16 +195,18 @@ public class Jugador {
         if (skill == 1) {
             damageExtra = 0.75;
             if (critico > 5) {
-                damageExtra = 3.00;
+                damageExtra = 2.5;
             }
         }
-
-
 
         double damage = Math.max(0, ataqueMagico * damageExtra - defensaMagicaMonstruo) + new Random().nextInt(5);
         //si la vida restante del monstruo menos el daño hecho por el monstruo es igual o menor a 0, el daño sera igual a la vida restante del Monstruo.
         if (vidaMonstruo - damage <= 0){
             damage = vidaMonstruo;
+        }
+
+        if (potencia == 1){
+            damage = damage/2;
         }
 
         return (int) damage;

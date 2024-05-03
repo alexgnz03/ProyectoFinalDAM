@@ -13,37 +13,44 @@
     -fx-accent: red; /* Cambia el color del relleno a rojo */
 }
 
-#botonAtaque {
+.botonBronce {
     -fx-background-color:
             #000000,
-            linear-gradient(#7ebcea, #2f4b8f),
-            linear-gradient(#426ab7, #263e75),
-            linear-gradient(#395cab, #223768);
+                   linear-gradient(#b0947d, #49392c),
+                   linear-gradient(#b0947d, #49392c),
+                   linear-gradient(#b0947d, #49392c);
     -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
+    -fx-background-radius: 18px;
     -fx-text-fill: white;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 140px;
 }
 
-#botonFe {
+.botonPlata {
     -fx-background-color:
             #000000,
-            linear-gradient(#f2b300, #d98500),
-            linear-gradient(#eaac00, #be7d00),
-            linear-gradient(#e29f00, #b47200);
+               linear-gradient(#b1b2b0, #4a4a49),
+               linear-gradient(#b1b2b0, #4a4a49),
+               linear-gradient(#b1b2b0, #4a4a49);
     -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
+    -fx-background-radius: 18px;
     -fx-text-fill: white;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 140px;
+
 }
 
-#botonMagia {
+.botonOro {
     -fx-background-color:
             #000000,
-            linear-gradient(#66ccff, #005c99),
-            linear-gradient(#3399ff, #005c99),
-            linear-gradient(#66ccff, #005c99);
+               linear-gradient(#f0d84f, #7d6b0a),
+               linear-gradient(#f0d84f, #7d6b0a),
+               linear-gradient(#f0d84f, #7d6b0a);
     -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
+    -fx-background-radius: 18px;
     -fx-text-fill: white;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 140px;
 }
 
 #botonEscapar {
@@ -56,11 +63,11 @@
     -fx-background-radius: 3,2,2,2;
     -fx-text-fill: white;
 }
-#botonAtaque:hover,
-#botonMagia:hover,
-#botonFe:hover,
+.botonBronce:hover,
+.botonPlata:hover,
+.botonOro:hover,
 #botonEscapar:hover {
-    -fx-background-color: linear-gradient(to bottom, #2E8B57, #4CAF50);
+    -fx-background-color: linear-gradient(to bottom, #a47feb, #3e168a);
 }
 
 #jugadorVida {

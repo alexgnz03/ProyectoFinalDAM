@@ -41,5 +41,10 @@ public class IGMenuController {
 
     }
 
+    @FXML
+    void mostroDexAction(ActionEvent event) {
+        gameMenu.cargarMostroDex();
+    }
+
 }
 

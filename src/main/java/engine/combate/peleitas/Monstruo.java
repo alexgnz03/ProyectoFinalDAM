@@ -41,6 +41,22 @@ public class Monstruo {
         initializeStatsBasedOnName();
     }
 
+    public Monstruo(String name, int money, Image enemy_image, double vida, double vida_maxima,
+                    double ataque, double defensa, double ataque_magico, double defensa_magica,
+                    double velocidad, String[] skill) {
+        this.name = name;
+        this.money = money;
+        this.enemy_image = enemy_image;
+        this.vida = vida;
+        this.vida_maxima = vida_maxima;
+        this.ataque = ataque;
+        this.defensa = defensa;
+        this.ataque_magico = ataque_magico;
+        this.defensa_magica = defensa_magica;
+        this.velocidad = velocidad;
+        this.skill = skill;
+    }
+
     private String generateRandomMonsterName() {
         String[] possibleNames = {"Antonio", "Manola", "Johny"};
         Random random = new Random();

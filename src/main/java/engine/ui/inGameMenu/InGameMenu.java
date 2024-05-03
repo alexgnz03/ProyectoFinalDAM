@@ -147,6 +147,19 @@ public class InGameMenu {
         }
     }
 
+    public void cargarMostroDex() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MostroDexMenu.fxml"));
+            IGMostrodexController controller = new IGMostrodexController();
+            loader.setController(controller);
+            controller.setGameMenu(this);
+            Pane statsPane = loader.load();
+            menuPane.getChildren().setAll(statsPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     //Getters y Setters
     public ImageView getSmartphone() {
         return smartphone;

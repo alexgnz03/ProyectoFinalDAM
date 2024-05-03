@@ -2,9 +2,13 @@ package engine.combate.peleitas;
 
 import controllers.FinalController;
 import controllers.MainMenuController;
+import dbo.MonsterLoader;
 import dbo.PlayerData;
 import engine.MusicPlayer;
 import engine.objects.Player;
+import javafx.event.EventHandler;
+import javafx.scene.input.TransferMode;
+
 import engine.world.Maps;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -12,15 +16,20 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -32,18 +41,8 @@ import java.util.*;
 
 public class FightController {
 
-
-    @FXML
-    private Button botonAtaque;
-
     @FXML
     private Button botonEscapar;
-
-    @FXML
-    private Button botonFe;
-
-    @FXML
-    private Button botonMagia;
 
     @FXML
     private AnchorPane fightPane;
@@ -76,9 +75,15 @@ public class FightController {
     private Label qteTextLabel;
 
     @FXML
+    private HBox manoDeCartasContainer;
+
+    @FXML
     private Text jugadorDamage;
     private Jugador jugador = new Jugador();
-    private Monstruo monstruo = new Monstruo();
+    MonsterLoader monsterLoader = new MonsterLoader();
+
+    int idDelMonstruo = new Random().nextInt(3) + 1;
+    Monstruo monstruo = monsterLoader.cargarMonstruo(idDelMonstruo);
     private Fran fran = new Fran();
     boolean timerRunning;
     Stage stage;
@@ -97,6 +102,12 @@ public class FightController {
     private KeyCode qteKey;
     private boolean qteActive;
 
+    private boolean monstruoMuerto = false;
+
+    private List<Carta> manoDeCartas;
+
+    private boolean cartasActivas = true;
+
     double x;
     double y;
 
@@ -109,10 +120,208 @@ public class FightController {
         this.x = x;
         this.y = y;
 
+        // Inicializar la mano de cartas con 5 cartas aleatorias
+        manoDeCartas = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            manoDeCartas.add(generarCartaAleatoria());
+        }
+
         System.out.println("Valor de I en el constructor: " + tipoDeCombate);
     }
+
+    private Carta generarCartaAleatoria() {
+        // Generar una carta aleatoria
+        Random random = new Random();
+        // Modificar el rango de índices para dar más probabilidad a ciertos tipos de carta
+        int indice = random.nextInt(100); // Número aleatorio entre 0 y 99
+        TipoCarta tipo;
+        // Ajustar las probabilidades de acuerdo al rango de índices
+        if (indice < 60) { // 60% de probabilidad para cartas débiles
+            tipo = TipoCarta.values()[random.nextInt(2)]; // Cartas débiles
+        } else if (indice < 90) { // 30% de probabilidad para cartas medias
+            tipo = TipoCarta.values()[random.nextInt(4) + 2]; // Cartas medias
+        } else { // 10% de probabilidad para cartas fuertes
+            tipo = TipoCarta.values()[random.nextInt(3) + 6]; // Cartas fuertes
+        }
+        return new Carta(tipo);
+    }
+
+    // Método para jugar una carta
+    public void jugarCarta(Carta carta) {
+        // Implementa la lógica para manejar la carta seleccionada
+        cartasActivas = false;
+
+        int index = manoDeCartas.indexOf(carta);
+        if (index != -1) {
+            manoDeCartas.set(index, generarCartaAleatoria());
+        } else {
+            // Carta no encontrada en la lista
+            // Aquí puedes manejar el caso de la carta no encontrada si es necesario
+        }
+        // Por ejemplo, podrías llamar a un método específico dependiendo del tipo de carta
+        switch (carta.getTipo()) {
+            case ATAQUEdebil:
+                accion(jugador.damageFisico(monstruo)/2);
+                MusicPlayer efectos;
+                efectos = new MusicPlayer("/Effects/ataque.mp3");
+                efectos.play();
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
+                    efectos.stop();
+                    actualizarContenedorCartas();
+                    cartasActivas = true;
+                }));
+                timeline.play();
+                break;
+            case CURAdebil:
+                jugador.setVida(jugador.getVida()+5);
+                MusicPlayer efectosd;
+                efectosd = new MusicPlayer("/Effects/heal.mp3");
+                efectosd.play();
+                Timeline timelined = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
+                    efectosd.stop();
+                    actualizarContenedorCartas();
+                    cartasActivas = true;
+                }));
+                timelined.play();
+                break;
+            case ATAQUEmedio:
+                accion(jugador.damageFisico(monstruo));
+                MusicPlayer efectos2;
+                efectos2 = new MusicPlayer("/Effects/ataque.mp3");
+                efectos2.play();
+                Timeline timeline3 = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
+                    efectos2.stop();
+                    actualizarContenedorCartas();
+                    cartasActivas = true;
+                }));
+                timeline3.play();
+                break;
+            case MAGIAmedia:
+                iniciarQTE(1);
+                break;
+            case FEmedia:
+                accion(jugador.damageSkill(monstruo, 1, 1));
+                MusicPlayer efectos3;
+                efectos3 = new MusicPlayer("/Effects/ataqueCritico.mp3");
+                efectos3.play();
+                Timeline timeline4 = new Timeline(new KeyFrame(Duration.seconds(0.75), event4 -> {
+                    efectos3.stop();
+                    actualizarContenedorCartas();
+                    cartasActivas = true;
+                }));
+                timeline4.play();
+                break;
+            case CURAmedia:
+                jugador.setVida(jugador.getVida()+10);
+                MusicPlayer efectosm;
+                efectosm = new MusicPlayer("/Effects/heal.mp3");
+                efectosm.play();
+                Timeline timelinem = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
+                    efectosm.stop();
+                    actualizarContenedorCartas();
+                    cartasActivas = true;
+                }));
+                timelinem.play();
+                break;
+            case ATAQUEfuerte:
+                accion(jugador.damageFisico(monstruo));
+                MusicPlayer efectos4;
+                efectos4 = new MusicPlayer("/Effects/ataque.mp3");
+                efectos4.play();
+                Timeline timeline5 = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
+                    efectos4.stop();
+                    actualizarContenedorCartas();
+                    cartasActivas = true;
+                }));
+                timeline5.play();
+                break;
+            case MAGIAfuerte:
+                iniciarQTE(2);
+                break;
+            case FEfuerte:
+                accion(jugador.damageSkill(monstruo, 1, 2));
+                MusicPlayer efectos5;
+                efectos5 = new MusicPlayer("/Effects/ataqueCritico.mp3");
+                efectos5.play();
+                Timeline timeline6 = new Timeline(new KeyFrame(Duration.seconds(0.75), event4 -> {
+                    efectos5.stop();
+                    actualizarContenedorCartas();
+                    cartasActivas = true;
+                }));
+                timeline6.play();
+                break;
+            // Agrega más casos según sea necesario
+        }
+        actualizarContenedorCartas();
+        cartasActivas = true;
+        // Reemplazar la carta jugada con una nueva carta aleatoria
+    }
+
+    // Método para actualizar el contenedor de cartas en la interfaz gráfica
+    private void actualizarContenedorCartas() {
+        // Limpiar el contenedor antes de agregar las nuevas cartas
+        manoDeCartasContainer.getChildren().clear();
+
+        // Agregar cada carta al contenedor como un botón
+        for (Carta carta : manoDeCartas) {
+            Button button = new Button(carta.getTipo().toString()); // Mostrar el tipo de carta como texto en el botón
+
+            switch (carta.getTipo()) {
+                case ATAQUEdebil:
+                    button.getStyleClass().add("botonBronce");
+                    button.setText("Ataque Débil");
+                    break;
+                case CURAdebil:
+                    button.getStyleClass().add("botonBronce");
+                    button.setText("Cura Débil");
+                    break;
+                case ATAQUEmedio:
+                    button.getStyleClass().add("botonPlata");
+                    button.setText("Ataque Medio");
+                    break;
+                case MAGIAmedia:
+                    button.getStyleClass().add("botonPlata");
+                    button.setText("Magia Media");
+                    break;
+                case FEmedia:
+                    button.getStyleClass().add("botonPlata");
+                    button.setText("Fe Media");
+                    break;
+                case CURAmedia:
+                    button.getStyleClass().add("botonPlata");
+                    button.setText("Cura Media");
+                    break;
+                case ATAQUEfuerte:
+                    button.getStyleClass().add("botonOro");
+                    button.setText("Ataque Fuerte");
+                    break;
+                case MAGIAfuerte:
+                    button.getStyleClass().add("botonOro");
+                    button.setText("Magia Fuerte");
+                    break;
+                case FEfuerte:
+                    button.getStyleClass().add("botonOro");
+                    button.setText("Fe Fuerte");
+                    break;
+                // Agrega más casos según sea necesario
+            }
+
+            if (cartasActivas) {
+                // Activar el botón solo si las cartas están activas
+                Carta cartaActual = carta;
+                button.setOnAction(event -> jugarCarta(cartaActual));
+            } else {
+                // Desactivar el botón si las cartas están inactivas
+                button.setDisable(true);
+            }
+            // Agregar el botón al contenedor
+            manoDeCartasContainer.getChildren().add(button);
+        }
+    }
+
     @FXML
     private void initialize() {
+        actualizarContenedorCartas();
         System.out.println("Inicializando la pelea...");
         System.out.println("Valor de I en el constructor: " + tipoDeCombate);
         qteTextLabel.setVisible(false);
@@ -131,41 +340,25 @@ public class FightController {
             aplicarColorBarra(monstruoBarraVida, progresoMonstruo);
             monstruoVida.setText(String.valueOf(monstruo.getVida()));
 
-            if (monstruo.getVelocidad() > jugador.getVelocidad()) {
-                prioridadMonstruo = true;
-                botonAtaque.fire();
-            }
         } else if (tipoDeCombate == 2) {
-                double progresoJugador = jugador.getVida() / jugador.getVida_maxima();
-                jugadorBarraVida.setProgress(progresoJugador);
-                aplicarColorBarra(jugadorBarraVida, progresoJugador);
-                jugadorVida.setText(String.valueOf(jugador.getVida()));
+            double progresoJugador = jugador.getVida() / jugador.getVida_maxima();
+            jugadorBarraVida.setProgress(progresoJugador);
+            aplicarColorBarra(jugadorBarraVida, progresoJugador);
+            jugadorVida.setText(String.valueOf(jugador.getVida()));
 
-                imagenMonstruo.setImage(fran.getEnemy_image());
-                nombreMonstruo.setText(fran.getName());
+            imagenMonstruo.setImage(fran.getEnemy_image());
+            nombreMonstruo.setText(fran.getName());
 
-                double progresoMonstruo = fran.getVida() / fran.getVida_maxima();
-                monstruoBarraVida.setProgress(progresoMonstruo);
-                aplicarColorBarra(monstruoBarraVida, progresoMonstruo);
-                monstruoVida.setText(String.valueOf(fran.getVida()));
+            double progresoMonstruo = fran.getVida() / fran.getVida_maxima();
+            monstruoBarraVida.setProgress(progresoMonstruo);
+            aplicarColorBarra(monstruoBarraVida, progresoMonstruo);
+            monstruoVida.setText(String.valueOf(fran.getVida()));
 
-                if (fran.getVelocidad() > jugador.getVelocidad()) {
-                    prioridadMonstruo = true;
-                    botonAtaque.fire();
-                }
-                
         }
     }
 
-    private void generarReporteMonstruo() {
-        GenerateMonstruoReport.generateReport(monstruo);
-    }
 
-    public void combateNormal(){
-
-    }
-
-    private void iniciarQTE() {
+    private void iniciarQTE(int potencia) {
         qteActive = false;
         random = new Random();
         KeyCode[] letterKeys = {KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.L, KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R, KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X, KeyCode.Y, KeyCode.Z};
@@ -193,6 +386,10 @@ public class FightController {
             // Realizar el ataque y ajustar el daño según el éxito o fracaso del QTE
             int damage = jugador.magicSkill(monstruo, 1, qteSuccess);
 
+            if (potencia == 1){
+                damage = damage/2;
+            }
+
             // Aplicar el daño al enemigo
             accion(damage);
 
@@ -215,29 +412,7 @@ public class FightController {
 
     @FXML
     void actionButtonEvent(ActionEvent event) throws IOException {
-        if (event.getSource().equals(botonAtaque)) {
-            accion(jugador.damageFisico(monstruo));
-            MusicPlayer efectos;
-            efectos = new MusicPlayer("/Effects/ataque.mp3");
-            efectos.play();
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
-                efectos.stop();
-            }));
-            timeline.play();
-
-        } else if (event.getSource().equals(botonMagia)) {
-            // Iniciar el Quick Time Event
-            iniciarQTE();
-        } else if (event.getSource().equals(botonFe)) {
-            accion(jugador.damageSkill(monstruo, 1));
-            MusicPlayer efectos;
-            efectos = new MusicPlayer("/Effects/ataqueCritico.mp3");
-            efectos.play();
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.75), event4 -> {
-                efectos.stop();
-            }));
-            timeline.play();
-        } else if (event.getSource().equals(botonEscapar)) {
+        if (event.getSource().equals(botonEscapar)) {
             Random random = new Random();
             double probabilidad = random.nextDouble();
             if (probabilidad <= 0.5) {
@@ -276,14 +451,15 @@ public class FightController {
 
         KeyValue monstruoVidaBarraK = new KeyValue(monstruoBarraVida.progressProperty(), monstruo.getVida() / monstruo.getVida_maxima());
         KeyValue monstruoVidaK = new KeyValue(monstruoVida.textProperty(), String.valueOf(monstruo.getVida()));
-        KeyValue botonAtaqueK = new KeyValue(botonAtaque.disableProperty(), true);
-        KeyValue botonMagiaK = new KeyValue(botonMagia.disableProperty(), true);
-        KeyValue botonFeK = new KeyValue(botonFe.disableProperty(), true);
         KeyValue botonEscaparK = new KeyValue(botonEscapar.disableProperty(), true);
 
-        KeyFrame frame0s = new KeyFrame(new Duration(0), botonAtaqueK, botonMagiaK, botonFeK, botonEscaparK, monstruoVidaBarraK, monstruoVidaK);
+        KeyFrame frame0s = new KeyFrame(new Duration(0), botonEscaparK, monstruoVidaBarraK, monstruoVidaK);
 
         KeyValue jugadorDamageK = new KeyValue(jugadorDamage.textProperty(), String.valueOf(damage));
+
+        botonEscaparK = new KeyValue(botonEscapar.disableProperty(), false);
+
+        KeyFrame frame10s = new KeyFrame(new Duration(800), botonEscaparK);
 
         KeyFrame frame15s = new KeyFrame(new Duration(1350), jugadorDamageK);
 
@@ -292,15 +468,11 @@ public class FightController {
         monstruo.calcularVida(damage);
         monstruoVidaBarraK = new KeyValue(monstruoBarraVida.progressProperty(), monstruo.getVida() / monstruo.getVida_maxima());
         monstruoVidaK = new KeyValue(monstruoVida.textProperty(), String.valueOf(monstruo.getVida()));
-        botonAtaqueK = new KeyValue(botonAtaque.disableProperty(), false);
-        botonMagiaK = new KeyValue(botonMagia.disableProperty(), false);
-        botonFeK = new KeyValue(botonFe.disableProperty(), false);
-        botonEscaparK = new KeyValue(botonEscapar.disableProperty(), false);
 
-        KeyFrame frame200s = new KeyFrame(new Duration(1800), botonAtaqueK, botonMagiaK, botonFeK, botonEscaparK, monstruoVidaBarraK, monstruoVidaK);
+        KeyFrame frame200s = new KeyFrame(new Duration(1800), botonEscaparK, monstruoVidaBarraK, monstruoVidaK);
         aplicarColorBarra(jugadorBarraVida, progresoJugador);
         aplicarColorBarra(monstruoBarraVida, progresoMonstruo);
-        return new KeyFrame[]{frame0s, frame15s, frame175s, frame200s};
+        return new KeyFrame[]{frame0s, frame10s, frame15s, frame175s, frame200s};
     }
 
     private KeyFrame[] accionMonstruo(int time) {
@@ -311,12 +483,8 @@ public class FightController {
 
         KeyValue jugadorVidaBarraK = new KeyValue(jugadorBarraVida.progressProperty(), jugador.getVida() / jugador.getVida_maxima());
         KeyValue jugadorVidaK = new KeyValue(jugadorVida.textProperty(), String.valueOf(jugador.getVida()));
-        KeyValue botonAtaqueK = new KeyValue(botonAtaque.disableProperty(), true);
-        KeyValue botonMagiaK = new KeyValue(botonMagia.disableProperty(), true);
-        KeyValue botonFeK = new KeyValue(botonFe.disableProperty(), true);
-        KeyValue botonEscaparK = new KeyValue(botonEscapar.disableProperty(), true);
 
-        KeyFrame frame0s = new KeyFrame(new Duration(0), botonAtaqueK, botonMagiaK, botonFeK, botonEscaparK, jugadorVidaBarraK, jugadorVidaK);
+        KeyFrame frame0s = new KeyFrame(new Duration(0), jugadorVidaBarraK, jugadorVidaK);
 
         int damage = monstruo.iaAccion(jugador);
 
@@ -329,15 +497,17 @@ public class FightController {
 
         jugadorVidaBarraK = new KeyValue(jugadorBarraVida.progressProperty(), jugador.getVida() / jugador.getVida_maxima());
         monstruoDamageK = new KeyValue(monstruoDamage.textProperty(), null);
-        botonAtaqueK = new KeyValue(botonAtaque.disableProperty(), false);
-        botonMagiaK = new KeyValue(botonMagia.disableProperty(), false);
-        botonFeK = new KeyValue(botonFe.disableProperty(), false);
-        botonEscaparK = new KeyValue(botonEscapar.disableProperty(), false);
         jugadorVidaK = new KeyValue(jugadorVida.textProperty(), String.valueOf(jugador.getVida()));
 
-        KeyFrame frame1800s = new KeyFrame(new Duration(time + 1800), monstruoDamageK, jugadorVidaBarraK, botonAtaqueK, botonMagiaK, botonFeK, botonEscaparK, jugadorVidaK);
+        KeyFrame frame1800s = new KeyFrame(new Duration(time + 1800), monstruoDamageK, jugadorVidaBarraK, jugadorVidaK);
+
         aplicarColorBarra(jugadorBarraVida, progresoJugador);
         aplicarColorBarra(monstruoBarraVida, progresoMonstruo);
+
+        // Ejecutar el método para actualizar el contenedor de cartas y habilitar el botón de escapar
+        actualizarContenedorCartas();
+        botonEscapar.setDisable(false);
+
         return new KeyFrame[]{frame0s, frame1350s, frame1550s, frame1800s};
     }
 
@@ -366,7 +536,8 @@ public class FightController {
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
-            } else if (monstruo.Muerto()) {
+            } else if (monstruo.Muerto() && !monstruoMuerto) {
+                monstruoMuerto = true;
                 MusicPlayer efectos;
                 efectos = new MusicPlayer("/Effects/Win.mp3");
                 efectos.play();

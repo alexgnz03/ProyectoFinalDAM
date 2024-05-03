@@ -1,6 +1,7 @@
 package engine.world;
 
 
+import dbo.MonsterLoader;
 import dbo.ObjetosData;
 import dbo.PlayerData;
 import engine.combate.peleitas.FightController;
@@ -228,6 +229,10 @@ public class Maps {
     }
 
     public void calleInstituto(Stage stage) {
+
+        MonsterLoader mostro = new MonsterLoader();
+        mostro.crearTablas();
+        mostro.insertarRegistros();
 
         try {
             PlayerData.guardarDato(0, 20);
