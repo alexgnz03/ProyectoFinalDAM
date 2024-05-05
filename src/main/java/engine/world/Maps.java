@@ -38,6 +38,8 @@ import javafx.util.Duration;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
@@ -186,12 +188,14 @@ public class Maps {
 
         i = 6;
 
+        PlayerData p = new PlayerData();
+
         BackgroundImage = new Image("paradaGuagua.png");
 
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/paradaGuagua.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/paradaGuagua.json");
 
         Elements element = new Elements(this.root, stage, 2, 675, 30);
 
@@ -245,7 +249,7 @@ public class Maps {
         BackgroundImage = new Image("calleInstituto.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/calleInstituto.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/calleInstituto.json");
 
         //NPCs
 
@@ -272,7 +276,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/calleInstituto2.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/calleInstituto2.json");
 
         //NPCs
 
@@ -321,7 +325,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/plaza.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/plaza.json");
 
         //NPCs
 
@@ -342,7 +346,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/plaza2.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/plaza2.json");
 
         //NPCs
 
@@ -369,7 +373,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/arcade.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/arcade.json");
 
         Elements element = new Elements(this.root, stage, 1, 545, 340);
 
@@ -390,7 +394,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/institutoPlaza.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/institutoPlaza.json");
 
         //NPCs
         NPC npc = new NPC(this.root, stage, 1, 290, 265,"right", barrier);
@@ -411,7 +415,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/placita.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/placita.json");
 
         //NPCs
         NPC npc = new NPC(this.root, stage, 4, 425, 640,"down", barrier);
@@ -433,7 +437,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/lobbyInstituto.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/lobbyInstituto.json");
 
         //Elements
         Elements element = new Elements(this.root, stage, 4, 204, 145);
@@ -465,7 +469,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/lobbyInstituto2.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/lobbyInstituto2.json");
 
         Elements element = new Elements(this.root, stage,3, 425, 30);
 
@@ -501,7 +505,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/subidaInstituto.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/subidaInstituto.json");
 
         playerBasics();
 
@@ -516,7 +520,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/subidaInstituto2.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/subidaInstituto2.json");
 
         //NPCs
 
@@ -547,7 +551,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/lobbyAulas.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/lobbyAulas.json");
 
         //Elements
         Elements element = new Elements(this.root, stage, 4, 628, 32);
@@ -570,7 +574,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/lobbyAulas2.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/lobbyAulas2.json");
 
         //NPCs
 
@@ -592,7 +596,7 @@ public class Maps {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/aula.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/aula.json");
 
         //NPCs
         NPC npc = new NPC(this.root, stage, 11, 185, 235,"down", barrier);
@@ -736,7 +740,8 @@ public class Maps {
 
     private void cargarColisionesDesdeJSON(String rutaMapa) {
         Gson gson = new Gson();
-        try (FileReader reader = new FileReader(rutaMapa)) {
+        try (InputStream inputStream = getClass().getResourceAsStream(rutaMapa);
+             InputStreamReader reader = new InputStreamReader(inputStream)) {
             List<List<Double>> colisiones = gson.fromJson(reader, List.class);
             for (List<Double> colision : colisiones) {
                 double w = colision.get(0);
@@ -747,6 +752,7 @@ public class Maps {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Error al cargar la ruta");
         }
     }
 

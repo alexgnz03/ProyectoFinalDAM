@@ -6,6 +6,8 @@ import dbo.ObjetosData;
 import dbo.PlayerData;
 import engine.combate.peleitas.FightController;
 import engine.minijuego.MinijuegoController;
+import engine.minijuego1.JuegoController;
+import engine.minijuego2.GameController;
 import engine.objects.Camera;
 import engine.objects.Elements;
 import engine.objects.NPC;
@@ -32,6 +34,8 @@ import javafx.util.Duration;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -191,7 +195,7 @@ public class Maps2 {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/LaLaguna/intercambiador.json");
+        cargarColisionesDesdeJSON("/Maps/LaLaguna/intercambiador.json");
 
         //NPCs
 
@@ -238,7 +242,7 @@ public class Maps2 {
         BackgroundImage = new Image("trinidad01.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("src/main/resources/Maps/LaLaguna/trinidad01.json");
+        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidad01.json");
 
         playerBasics();
 
@@ -261,7 +265,7 @@ public class Maps2 {
         BackgroundImage = new Image("trinidad02.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("src/main/resources/Maps/LaLaguna/trinidad02.json");
+        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidad02.json");
 
         Elements tranvia = new Elements(this.root, stage, 12, 0, 468);
         this.elements = tranvia;
@@ -289,7 +293,7 @@ public class Maps2 {
         BackgroundImage = new Image("trinidad03.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("src/main/resources/Maps/LaLaguna/trinidad03.json");
+        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidad03.json");
 
         Elements tranvia = new Elements(this.root, stage, 11, 144, 468);
         this.elements = tranvia;
@@ -316,7 +320,7 @@ public class Maps2 {
         BackgroundImage = new Image("trinidad04.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("src/main/resources/Maps/LaLaguna/trinidad04.json");
+        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidad04.json");
 
 
         playerBasics();
@@ -341,7 +345,7 @@ public class Maps2 {
 
         car.timer.stop();
 
-        cargarColisionesDesdeJSON("src/main/resources/Maps/LaLaguna/trinidad05.json");
+        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidad05.json");
 
 
         playerBasics();
@@ -362,7 +366,7 @@ public class Maps2 {
         BackgroundImage = new Image("trinidadCatedral.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("src/main/resources/Maps/LaLaguna/trinidadCatedral.json");
+        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidadCatedral.json");
 
 
         playerBasics();
@@ -378,7 +382,7 @@ public class Maps2 {
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("src/main/resources/Maps/B_LaSalud/placita.json");
+        cargarColisionesDesdeJSON("/Maps/B_LaSalud/placita.json");
 
         //NPCs
         NPC npc = new NPC(this.root, stage, 4, 425, 640,"down", barrier);
@@ -437,6 +441,55 @@ public class Maps2 {
         });
     }
 
+    public void minijuego1(Stage stage) throws Exception {
+        FadeOut(() -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/minijuego1.fxml"));
+            JuegoController controller = new JuegoController();
+            controller.setStage(stage);
+            loader.setController(controller);
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Scene scene = new Scene(root, 800, 800);
+            stage.setTitle("Tienda");
+            stage.setScene(scene);
+            stage.show();
+
+            //controller.FadeIn();
+
+
+            player = new Player(this.root, scene, this.barrier, character_image);
+        });
+    }
+
+    public void minijuego2(Stage stage) throws Exception {
+        FadeOut(() -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/minijuego2.fxml"));
+            GameController controller = new GameController();
+            controller.setStage(stage);
+            loader.setController(controller);
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Scene scene = new Scene(root, 800, 800);
+            scene.setOnKeyPressed(controller::handleKeyPressed);
+            stage.setTitle("Tienda");
+            stage.setScene(scene);
+            stage.show();
+
+            //controller.FadeIn();
+
+
+//            player = new Player(this.root, scene, this.barrier, character_image);
+        });
+    }
+
     public static void FadeOut(Runnable onFadeOutComplete) {
         Rectangle nuevoContenido = new Rectangle(800, 800, Color.BLACK);
         nuevoContenido.setOpacity(0); // Iniciar con opacidad 0 para el FadeIn
@@ -465,7 +518,8 @@ public class Maps2 {
 
     private void cargarColisionesDesdeJSON(String rutaMapa) {
         Gson gson = new Gson();
-        try (FileReader reader = new FileReader(rutaMapa)) {
+        try (InputStream inputStream = getClass().getResourceAsStream(rutaMapa);
+             InputStreamReader reader = new InputStreamReader(inputStream)) {
             List<List<Double>> colisiones = gson.fromJson(reader, List.class);
             for (List<Double> colision : colisiones) {
                 double w = colision.get(0);
@@ -476,6 +530,7 @@ public class Maps2 {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Error al cargar la ruta");
         }
     }
 
@@ -550,6 +605,20 @@ public class Maps2 {
             y = player.getY() - 24;
             trinidad01(stage);
             timer.start();
+        }
+        else if (player.getX() >= 732.0 && player.getX() <= 800.0 && player.getY() >= 63.0 && player.getY() <= 143.0 && i == 2) {
+            // Hacer algo si las escenas son iguales
+            player.getTimer().stop();
+            timer.stop();
+
+            x = 500;
+            y = 50;
+            try {
+                minijuego2(stage);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            //timer.start();
         }
         //trinidad03
         else if (player.getX() >= 23.0 && player.getX() <= 47.0 && player.getY() >= 0.0 && player.getY() <= 800.0 && i == 3) {

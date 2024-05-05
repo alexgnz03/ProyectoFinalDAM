@@ -537,6 +537,7 @@ public class FightController {
                     throw new RuntimeException(ex);
                 }
             } else if (monstruo.Muerto() && !monstruoMuerto) {
+                monsterLoader.actualizarRegistrado(idDelMonstruo);
                 monstruoMuerto = true;
                 MusicPlayer efectos;
                 efectos = new MusicPlayer("/Effects/Win.mp3");

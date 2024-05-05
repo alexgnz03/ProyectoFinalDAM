@@ -1,15 +1,28 @@
 package engine.minijuego1;
 
+import controllers.PantallaResultadosController;
+import engine.world.Maps2;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
+
 
 public class JuegoController {
+    Stage stage;
+    Maps2 maps2 = new Maps2();
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
     @FXML
     private Label palabraLabel;
     @FXML
@@ -22,6 +35,7 @@ public class JuegoController {
     private JuegoModelo modelo;
     private Timeline temporizador;
     private int tiempoRestante;
+    private int dinero;
 
     public void initialize() {
         modelo = new JuegoModelo();
@@ -58,11 +72,22 @@ public class JuegoController {
     }
 
     private void mostrarResultados() {
-        Stage stage = (Stage) palabraLabel.getScene().getWindow();
-        stage.close(); // Cerrar la ventana actual
-
-        // Mostrar los resultados en una nueva ventana
-        // Aquí deberías abrir una nueva ventana o mostrar la puntuación de alguna manera
+        temporizador.stop();
+        dinero = modelo.getPuntaje()*10;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resultados.fxml"));
+        PantallaResultadosController controller = new PantallaResultadosController(modelo.getPuntaje(), dinero);
+        controller.setStage(stage);
+        loader.setController(controller);
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root, 800, 800);
+        stage.setTitle("Tienda");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public Label getPalabraLabel() {

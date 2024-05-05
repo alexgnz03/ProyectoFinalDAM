@@ -13,17 +13,12 @@ public class ObjetosData {
     public ObjetosData() {
         // Crear la conexión a la base de datos en el constructor
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:objetosdata.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:src/main/resources/objetosdata.db");
         } catch (SQLException e) {
             System.out.println("Error al conectar a la base de datos: " + e.getMessage());
         }
 
-        try {
-            insertarDatosObjeto("Monster Verde", "Bebida energética clásica y potente para despertarte en un santiamén. El precio es por la inflación.", 20, 20);
-            insertarDatosObjeto("Monster Blanco", "Lo mismo que el verde pero es blanco, me da pereza escribir.", 10, 50);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
 
     }
 
@@ -51,6 +46,15 @@ public class ObjetosData {
             System.out.println("Tablas 2 creadas correctamente.");
         } catch (SQLException e) {
             System.out.println("Error al crear las tablas: " + e.getMessage());
+        }
+    }
+
+    public void insertarDatos(){
+        try {
+            insertarDatosObjeto("Monster Verde", "Bebida energética clásica y potente para despertarte en un santiamén. El precio es por la inflación.", 20, 20);
+            insertarDatosObjeto("Monster Blanco", "Lo mismo que el verde pero es blanco, me da pereza escribir.", 10, 50);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

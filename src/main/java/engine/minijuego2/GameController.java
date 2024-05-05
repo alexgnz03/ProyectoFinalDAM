@@ -1,13 +1,29 @@
 package engine.minijuego2;
 
+import controllers.PantallaResultadosController;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameController {
+    Stage stage;
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    @FXML
+    private Label tiempoLabel;
     @FXML
     private Label labelTecla;
     @FXML
@@ -17,8 +33,23 @@ public class GameController {
     private Timer timer = new Timer();
     private boolean esperandoTecla = false;
 
+    private int dinero;
+    private int tiempoRestante;
+    private Timeline temporizador;
     public void initialize() {
         mostrarSiguienteTecla();
+        tiempoRestante = 60; // 60 segundos
+
+        temporizador = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            tiempoRestante--;
+            if (tiempoRestante <= 0) {
+                mostrarResultados();
+            } else {
+                tiempoLabel.setText("Tiempo restante: " + tiempoRestante + " segundos");
+            }
+        }));
+        temporizador.setCycleCount(Timeline.INDEFINITE);
+        temporizador.play();
     }
 
     private void mostrarSiguienteTecla() {
@@ -38,6 +69,7 @@ public class GameController {
             gameModel.disminuirPuntuacion();
             actualizarPuntuacion();
         }
+        System.out.println("Se está presionando la tecla");
     }
 
     private void esperarTecla() {
@@ -52,6 +84,25 @@ public class GameController {
                 });
             }
         }, 250);
+    }
+
+    private void mostrarResultados() {
+        temporizador.stop();
+        dinero = gameModel.getPuntuacion()*10;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resultados.fxml"));
+        PantallaResultadosController controller = new PantallaResultadosController(gameModel.getPuntuacion(), dinero);
+        controller.setStage(stage);
+        loader.setController(controller);
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root, 800, 800);
+        stage.setTitle("Tienda");
+        stage.setScene(scene);
+        stage.show();
     }
 
     private void actualizarPuntuacion() {

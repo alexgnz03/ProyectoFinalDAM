@@ -1,0 +1,91 @@
+/* Estilo base para la barra de progreso */
+.progress-bar {
+    -fx-accent: green; /* Color base cuando la barra está llena */
+}
+
+/* Estilo para la barra de progreso con relleno amarillo */
+.progress-bar.yellow {
+    -fx-accent: yellow; /* Cambia el color del relleno a amarillo */
+}
+
+/* Estilo para la barra de progreso con relleno rojo */
+.progress-bar.red {
+    -fx-accent: red; /* Cambia el color del relleno a rojo */
+}
+
+.botonBronce {
+    -fx-background-color:
+            #000000,
+                   linear-gradient(#b0947d, #49392c),
+                   linear-gradient(#b0947d, #49392c),
+                   linear-gradient(#b0947d, #49392c);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 18px;
+    -fx-text-fill: white;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 140px;
+}
+
+.botonPlata {
+    -fx-background-color:
+            #000000,
+               linear-gradient(#b1b2b0, #4a4a49),
+               linear-gradient(#b1b2b0, #4a4a49),
+               linear-gradient(#b1b2b0, #4a4a49);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 18px;
+    -fx-text-fill: white;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 140px;
+
+}
+
+.botonOro {
+    -fx-background-color:
+            #000000,
+               linear-gradient(#f0d84f, #7d6b0a),
+               linear-gradient(#f0d84f, #7d6b0a),
+               linear-gradient(#f0d84f, #7d6b0a);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 18px;
+    -fx-text-fill: white;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 140px;
+}
+
+#botonEscapar {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#ff6666, #b30000),
+            linear-gradient(#ff6666, #b30000),
+            linear-gradient(#ff6666, #b30000);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-text-fill: white;
+}
+.botonBronce:hover,
+.botonPlata:hover,
+.botonOro:hover,
+#botonEscapar:hover {
+    -fx-background-color: linear-gradient(to bottom, #a47feb, #3e168a);
+}
+
+#jugadorVida {
+    -fx-font-weight: bold;
+    -fx-fill: linear-gradient(to right, #00b4db, #0083b0); /* Gradiente azul */
+}
+
+#nombreJugador {
+    -fx-font-weight: bold;
+    -fx-fill: linear-gradient(to right, #00b4db, #0083b0); /* Gradiente azul */
+}
+
+#monstruoVida {
+    -fx-font-weight: bold;
+    -fx-fill: linear-gradient(to right, #ff416c, #ff4b2b); /* Gradiente rojo */
+}
+
+#nombreMonstruo {
+    -fx-font-weight: bold;
+    -fx-fill: linear-gradient(to right, #ff416c, #ff4b2b); /* Gradiente rojo */
+}

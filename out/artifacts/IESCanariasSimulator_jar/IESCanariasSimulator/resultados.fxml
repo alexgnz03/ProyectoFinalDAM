@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="fondo" fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="puntuacionText" layoutX="358.0" layoutY="89.0" text="Puntuación:" />
+      <Label fx:id="puntajeLabel" layoutX="426.0" layoutY="89.0" text="Label" />
+      <Label fx:id="dineroText" layoutX="358.0" layoutY="144.0" text="Dinero ganado:" />
+      <Label fx:id="gananciasLabel" layoutX="450.0" layoutY="144.0" text="Label" />
+      <Button layoutX="350.0" layoutY="617.0" mnemonicParsing="false" onAction="#salirAction" text="Salir del trabajo" />
+      <Label fx:id="euroText" layoutX="486.0" layoutY="144.0" text="€" />
+   </children>
+</AnchorPane>

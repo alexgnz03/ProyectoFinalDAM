@@ -37,8 +37,8 @@ public class Monstruo {
 
     //constructor
     public Monstruo() {
-        this.name = generateRandomMonsterName();
-        initializeStatsBasedOnName();
+//        this.name = generateRandomMonsterName();
+//        initializeStatsBasedOnName();
     }
 
     public Monstruo(String name, int money, Image enemy_image, double vida, double vida_maxima,
@@ -57,57 +57,57 @@ public class Monstruo {
         this.skill = skill;
     }
 
-    private String generateRandomMonsterName() {
-        String[] possibleNames = {"Antonio", "Manola", "Johny"};
-        Random random = new Random();
-        return possibleNames[random.nextInt(possibleNames.length)];
-    }
+//    private String generateRandomMonsterName() {
+//        String[] possibleNames = {"Antonio", "Manola", "Johny"};
+//        Random random = new Random();
+//        return possibleNames[random.nextInt(possibleNames.length)];
+//    }
 
-    private void initializeStatsBasedOnName() {
-        // Asocia las estadísticas según el nombre del monstruo
-        if ("Antonio".equals(name)) {
-            this.money = 20;
-            this.enemy_image = new Image("Enemies/Enemy2.png");
-            this.vida = 30;
-            this.vida_maxima = vida;
-            this.ataque = 6;
-            this.defensa = 6;
-            this.ataque_magico = 2;
-            this.defensa_magica = 2;
-            this.skill[0] = "Fire rain";
-            this.skill[1] = "Lava rain";
-            this.velocidad = 15;
-
-        } else if ("Manola".equals(name)) {
-            this.money = 30;
-            this.enemy_image = new Image("Enemies/Enemy3.png");
-            this.vida = 30;
-            this.vida_maxima = vida;
-            this.ataque = 4;
-            this.defensa = 3;
-            this.ataque_magico = 7;
-            this.defensa_magica = 5;
-            this.skill[0] = "Waterfall";
-            this.skill[1] = "Waterstorm";
-            this.velocidad = 15;
-
-        } else if ("Johny".equals(name)) {
-            this.money = 25;
-            this.enemy_image = new Image("Enemies/Enemy1.png");
-            this.vida = 50;
-            this.vida_maxima = vida;
-            this.ataque = 5;
-            this.defensa = 5;
-            this.ataque_magico = 5;
-            this.defensa_magica = 5;
-            this.skill[0] = "Tornado";
-            this.skill[1] = "Mega Tornado";
-            this.velocidad = 25;
-
-        }
-
-
-    }
+//    private void initializeStatsBasedOnName() {
+//        // Asocia las estadísticas según el nombre del monstruo
+//        if ("Antonio".equals(name)) {
+//            this.money = 20;
+//            this.enemy_image = new Image("Enemies/Enemy2.png");
+//            this.vida = 30;
+//            this.vida_maxima = vida;
+//            this.ataque = 6;
+//            this.defensa = 6;
+//            this.ataque_magico = 2;
+//            this.defensa_magica = 2;
+//            this.skill[0] = "Fire rain";
+//            this.skill[1] = "Lava rain";
+//            this.velocidad = 15;
+//
+//        } else if ("Manola".equals(name)) {
+//            this.money = 30;
+//            this.enemy_image = new Image("Enemies/Enemy3.png");
+//            this.vida = 30;
+//            this.vida_maxima = vida;
+//            this.ataque = 4;
+//            this.defensa = 3;
+//            this.ataque_magico = 7;
+//            this.defensa_magica = 5;
+//            this.skill[0] = "Waterfall";
+//            this.skill[1] = "Waterstorm";
+//            this.velocidad = 15;
+//
+//        } else if ("Johny".equals(name)) {
+//            this.money = 25;
+//            this.enemy_image = new Image("Enemies/Enemy1.png");
+//            this.vida = 50;
+//            this.vida_maxima = vida;
+//            this.ataque = 5;
+//            this.defensa = 5;
+//            this.ataque_magico = 5;
+//            this.defensa_magica = 5;
+//            this.skill[0] = "Tornado";
+//            this.skill[1] = "Mega Tornado";
+//            this.velocidad = 25;
+//
+//        }
+//
+//
+//    }
 
     //getters
 

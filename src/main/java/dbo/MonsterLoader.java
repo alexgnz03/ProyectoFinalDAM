@@ -3,6 +3,7 @@ package dbo;
 import engine.combate.peleitas.Monstruo;
 import engine.ui.inGameMenu.InventarioItem;
 import engine.ui.inGameMenu.MostroDexItem;
+import javafx.scene.image.Image;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class MonsterLoader {
     public MonsterLoader() {
         try {
             // Establecer la conexión a la base de datos
-            connection = DriverManager.getConnection("jdbc:sqlite:monsterdata.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:src/main/resources/monsterdata.db");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -25,7 +26,8 @@ public class MonsterLoader {
         String script = "CREATE TABLE IF NOT EXISTS Enemy (\n"
                 + "    ID INTEGER PRIMARY KEY AUTOINCREMENT,\n"
                 + "    Nombre TEXT NOT NULL,\n"
-                + "    Descripcion TEXT NOT NULL\n"
+                + "    Descripcion TEXT NOT NULL,\n"
+                + "    Registrado BOOLEAN\n"
                 + ");\n";
         String script2 = "CREATE TABLE IF NOT EXISTS Enemy_Sprites (\n"
                 + "    Cod_Sprites INTEGER PRIMARY KEY AUTOINCREMENT,\n"
@@ -77,8 +79,10 @@ public class MonsterLoader {
         try {
             // Consultar los datos del monstruo en la base de datos
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT e.Nombre, cs.* FROM Enemy e " +
-                            "INNER JOIN Combat_Stats cs ON e.ID = cs.Enemy_ID WHERE cs.Enemy_ID = ?");
+                    "SELECT e.Nombre, cs.*, es.* FROM Enemy e " +
+                            "INNER JOIN Combat_Stats cs ON e.ID = cs.Enemy_ID " +
+                            "INNER JOIN Enemy_Sprites es ON e.ID = es.Enemy_ID " +
+                            "WHERE cs.Enemy_ID = ?");
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
@@ -95,6 +99,7 @@ public class MonsterLoader {
                 monstruo.setDefensa_magica(resultSet.getDouble("Magic_Defense"));
                 monstruo.setVelocidad(25);
                 monstruo.setSkill(cargarHabilidades(id));
+                monstruo.setEnemy_image(new Image(resultSet.getString("Standard_Sprite")));
             }
 
             // Cerrar los recursos
@@ -131,9 +136,9 @@ public class MonsterLoader {
     public void insertarRegistros() {
         try {
             // Insertar registros en la tabla Enemy
-            String insertEnemy1 = "INSERT INTO Enemy (Nombre, Descripcion) VALUES ('Antonio', 'Antoñete es un capo')";
-            String insertEnemy2 = "INSERT INTO Enemy (Nombre, Descripcion) VALUES ('Manola', 'Manola máquina')";
-            String insertEnemy3 = "INSERT INTO Enemy (Nombre, Descripcion) VALUES ('Johny', 'Johny, guarda la navaja por favor')";
+            String insertEnemy1 = "INSERT INTO Enemy (Nombre, Descripcion, Registrado) VALUES ('Antonio', 'Antoñete es un capo', 0)";
+            String insertEnemy2 = "INSERT INTO Enemy (Nombre, Descripcion, Registrado) VALUES ('Manola', 'Manola máquina', 0)";
+            String insertEnemy3 = "INSERT INTO Enemy (Nombre, Descripcion, Registrado) VALUES ('Johny', 'Johny, guarda la navaja por favor', 0)";
 
             // Insertar registros en la tabla Enemy_Sprites
             String insertEnemySprites1 = "INSERT INTO Enemy_Sprites (Standard_Sprite, Attack_Sprite, Damage_Sprite, Enemy_ID) VALUES ('Enemies/Enemy2.png', 'Enemies/Enemy2.png', 'Enemies/Enemy2.png', 1)";
@@ -197,7 +202,9 @@ public class MonsterLoader {
                 "INNER JOIN " +
                 "    Enemy_Sprites es ON e.ID = es.Enemy_ID " +
                 "INNER JOIN " +
-                "    Combat_Stats cs ON e.ID = cs.Enemy_ID";
+                "    Combat_Stats cs ON e.ID = cs.Enemy_ID " +
+                "WHERE " +
+                "    e.Registrado = 1"; // Agregar la condición para mostrar solo enemigos registrados
 
         try (Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
@@ -221,6 +228,20 @@ public class MonsterLoader {
         }
 
         return mostroDex;
+    }
+
+    public void actualizarRegistrado(int id) {
+        try {
+            // Consultar los datos del monstruo en la base de datos
+            PreparedStatement statement = connection.prepareStatement(
+                    "UPDATE Enemy SET Registrado = 1 WHERE ID = ?");
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            statement.close();
+            System.out.println("Campo Registrado actualizado correctamente para el ID: " + id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // Método para cerrar la conexión a la base de datos

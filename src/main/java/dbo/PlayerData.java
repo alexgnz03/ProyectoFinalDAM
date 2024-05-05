@@ -3,7 +3,7 @@ package dbo;
 import java.io.*;
 
 public class PlayerData {
-    private static final String ARCHIVO = "datosJugador.dat";
+    private static final String ARCHIVO = "src/main/resources/datosJugador.dat";
 
     private static final int NUMERO_DE_DATOS = 8;
 
