@@ -2,7 +2,7 @@ package engine.combate.peleitas;
 
 public enum TipoCarta {
     ATAQUEdebil,
-    CURAdebil,
+    MAGIAdebil,
     ATAQUEmedio,
     MAGIAmedia,
     FEmedia,

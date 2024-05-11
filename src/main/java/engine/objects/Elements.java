@@ -1,12 +1,11 @@
 package engine.objects;
 
+import dbo.MonsterLoader;
+import dbo.PlayerData;
 import engine.ui.Dialog;
-import engine.world.Maps;
-import engine.world.Maps2;
-import engine.world.ObstacleTile;
-import engine.world.World;
+import engine.ui.PlayerState;
+import engine.world.*;
 import javafx.animation.AnimationTimer;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -14,11 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Properties;
-import java.util.Random;
+import java.util.*;
 
 public class Elements {
     double x = 0;
@@ -44,6 +39,7 @@ public class Elements {
     int my = 0;
     int dx = 0;
     int dy = 0;
+    MonsterLoader mostrodbo = new MonsterLoader();
     //Dialog dialog = new Dialog();
 
     double w;
@@ -54,9 +50,11 @@ public class Elements {
     int ChaY = 0;
     ObstacleTile tile;
 
-    Maps maps = new Maps();
+    Maps_BSalud mapsBSalud = new Maps_BSalud();
 
-    Maps2 maps2 = new Maps2();
+    Maps_LaLaguna mapsLaLaguna = new Maps_LaLaguna();
+
+    Maps_Teresitas mapsTeresitas = new Maps_Teresitas();
 
     public ImageView elements_image  = new ImageView(new Image("Down2.png"));
 
@@ -145,22 +143,33 @@ public class Elements {
         double elementY = this.y - 24;
         //Arcade
         if ((x >= elementX && x <= this.x + 120) && (y >= elementY && y <= this.y + 87) && id == 1) {
-            try {
-                //mapsInstance.minijuego(stage);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-        //Parada 026
-        else if (((x >= elementX && x <= this.x + 50) && (y >= elementY && y <= this.y + 180) && id == 2)){
-            for (Dialog dialog : getDialogs()){
+            for (Dialog dialog : getDialogs()) {
                 useDialogs(dialog);
+            }
                 try {
-                    maps.mapsSelector(stage);
+                    if (PlayerData.cargarDato(7) > 20){
+                        int dinero = PlayerData.cargarDato(7)-20;
+                        PlayerData.guardarDato(7, dinero);
+                        mapsLaLaguna.setStage(stage);
+                        mapsLaLaguna.pantallaCarga(stage, 3);
+                    }
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
+
+        }
+        //Parada 026
+        else if (((x >= elementX && x <= this.x + 80) && (y >= elementY && y <= this.y + 180) && id == 2)){
+            for (Dialog dialog : getDialogs()) {
+                useDialogs(dialog);
             }
+
+                try {
+                    mapsBSalud.mapsSelector(stage);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
         }
         //Carteles móviles
         else if (((x >= elementX && x <= this.x + 70) && (y >= elementY && y <= this.y + 85) && id == 3)){
@@ -177,8 +186,8 @@ public class Elements {
         //TranviaIntercambiador
         else if (((x >= elementX && x <= this.x + 111) && (y >= elementY && y <= this.y + 360) && id == 5)){
             try {
-                maps2.setStage(stage);
-                maps2.trinidad01(stage);
+                mapsLaLaguna.setStage(stage);
+                mapsLaLaguna.trinidad01(stage);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -186,8 +195,8 @@ public class Elements {
         //TranviaTrinidad02
         else if (((x >= elementX && x <= this.x + 656) && (y >= elementY && y <= this.y + 88) && id == 11)){
             try {
-                maps2.setStage(stage);
-                maps2.intercambiador(stage);
+                mapsLaLaguna.setStage(stage);
+                mapsLaLaguna.intercambiador(stage);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -195,9 +204,99 @@ public class Elements {
         //TranviaTrinidad01
         else if (((x >= elementX && x <= this.x + 272) && (y >= elementY && y <= this.y + 92) && id == 12)){
             try {
-                maps2.setStage(stage);
-                maps2.intercambiador(stage);
+                mapsLaLaguna.setStage(stage);
+                mapsLaLaguna.intercambiador(stage);
             } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        //dependiente mcdont
+        else if (((x >= elementX && x <= this.x + 48) && (y >= elementY && y <= this.y + 48) && id == 14)){
+            try {
+                if(PlayerData.cargarDato(6) > 5) {
+                        try {
+                            mapsLaLaguna.setStage(stage);
+                            mapsLaLaguna.pantallaCarga(stage, 2);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                } else {
+                    for (Dialog dialog : getDialogs()) {
+                        dialog.autoDialog("No te queda suficiente stamina, recúperate\ndurmiendo y vuelve más tarde.");
+                    }
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        //cama
+        else if (((x >= elementX && x <= this.x + 84) && (y >= elementY && y <= this.y + 52) && id == 15)){
+            try {
+                PlayerData.guardarDato(6, 100);
+                PlayerState.actualizarStamina(100);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            for (Dialog dialog : getDialogs()){
+                useDialogs(dialog);
+            }
+        }
+        //secretario
+        else if (((x >= elementX && x <= this.x + 48) && (y >= elementY && y <= this.y + 48) && id == 16)){
+            try {
+                if(PlayerData.cargarDato(6) > 5) {
+                    if (mostrodbo.obtenerCantidadRegistrosMostroDex() >= 6) {
+                        try {
+                            mapsBSalud.setStage(stage);
+                            mapsBSalud.pantallaCarga(stage, 2);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else {
+                        for (Dialog dialog : getDialogs()) {
+                            dialog.autoDialog("Lo siento pero aún no puedes trabajar aquí.");
+                        }
+                    }
+                } else {
+                    for (Dialog dialog : getDialogs()) {
+                        dialog.autoDialog("No te queda suficiente stamina, recúperate\ndurmiendo y vuelve más tarde.");
+                    }
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        //tiendaPlaya
+        else if (((x >= elementX && x <= this.x + 88) && (y >= elementY && y <= this.y + 172) && id == 17)){
+            try {
+                mapsTeresitas.setStage(stage);
+                mapsTeresitas.pantallaCarga(stage, 1);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        //Socorrista
+        else if (((x >= elementX && x <= this.x + 100) && (y >= elementY && y <= this.y + 190) && id == 18)){
+            try {
+                if(PlayerData.cargarDato(6) > 5) {
+                    if (mostrodbo.obtenerCantidadRegistrosMostroDex() >= 3) {
+                        try {
+                            mapsTeresitas.setStage(stage);
+                            mapsTeresitas.pantallaCarga(stage, 2);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else {
+                        for (Dialog dialog : getDialogs()) {
+                            dialog.autoDialog("Lo siento pero aún no puedes trabajar aquí.");
+                        }
+                    }
+                } else {
+                    for (Dialog dialog : getDialogs()) {
+                        dialog.autoDialog("No te queda suficiente stamina, recúperate\ndurmiendo y vuelve más tarde.");
+                    }
+                }
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -294,7 +393,7 @@ public class Elements {
         }
 
         // Obtener las rutas de las imágenes de los NPC según el ID proporcionado
-        if (ID >= 1 && ID <= 13) {
+        if (ID >= 1 && ID <= 18) {
             String rutaString = prop.getProperty(String.valueOf(ID));
             if (rutaString != null) {
                 String[] rutas = rutaString.split(",");

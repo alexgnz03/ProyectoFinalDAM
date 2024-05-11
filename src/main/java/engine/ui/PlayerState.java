@@ -1,26 +1,21 @@
 package engine.ui;
 
 import dbo.PlayerData;
-import engine.MusicPlayer;
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class PlayerState {
 
     static ProgressBar health = new ProgressBar();
-    ProgressBar stamina = new ProgressBar();
+    static ProgressBar stamina = new ProgressBar();
     ImageView dialog = new ImageView(new Image("dialog_box.png"));
     Text dialogText = new Text();
     Pane root;
@@ -65,8 +60,8 @@ public class PlayerState {
         health.setProgress((double) nuevoValor /100);
     }
 
-    public void actualizarStamina(double nuevoValor) {
-        stamina.setProgress(nuevoValor);
+    public static void actualizarStamina(double nuevoValor) {
+        stamina.setProgress(nuevoValor/100);
     }
 
 

@@ -3,10 +3,9 @@ package dbo;
 import java.io.*;
 
 public class PlayerData {
-    private static final String ARCHIVO = "src/main/resources/datosJugador.dat";
+    private static final String ARCHIVO = System.getProperty("user.home") + "/datosJugador.dat";
 
     private static final int NUMERO_DE_DATOS = 8;
-
     private static final int[] VALORES_POR_DEFECTO = {100, 10, 5, 10, 5, 5, 100, 0};
 
     // 0.vidaActual
@@ -26,13 +25,19 @@ public class PlayerData {
                 throw new RuntimeException(e);
             }
             // Escribir valores por defecto si el archivo no existe
-            for (int i = 0; i < NUMERO_DE_DATOS; i++) {
-                try {
-                    guardarDato(VALORES_POR_DEFECTO[i], i);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+            try {
+                guardarDato(0, 100);
+                guardarDato(1, 10);
+                guardarDato(2, 5);
+                guardarDato(3, 10);
+                guardarDato(4, 5);
+                guardarDato(5, 5);
+                guardarDato(6, 100);
+                guardarDato(7, 0);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
+
         }
     }
 

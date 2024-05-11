@@ -31,6 +31,8 @@ public class IGMostrodexController {
     public void setGameMenu(InGameMenu gameMenu){
         this.gameMenu = gameMenu;
     }
+    private ObservableList<MostroDexItem> data;
+    private MonsterLoader mostro;
 
     @FXML
     private TableColumn<MostroDexItem, Integer> atMagMostro;
@@ -65,11 +67,15 @@ public class IGMostrodexController {
     @FXML
     private Pane view;
 
-    private MonsterLoader mostro;
+    public IGMostrodexController() {
+        mostro = new MonsterLoader();
+        // Obtener los datos de la base de datos
+        List<MostroDexItem> mostroDex = mostro.obtenerDatosMostroDex();
+        // Crear una lista observable para la tabla
+        data = FXCollections.observableArrayList(mostroDex);
+    }
 
     public void initialize() {
-        mostro = new MonsterLoader();
-
         // Configuración de las columnas
         idMostro.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         nombreMostro.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -77,12 +83,6 @@ public class IGMostrodexController {
         defensaMostro.setCellValueFactory(new PropertyValueFactory<>("defensa"));
         atMagMostro.setCellValueFactory(new PropertyValueFactory<>("atMagico"));
         defMagMostro.setCellValueFactory(new PropertyValueFactory<>("defMagica"));
-
-        // Obtener los datos de la base de datos
-        List<MostroDexItem> mostroDex = mostro.obtenerDatosMostroDex();
-
-        // Crear una lista observable para la tabla
-        ObservableList<MostroDexItem> data = FXCollections.observableArrayList(mostroDex);
 
         // Establecer los datos en la tabla
         tablaMostroDex.setItems(data);

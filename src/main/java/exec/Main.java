@@ -1,12 +1,11 @@
 package exec;
 
+import dbo.MonsterLoader;
 import dbo.ObjetosData;
+import dbo.PlayerData;
 import engine.world.World;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.IOException;
 
 public class Main {
     public Main() {
@@ -15,20 +14,23 @@ public class Main {
     public static void main(String[] args) {
         ObjetosData objetosData = new ObjetosData();
         objetosData.crearTablas();
-        objetosData.insertarDatos();
 
-        // Establecer el manejador de excepciones no controladas
-        Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler());
+        MonsterLoader monster = new MonsterLoader();
+        monster.crearTablas();
+
+//        try {
+//            PlayerData.guardarDato(0, 100);
+//            PlayerData.guardarDato(1, 10);
+//            PlayerData.guardarDato(2, 5);
+//            PlayerData.guardarDato(3, 10);
+//            PlayerData.guardarDato(4, 5);
+//            PlayerData.guardarDato(5, 5);
+//            PlayerData.guardarDato(6, 100);
+//            PlayerData.guardarDato(7, 0);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
         World.main(args);
-    }
-
-    static class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
-        @Override
-        public void uncaughtException(Thread t, Throwable e) {
-            System.err.println("Error no controlado en el hilo: " + t.getName());
-            e.printStackTrace(System.err);
-            // Puedes hacer más cosas aquí, como guardar el error en un archivo de registro.
-        }
     }
 }

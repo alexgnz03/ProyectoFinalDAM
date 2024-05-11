@@ -188,7 +188,7 @@ public class Monstruo {
         double defensaJugador = jugador.getDefensa();
         double vidaJugador = jugador.getVida();
 
-        int fallo = new java.util.Random().nextInt(99) + 1;
+        int fallo = new Random().nextInt(99) + 1;
         if (fallo > 90) return 0;
 
         double damage = Math.max(0, ataque - defensaJugador) + new Random().nextInt(5);
@@ -208,7 +208,7 @@ public class Monstruo {
 
         double damageExtra = 1.0;
 
-        int fallo = new java.util.Random().nextInt(99) + 1;
+        int fallo = new Random().nextInt(99) + 1;
         if (fallo > 90) return 0;
 
         if (skill == 1) {
@@ -237,8 +237,8 @@ public class Monstruo {
     }
 
     public int iaAccion(Jugador jugador) {
-        int ia = new java.util.Random().nextInt(9) + 1;
-        int ia2 = new java.util.Random().nextInt(9) + 1;
+        int ia = new Random().nextInt(9) + 1;
+        int ia2 = new Random().nextInt(9) + 1;
         double damage;
         if (ia < 5) {
             damage = damageFisico(jugador);

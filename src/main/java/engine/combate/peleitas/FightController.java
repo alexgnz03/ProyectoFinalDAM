@@ -1,42 +1,32 @@
 package engine.combate.peleitas;
 
 import controllers.FinalController;
-import controllers.MainMenuController;
 import dbo.MonsterLoader;
 import dbo.PlayerData;
 import engine.MusicPlayer;
 import engine.objects.Player;
-import javafx.event.EventHandler;
-import javafx.scene.input.TransferMode;
-
-import engine.world.Maps;
+import engine.world.Maps_BSalud;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Point2D;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class FightController {
@@ -79,15 +69,20 @@ public class FightController {
 
     @FXML
     private Text jugadorDamage;
+
+    @FXML
+    private ImageView fondoImage;
+
+
     private Jugador jugador = new Jugador();
     MonsterLoader monsterLoader = new MonsterLoader();
 
-    int idDelMonstruo = new Random().nextInt(3) + 1;
+    int idDelMonstruo = new Random().nextInt(6) + 1;
     Monstruo monstruo = monsterLoader.cargarMonstruo(idDelMonstruo);
     private Fran fran = new Fran();
     boolean timerRunning;
     Stage stage;
-    Maps maps = new Maps();
+    Maps_BSalud mapsBSalud = new Maps_BSalud();
 
     Player player;
     private int I;
@@ -108,6 +103,10 @@ public class FightController {
 
     private boolean cartasActivas = true;
 
+    Image playerStandardImage = new Image("Up2_HD.png");
+    Image playerAttackImage = new Image("Up3_HD.png");
+    Image playerMagicImage = new Image("Right2_HD.png");
+
     double x;
     double y;
 
@@ -127,6 +126,14 @@ public class FightController {
         }
 
         System.out.println("Valor de I en el constructor: " + tipoDeCombate);
+    }
+
+    private void ataqueAnimation(){
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.25), imagenJugador);
+        translateTransition.setFromX(20); // Posición inicial X (derecha)
+        translateTransition.setToX(0); // Posición final X (izquierda)
+        translateTransition.play();
+        imagenJugador.setImage(playerAttackImage);
     }
 
     private Carta generarCartaAleatoria() {
@@ -151,6 +158,10 @@ public class FightController {
         // Implementa la lógica para manejar la carta seleccionada
         cartasActivas = false;
 
+        Timeline tm = new Timeline(new KeyFrame(Duration.seconds(0.75), e -> {
+            imagenJugador.setImage(playerStandardImage);
+        }));
+
         int index = manoDeCartas.indexOf(carta);
         if (index != -1) {
             manoDeCartas.set(index, generarCartaAleatoria());
@@ -161,6 +172,7 @@ public class FightController {
         // Por ejemplo, podrías llamar a un método específico dependiendo del tipo de carta
         switch (carta.getTipo()) {
             case ATAQUEdebil:
+                ataqueAnimation();
                 accion(jugador.damageFisico(monstruo)/2);
                 MusicPlayer efectos;
                 efectos = new MusicPlayer("/Effects/ataque.mp3");
@@ -169,22 +181,18 @@ public class FightController {
                     efectos.stop();
                     actualizarContenedorCartas();
                     cartasActivas = true;
+                    imagenJugador.setImage(playerStandardImage);
                 }));
                 timeline.play();
                 break;
-            case CURAdebil:
-                jugador.setVida(jugador.getVida()+5);
-                MusicPlayer efectosd;
-                efectosd = new MusicPlayer("/Effects/heal.mp3");
-                efectosd.play();
-                Timeline timelined = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
-                    efectosd.stop();
-                    actualizarContenedorCartas();
-                    cartasActivas = true;
-                }));
-                timelined.play();
+            case MAGIAdebil:
+                imagenJugador.setImage(playerMagicImage);
+                iniciarQTE(1);
+
+                tm.play();
                 break;
             case ATAQUEmedio:
+                ataqueAnimation();
                 accion(jugador.damageFisico(monstruo));
                 MusicPlayer efectos2;
                 efectos2 = new MusicPlayer("/Effects/ataque.mp3");
@@ -193,13 +201,17 @@ public class FightController {
                     efectos2.stop();
                     actualizarContenedorCartas();
                     cartasActivas = true;
+                    imagenJugador.setImage(playerStandardImage);
                 }));
                 timeline3.play();
                 break;
             case MAGIAmedia:
-                iniciarQTE(1);
+                imagenJugador.setImage(playerMagicImage);
+                iniciarQTE(2);
+                tm.play();
                 break;
             case FEmedia:
+                imagenJugador.setImage(playerAttackImage);
                 accion(jugador.damageSkill(monstruo, 1, 1));
                 MusicPlayer efectos3;
                 efectos3 = new MusicPlayer("/Effects/ataqueCritico.mp3");
@@ -208,6 +220,7 @@ public class FightController {
                     efectos3.stop();
                     actualizarContenedorCartas();
                     cartasActivas = true;
+                    imagenJugador.setImage(playerStandardImage);
                 }));
                 timeline4.play();
                 break;
@@ -224,6 +237,7 @@ public class FightController {
                 timelinem.play();
                 break;
             case ATAQUEfuerte:
+                ataqueAnimation();
                 accion(jugador.damageFisico(monstruo));
                 MusicPlayer efectos4;
                 efectos4 = new MusicPlayer("/Effects/ataque.mp3");
@@ -232,13 +246,17 @@ public class FightController {
                     efectos4.stop();
                     actualizarContenedorCartas();
                     cartasActivas = true;
+                    imagenJugador.setImage(playerStandardImage);
                 }));
                 timeline5.play();
                 break;
             case MAGIAfuerte:
-                iniciarQTE(2);
+                imagenJugador.setImage(playerMagicImage);
+                iniciarQTE(3);
+                tm.play();
                 break;
             case FEfuerte:
+                imagenJugador.setImage(playerAttackImage);
                 accion(jugador.damageSkill(monstruo, 1, 2));
                 MusicPlayer efectos5;
                 efectos5 = new MusicPlayer("/Effects/ataqueCritico.mp3");
@@ -247,6 +265,7 @@ public class FightController {
                     efectos5.stop();
                     actualizarContenedorCartas();
                     cartasActivas = true;
+                    imagenJugador.setImage(playerStandardImage);
                 }));
                 timeline6.play();
                 break;
@@ -271,9 +290,9 @@ public class FightController {
                     button.getStyleClass().add("botonBronce");
                     button.setText("Ataque Débil");
                     break;
-                case CURAdebil:
+                case MAGIAdebil:
                     button.getStyleClass().add("botonBronce");
-                    button.setText("Cura Débil");
+                    button.setText("Magia Débil");
                     break;
                 case ATAQUEmedio:
                     button.getStyleClass().add("botonPlata");
@@ -325,6 +344,9 @@ public class FightController {
         System.out.println("Inicializando la pelea...");
         System.out.println("Valor de I en el constructor: " + tipoDeCombate);
         qteTextLabel.setVisible(false);
+
+        fondoImage.setImage(new Image("parque.jpeg"));
+
         if (tipoDeCombate == 1){
             double progresoJugador = jugador.getVida() / jugador.getVida_maxima();
             jugadorBarraVida.setProgress(progresoJugador);
@@ -359,12 +381,11 @@ public class FightController {
 
 
     private void iniciarQTE(int potencia) {
+
         qteActive = false;
         random = new Random();
         KeyCode[] letterKeys = {KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.L, KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R, KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X, KeyCode.Y, KeyCode.Z};
-        KeyCode[] specialKeys = {KeyCode.SPACE};
-        KeyCode[] allKeys = Arrays.copyOf(letterKeys, letterKeys.length + specialKeys.length);
-        System.arraycopy(specialKeys, 0, allKeys, letterKeys.length, specialKeys.length);
+        KeyCode[] allKeys = Arrays.copyOf(letterKeys, letterKeys.length);
 
         qteKey = allKeys[random.nextInt(allKeys.length)]; // Obtener una tecla aleatoria
         mostrarQTEKey(qteKey);
@@ -372,8 +393,12 @@ public class FightController {
         // Hacer visible el label del QTE
         qteTextLabel.setVisible(true);
 
+
+
         // Configurar el temporizador para el QTE
         qteTimeline = new Timeline(new KeyFrame(Duration.seconds(1.5), e -> {
+
+
             // Detener el temporizador del QTE
             qteTimeline.stop();
 
@@ -388,6 +413,10 @@ public class FightController {
 
             if (potencia == 1){
                 damage = damage/2;
+            } else if (potencia == 2){
+                damage = damage;
+            } else if (potencia == 3){
+                damage = damage*2;
             }
 
             // Aplicar el daño al enemigo
@@ -397,13 +426,16 @@ public class FightController {
         }));
         qteTimeline.play();
 
+
         // Manejar evento de teclado para detectar si el usuario presiona la tecla correcta durante el QTE
         fightPane.setOnKeyPressed(event -> {
             if (event.getCode() == qteKey) {
                 // El usuario presionó la tecla correcta
                 qteActive = true;
+                imagenJugador.setImage(playerAttackImage);
             }
         });
+
     }
     private void mostrarQTEKey(KeyCode keyCode) {
         // Mostrar la tecla en algún lugar de la pantalla
@@ -429,6 +461,7 @@ public class FightController {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
+                System.out.println("La vida que se ha guardado es: " + jugador.getVida() + " y la vida ya almacenada es: " + PlayerData.cargarDato(0));
                 devolverAMundo(x, y);
             } else {
                 prioridadMonstruo = true;
@@ -569,64 +602,64 @@ public class FightController {
 
     private void devolverAMundo(double x, double y){
         System.out.println("control 10: " + x + " i: " + I);
-        maps.setStage(stage);
-        maps.setX(x - 24);
-        maps.setY(y - 24);
+        mapsBSalud.setStage(stage);
+        mapsBSalud.setX(x - 24);
+        mapsBSalud.setY(y - 24);
 
-        if (maps.getTimer() != null){
-            maps.getTimer().stop();
+        if (mapsBSalud.getTimer() != null){
+            mapsBSalud.getTimer().stop();
         }
 
         System.out.println("control 11: " + x + " i: " + I);
 
         switch (I) {
             case 1:
-                maps.calleInstituto(stage);
+                mapsBSalud.calleInstituto(stage);
                 break;
             case 2:
-                maps.calleInstituto2(stage);
+                mapsBSalud.calleInstituto2(stage);
                 break;
             case 3:
-                maps.plaza(stage);
+                mapsBSalud.plaza(stage);
                 break;
             case 4:
-                maps.plaza2(stage);
+                mapsBSalud.plaza2(stage);
                 break;
             case 5:
-                maps.arcade(stage);
+                mapsBSalud.arcade(stage);
                 break;
             case 6:
-                maps.paradaGuagua(stage);
+                mapsBSalud.paradaGuagua(stage);
                 break;
             case 7:
-                maps.institutoPlaza(stage);
+                mapsBSalud.institutoPlaza(stage);
                 break;
             case 8:
-                maps.placita(stage);
+                mapsBSalud.placita(stage);
                 break;
             case 9:
-                maps.lobbyInstituto(stage);
+                mapsBSalud.lobbyInstituto(stage);
                 break;
             case 10:
-                maps.lobbyInstituto2(stage);
+                mapsBSalud.lobbyInstituto2(stage);
                 break;
             case 11:
-                maps.subidaInstituto(stage);
+                mapsBSalud.subidaInstituto(stage);
                 break;
             case 12:
-                maps.subidaInstituto2(stage);
+                mapsBSalud.subidaInstituto2(stage);
                 break;
             case 13:
-                maps.lobbyAulas(stage);
+                mapsBSalud.lobbyAulas(stage);
                 break;
             case 14:
-                maps.lobbyAulas2(stage);
+                mapsBSalud.lobbyAulas2(stage);
                 break;
             default:
-                maps.calleInstituto(stage);
+                mapsBSalud.calleInstituto(stage);
         }
 
-        maps.timerStart();
+        mapsBSalud.timerStart();
         System.out.println("control 12: " + x + " i: " + I);
 
     }
@@ -639,7 +672,7 @@ public class FightController {
         stage.show();
         FinalController controller = loader.getController();
         controller.setStage(stage);
-        controller.setWorld(new Maps());
+        controller.setWorld(new Maps_BSalud());
     }
 
     public Jugador getJugador() {

@@ -1,6 +1,5 @@
 package engine.objects;
 
-import engine.ui.Dialog;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import javafx.scene.transform.Scale;

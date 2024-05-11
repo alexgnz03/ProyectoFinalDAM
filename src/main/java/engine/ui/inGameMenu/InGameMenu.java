@@ -1,8 +1,8 @@
 package engine.ui.inGameMenu;
 
+import controllers.MainMenuController;
 import engine.MusicPlayer;
-import engine.combate.peleitas.FightController;
-import engine.objects.Player;
+import engine.tienda.TiendaController;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -26,6 +25,10 @@ public class InGameMenu {
 
     ImageView smartphone = new ImageView(new Image("GUI/smartphone.png"));
     Text dialogText = new Text();
+    Stage mainStage;
+    public void setStage(Stage mainStage) {
+        this.mainStage = mainStage;}
+
     private int textIndex = 0;
     Pane root;
     Stage stage;
@@ -109,6 +112,7 @@ public class InGameMenu {
             IGMenuController controller = new IGMenuController();
             loader.setController(controller);
             controller.setGameMenu(this);
+            controller.setStage(stage);
             if (menuPane == null) {
                 menuPane = loader.load();
             } else {
@@ -159,6 +163,8 @@ public class InGameMenu {
             e.printStackTrace();
         }
     }
+
+
 
     //Getters y Setters
     public ImageView getSmartphone() {

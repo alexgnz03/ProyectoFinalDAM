@@ -30,6 +30,7 @@ public class Player {
     private boolean moveRight;
     private boolean moveDown;
     private boolean moveLeft;
+    private boolean run;
     private ArrayList<Image> walkingUpImageList;
     private ArrayList<Image> walkingDownImageList;
     private ArrayList<Image> walkingRightImageList;
@@ -91,8 +92,8 @@ public class Player {
                 int dy = 0;
 
                 if (Player.this.moveUp) {
-                    dy -= 2;
-                    my = -2;
+                    dy -= 3;
+                    my = -3;
                     mx = 0;
                     if (Player.this.switchWhenZero == 0) {
                         character_image.setImage(Player.this.walkingUpImageList.get(Player.this.upCount % 3));
@@ -102,8 +103,8 @@ public class Player {
                         --Player.this.switchWhenZero;
                     }
                 } else if (Player.this.moveDown) {
-                    dy += 2;
-                    my = 2;
+                    dy += 3;
+                    my = 3;
                     mx = 0;
                     if (Player.this.switchWhenZero == 0) {
                         character_image.setImage(Player.this.walkingDownImageList.get(Player.this.downCount % 3));
@@ -113,8 +114,8 @@ public class Player {
                         --Player.this.switchWhenZero;
                     }
                 } else if (Player.this.moveRight) {
-                    dx += 2;
-                    mx = 2;
+                    dx += 3;
+                    mx = 3;
                     my = 0;
                     if (Player.this.switchWhenZero == 0) {
                         character_image.setImage(Player.this.walkingRightImageList.get(Player.this.rightCount % 3));
@@ -124,8 +125,8 @@ public class Player {
                         --Player.this.switchWhenZero;
                     }
                 } else if (Player.this.moveLeft) {
-                    dx -= 2;
-                    mx = -2;
+                    dx -= 3;
+                    mx = -3;
                     my = 0;
                     if (Player.this.switchWhenZero == 0) {
                         character_image.setImage(Player.this.walkingLeftImageList.get(Player.this.leftCount % 3));
@@ -136,6 +137,11 @@ public class Player {
                     }
                 }
 
+                if (run) {
+                    dx *= 2;
+                    dy *= 2;
+                }
+
                 Player.this.moveCharacter(dx, dy);
 
                 for (Elements elements : getElements()) {
@@ -144,6 +150,7 @@ public class Player {
 
                 shadow.setX(x-14.3);
                 shadow.setY(y+18);
+
             }
         };
 
@@ -159,6 +166,7 @@ public class Player {
             case DOWN, S -> moveDown = true;
             case RIGHT, D -> moveRight = true;
             case LEFT, A -> moveLeft = true;
+            case SHIFT -> run = true;
             case SPACE -> handleSpaceKeyPress();
             case M -> handleMenuKeyPress();
         }
@@ -170,6 +178,7 @@ public class Player {
             case DOWN, S -> moveDown = false;
             case RIGHT, D -> moveRight = false;
             case LEFT, A -> moveLeft = false;
+            case SHIFT -> run = false;
         }
     }
 

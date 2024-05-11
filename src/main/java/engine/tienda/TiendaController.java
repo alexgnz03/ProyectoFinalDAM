@@ -2,9 +2,9 @@ package engine.tienda;
 
 import dbo.ObjetosData;
 import dbo.PlayerData;
-import engine.ui.inGameMenu.InventarioItem;
-import engine.world.Maps;
-import engine.world.Maps2;
+import engine.world.Maps_BSalud;
+import engine.world.Maps_LaLaguna;
+import engine.world.Maps_Teresitas;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -29,8 +30,9 @@ public class TiendaController {
 
     Stage stage;
 
-    Maps maps = new Maps();
-    Maps2 maps2 = new Maps2();
+    Maps_BSalud mapsBSalud = new Maps_BSalud();
+    Maps_LaLaguna mapsLaLaguna = new Maps_LaLaguna();
+    Maps_Teresitas mapsTeresitas = new Maps_Teresitas();
     private int I;
 
     public void setStage(Stage stage) {
@@ -99,6 +101,18 @@ public class TiendaController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        switch (I){
+            case 1:
+                fondoImage.setImage(new Image("mrsnack.png"));
+                break;
+            case 2:
+                fondoImage.setImage(new Image("alteza.png"));
+                break;
+            case 3:
+                fondoImage.setImage(new Image("tiendaPlaya.png"));
+                break;
+        }
     }
 
     public void FadeIn() {
@@ -135,15 +149,20 @@ public class TiendaController {
     private void devolverAMundo(){
         switch (I) {
             case 1:
-                maps2.setStage(stage);
-                maps2.trinidad03(stage);
-                maps2.timerStart();
+                mapsLaLaguna.setStage(stage);
+                mapsLaLaguna.trinidad03(stage);
+                mapsLaLaguna.timerStart();
                 break;
             case 2:
-                maps.calleInstituto2(stage);
+                mapsBSalud.calleInstituto2(stage);
+                break;
+            case 3:
+                mapsTeresitas.setStage(stage);
+                mapsTeresitas.teresitas07(stage);
+                mapsTeresitas.timerStart();
                 break;
             default:
-                maps.calleInstituto(stage);
+                mapsBSalud.calleInstituto(stage);
         }
     }
 

@@ -1,6 +1,5 @@
 package engine.combate.peleitas;
 
-import engine.combate.peleitas.FightController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;

@@ -1,11 +1,7 @@
 package engine.combate.peleitas;
 
 import dbo.PlayerData;
-import engine.MusicPlayer;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.image.Image;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Random;
@@ -131,7 +127,7 @@ public class Jugador {
         double defensaMonstruo = monstruo.getDefensa();
         double vidaMonstruo = monstruo.getVida();
 
-        int fallo = new java.util.Random().nextInt(99) + 1;
+        int fallo = new Random().nextInt(99) + 1;
         if (fallo > 90) return 0;
 
         double damage = Math.max(0, ataque - defensaMonstruo) + new Random().nextInt(5);
@@ -148,7 +144,7 @@ public class Jugador {
         double ataqueMagico = this.ataque_magico;
         double defensaMagicaMonstruo = monstruo.getDefensa_magica();
         double vidaMonstruo = monstruo.getVida();
-        int critico = new java.util.Random().nextInt(99) + 1;
+        int critico = new Random().nextInt(99) + 1;
 
         double damageExtra = 1.0;
 
@@ -185,11 +181,11 @@ public class Jugador {
         double ataqueMagico = this.ataque_magico;
         double defensaMagicaMonstruo = monstruo.getDefensa_magica();
         double vidaMonstruo = monstruo.getVida();
-        int critico = new java.util.Random().nextInt(9) + 1;
+        int critico = new Random().nextInt(9) + 1;
 
         double damageExtra = 1.0;
 
-        int fallo = new java.util.Random().nextInt(99) + 1;
+        int fallo = new Random().nextInt(99) + 1;
         if (fallo > 90) return 0;
 
         if (skill == 1) {

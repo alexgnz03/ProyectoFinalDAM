@@ -1,0 +1,23 @@
+#rounded-button {
+    -fx-background-color: #daecf0;
+    -fx-background-radius: 50em; /* Hace que el botón sea completamente redondo */
+    -fx-border-color: transparent; /* Elimina el borde del botón */
+    -fx-padding: 7px; /* Espaciado interior para la imagen */
+}
+
+#rounded-button .graphic .image-view {
+    -fx-background-color: transparent; /* Hace que el área de la imagen sea transparente */
+        -fx-background-radius: 50em; /* Hace que el área de la imagen sea completamente redonda */
+        -fx-border-radius: 50em; /* Asegura que el borde de la imagen sea completamente redondo */
+
+}
+
+#rounded-button:hover {
+    -fx-background-color: #CCCCCC; /* Cambia el color de fondo cuando el ratón pasa sobre el botón */
+}
+
+#button-image {
+    -fx-background-color: transparent;
+    -fx-background-radius: 50em;
+    -fx-border-radius: 50em;
+}

@@ -1,24 +1,24 @@
 package controllers;
 
 import dbo.PlayerData;
-import engine.minijuego1.JuegoModelo;
-import engine.world.Maps2;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import engine.world.Maps_LaLaguna;
+import engine.world.Maps_BSalud;
+import engine.world.Maps_Teresitas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class PantallaResultadosController {
 
     Stage stage;
-    Maps2 maps2 = new Maps2();
+    Maps_LaLaguna mapsLaLaguna = new Maps_LaLaguna();
+    Maps_BSalud mapsBSalud = new Maps_BSalud();
+    Maps_Teresitas mapsTeresitas = new Maps_Teresitas();
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -46,10 +46,12 @@ public class PantallaResultadosController {
 
     int puntuacion;
     int dinero;
+    int i;
 
-    public PantallaResultadosController(int puntuacion, int dinero) {
+    public PantallaResultadosController(int puntuacion, int dinero, int i) {
         this.puntuacion = puntuacion;
         this.dinero = dinero;
+        this.i = i;
     }
 
     public void initialize() {
@@ -69,9 +71,26 @@ public class PantallaResultadosController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        maps2.setStage(stage);
-        maps2.trinidad02(stage);
-        maps2.timerStart();
+        switch(i){
+            case 1:
+                mapsLaLaguna.setStage(stage);
+                mapsLaLaguna.setX(315);
+                mapsLaLaguna.setY(580);
+                mapsLaLaguna.mcdont(stage);
+                mapsLaLaguna.timerStart();
+                break;
+            case 2:
+                mapsTeresitas.setStage(stage);
+                mapsTeresitas.teresitas06(stage);
+                mapsTeresitas.timerStart();
+                break;
+            case 3:
+                mapsBSalud.setStage(stage);
+                mapsBSalud.lobbyInstituto(stage);
+                mapsBSalud.timerStart();
+                break;
+        }
+
     }
 
 }

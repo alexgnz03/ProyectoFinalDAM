@@ -54,14 +54,13 @@
 }
 
 #botonEscapar {
-    -fx-background-color:
-            #000000,
-            linear-gradient(#ff6666, #b30000),
-            linear-gradient(#ff6666, #b30000),
-            linear-gradient(#ff6666, #b30000);
-    -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
-    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to bottom, #a30000, #8b0022, #680030, #400031, #1d0025);
+        -fx-background-insets: 0,1,2,3;
+        -fx-background-radius: 12px;
+
+        -fx-text-fill: white;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
 }
 .botonBronce:hover,
 .botonPlata:hover,

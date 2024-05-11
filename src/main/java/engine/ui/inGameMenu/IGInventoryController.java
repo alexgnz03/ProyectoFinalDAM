@@ -81,20 +81,24 @@ public class IGInventoryController {
     void usarAction(ActionEvent event) throws IOException {
         // Obtener el objeto seleccionado
         InventarioItem objetoSeleccionado = tablaInventario.getSelectionModel().getSelectedItem();
-        if (objetoSeleccionado != null && PlayerData.cargarDato(0) < 100) {
+        if (objetoSeleccionado != null) {
             try {
                 // Obtener la estadística del objeto seleccionado
                 int codObjeto = objetoSeleccionado.getCodigo();
                 int estadistica = objetosData.obtenerEstadisticaObjeto(codObjeto);
+                int potencia = objetosData.obtenerPotenciaObjeto(codObjeto);
                 int cantidad = objetoSeleccionado.getCantidad();
 
                 if (cantidad > 0){
                     // Curar al Player
-                    int nuevaEstadistica = PlayerData.cargarDato(0) + estadistica;
-                    if (nuevaEstadistica > 100) {
-                        nuevaEstadistica = 100;
+                    int nuevaEstadistica = PlayerData.cargarDato(estadistica) + potencia;
+                    if (estadistica == 0){
+                        if (nuevaEstadistica > 100) {
+                            nuevaEstadistica = 100;
+                        }
                     }
-                    PlayerData.guardarDato(0, nuevaEstadistica);
+
+                    PlayerData.guardarDato(estadistica, nuevaEstadistica);
                     PlayerState.actualizarSalud(PlayerData.cargarDato(0));
 
                     MusicPlayer efectos;
@@ -108,7 +112,7 @@ public class IGInventoryController {
                     //Actualizar tabla invewntario
                     objetosData.actualizarCantidadInventario(codObjeto, 1);
 
-                    System.out.println("Estadística del objeto seleccionado: " + PlayerData.cargarDato(0));
+                    System.out.println("Estadística del objeto seleccionado: " + PlayerData.cargarDato(estadistica));
 
                     // Recargar y actualizar la tabla con los nuevos datos del inventario
                     List<InventarioItem> inventarioActualizado = objetosData.obtenerDatosInventario();

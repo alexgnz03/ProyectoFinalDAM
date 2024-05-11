@@ -1,8 +1,9 @@
 package controllers;
 
+import dbo.MonsterLoader;
+import dbo.ObjetosData;
+import dbo.PlayerData;
 import engine.MusicPlayer;
-import engine.combate.peleitas.GameOverController;
-import exec.Main;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,21 +15,31 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
-import engine.world.Maps;
+import engine.world.Maps_BSalud;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
 
 public class MainMenuController {
 
     private Stage stage;
-    private Maps maps = new Maps();
+    private Maps_BSalud mapsBSalud = new Maps_BSalud();
     private MusicPlayer musicPlayer;
     private MusicPlayer musicPlayerMundo;
     private Stage configuracionStage;
     private double volume;
+
+    ClassLoader classLoader = getClass().getClassLoader();
+    URL resourceURL = classLoader.getResource("FondoMenu.mp4");
+    String mediaSource = resourceURL.toExternalForm();
+    Media media = new Media(mediaSource);
+    MediaPlayer mediaPlayer = new MediaPlayer(media);
 
     private static final String[] CAMINAR_IMAGENES = {"Down1_HD.png", "Down2_HD.png", "Down3_HD.png"};
     private static final int DURACION_FRAME_MILLIS = 200; // Duración de cada frame en milisegundos
@@ -49,7 +60,8 @@ public class MainMenuController {
     @FXML
     private Button salirButton;
 
-
+    @FXML
+    private MediaView fondoMedia;
 
 
 
@@ -62,6 +74,9 @@ public class MainMenuController {
     }
 
     public void initialize() {
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        fondoMedia.setMediaPlayer(mediaPlayer);
+        mediaPlayer.play();
         // Cargar las imágenes
         Image[] imagenes = new Image[CAMINAR_IMAGENES.length];
         for (int i = 0; i < CAMINAR_IMAGENES.length; i++) {
@@ -81,12 +96,13 @@ public class MainMenuController {
         musicPlayer = MusicPlayer.getInstance("/Music/MenuMusic.mp3");
         musicPlayer.play();
 
-        musicPlayerMundo = new MusicPlayer("/Music/Doom.mp3");
+        musicPlayerMundo = new MusicPlayer("/Music/MainMusic.mp3");
     }
 
     @FXML
     void jugarAction() {
         musicPlayer.stop();
+        mediaPlayer.stop();
         musicPlayerMundo.play();
         try {
             // Cargar la escena del menú de configuración
@@ -110,8 +126,58 @@ public class MainMenuController {
     }
 
     @FXML
+    void nuevoJugarAction(ActionEvent event) {
+        ObjetosData objetosData = new ObjetosData();
+        objetosData.eliminarTablas();
+        objetosData.crearTablas();
+        objetosData.insertarDatos();
+
+        MonsterLoader monster = new MonsterLoader();
+        monster.eliminarTablas();
+        monster.crearTablas();
+        monster.insertarRegistros();
+
+        try {
+            PlayerData.guardarDato(0, 100);
+            PlayerData.guardarDato(1, 10);
+            PlayerData.guardarDato(2, 5);
+            PlayerData.guardarDato(3, 10);
+            PlayerData.guardarDato(4, 5);
+            PlayerData.guardarDato(5, 5);
+            PlayerData.guardarDato(6, 100);
+            PlayerData.guardarDato(7, 1000);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        musicPlayer.stop();
+        mediaPlayer.stop();
+        musicPlayerMundo.play();
+        try {
+            // Cargar la escena del menú de configuración
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/Introduccion.fxml"));
+            Parent root = loader.load();
+
+            // Obtener el controlador del menú de configuración
+            IntroduccionController controller = loader.getController();
+
+            // Pasar el Stage actual al controlador del menú de configuración
+            controller.setStage(stage);
+
+            // Establecer la escena del menú de configuración en el Stage actual
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void acercaAction(ActionEvent event) {
         try {
+            mediaPlayer.stop();
             // Cargar la escena del menú de configuración
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/AcercaMenu.fxml"));
             Parent root = loader.load();
@@ -136,6 +202,7 @@ public class MainMenuController {
     @FXML
     void configuracionAction(ActionEvent event) {
         try {
+            mediaPlayer.stop();
             musicPlayer.stop();
             // Cargar la escena del menú de configuración
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/Configuracion.fxml"));
@@ -162,8 +229,8 @@ public class MainMenuController {
         stage.close();
     }
 
-    public void setWorld(Maps maps) {
-        this.maps = maps;
+    public void setWorld(Maps_BSalud mapsBSalud) {
+        this.mapsBSalud = mapsBSalud;
     }
     public void setVolume(double volume) {
         // Valida que el volumen esté dentro del rango permitido (entre 0 y 1)
@@ -186,7 +253,7 @@ public class MainMenuController {
         stage.show();
         MainMenuController controller = loader.getController();
         controller.setStage(stage);
-        controller.setWorld(new Maps());
+        controller.setWorld(new Maps_BSalud());
     }
 
     public MusicPlayer getMusicPlayerMundo() {

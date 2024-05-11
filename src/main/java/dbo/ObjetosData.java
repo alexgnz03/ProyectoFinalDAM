@@ -3,33 +3,47 @@ package dbo;
 import engine.tienda.TiendaItem;
 import engine.ui.inGameMenu.InventarioItem;
 
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ObjetosData {
     private Connection conn;
+    private static final String ARCHIVO = System.getProperty("user.home") + "/objetosdata.db";
 
     public ObjetosData() {
         // Crear la conexión a la base de datos en el constructor
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:src/main/resources/objetosdata.db");
+            File dbFile = new File(ARCHIVO);
+            // Verificar si el archivo de la base de datos ya existe
+            if (!dbFile.exists()) {
+                // Si no existe, crear la base de datos en esa ubicación
+                conn = DriverManager.getConnection("jdbc:sqlite:" + ARCHIVO);
+                // Ejecutar métodos para crear tablas e insertar datos si lo deseas
+                crearTablas();
+                insertarDatos();
+            } else {
+                // Si el archivo ya existe, simplemente conectar a la base de datos existente
+                conn = DriverManager.getConnection("jdbc:sqlite:" + ARCHIVO);
+            }
+            conn.setAutoCommit(true);
         } catch (SQLException e) {
             System.out.println("Error al conectar a la base de datos: " + e.getMessage());
         }
-
-
-
     }
 
     public void crearTablas() {
+        System.out.println("Se está accediendo a crearTablas");
         // Script para crear las tablas si no existen
         String script = "CREATE TABLE IF NOT EXISTS Objeto (\n"
                 + "    CodObjeto INTEGER PRIMARY KEY AUTOINCREMENT,\n"
                 + "    NomObjeto VARCHAR(80),\n"
                 + "    Descripcion VARCHAR(500),\n"
                 + "    PrecioObjeto DECIMAL(10,2),\n"
-                + "    Estadistica INTEGER\n"
+                + "    Estadistica INTEGER,\n"
+                + "    Potencia INTEGER\n"
                 + ");\n";
         String script2 = "CREATE TABLE IF NOT EXISTS Inventario (\n"
                 + "    CodInventario INTEGER PRIMARY KEY AUTOINCREMENT,\n"
@@ -50,9 +64,19 @@ public class ObjetosData {
     }
 
     public void insertarDatos(){
+        if (!tablasEstanVacias()) {
+            System.out.println("Las tablas ya contienen registros, no se realizarán inserciones.");
+            return;
+        }
         try {
-            insertarDatosObjeto("Monster Verde", "Bebida energética clásica y potente para despertarte en un santiamén. El precio es por la inflación.", 20, 20);
-            insertarDatosObjeto("Monster Blanco", "Lo mismo que el verde pero es blanco, me da pereza escribir.", 10, 50);
+            insertarDatosObjeto("Café", "Café con leche. Aumenta ligeramente la vida", 10, 0,5);
+            insertarDatosObjeto("Powerking", "Bebida energética ligera. Cura la salud un poco", 20, 0,12);
+            insertarDatosObjeto("Monster Verde", "Bebida energética clásica y potente para despertarte en un santiamén. Cura bastante la salud", 50, 0,30);
+            insertarDatosObjeto("Monster Blanco", "Bebida energética aún más potente. El precio es por la inflación claramente. Cura extremadamente la salud.", 100, 0,80);
+            insertarDatosObjeto("Attack Boost", "Mejora tu ataque base.", 100, 1,1);
+            insertarDatosObjeto("Defense Boost", "Mejora tu defensa base.", 100, 2,1);
+            insertarDatosObjeto("MagAttack Boost", "Mejora tu ataque mágico base.", 100, 3,1);
+            insertarDatosObjeto("MagDefense Boost", "Mejora tu defensa mágica base.", 100, 4,1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -69,8 +93,9 @@ public class ObjetosData {
         }
     }
 
-    public void insertarDatosObjeto(String nomObjeto, String descripcion, double precioObjeto, int stat) throws SQLException {
-        String sql = "INSERT INTO Objeto (NomObjeto, Descripcion, PrecioObjeto, Estadistica) VALUES ('" + nomObjeto + "', '" + descripcion + "', '" + precioObjeto + "', " + stat + ")";
+    public void insertarDatosObjeto(String nomObjeto, String descripcion, double precioObjeto, int stat, int potencia) throws SQLException {
+        System.out.println("Se está accediendo a insertar datos");
+        String sql = "INSERT INTO Objeto (NomObjeto, Descripcion, PrecioObjeto, Estadistica, Potencia) VALUES ('" + nomObjeto + "', '" + descripcion + "', '" + precioObjeto + "', '" + stat + "', '" + potencia + "')";
         try (Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
             System.out.println("Datos del objeto insertados correctamente.");
@@ -137,6 +162,61 @@ public class ObjetosData {
         }
     }
 
+    public int obtenerEstadisticaObjeto(int codObjeto) throws SQLException {
+        String consulta = "SELECT Estadistica FROM Objeto WHERE CodObjeto = ?";
+        try (PreparedStatement statement = conn.prepareStatement(consulta)) {
+            statement.setInt(1, codObjeto);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("Estadistica");
+                }
+            }
+        }
+        return 0; // Retornar 0 si no se encuentra la estadística del objeto
+    }
+
+    public int obtenerPotenciaObjeto(int codObjeto) throws SQLException {
+        String consulta = "SELECT Potencia FROM Objeto WHERE CodObjeto = ?";
+        try (PreparedStatement statement = conn.prepareStatement(consulta)) {
+            statement.setInt(1, codObjeto);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("Potencia");
+                }
+            }
+        }
+        return 0; // Retornar 0 si no se encuentra la estadística del objeto
+    }
+
+    public void actualizarCantidadInventario(int codObjeto, int valor) throws SQLException {
+        // Verificar si ya existe un registro para el CodObjeto en la tabla de inventario
+        String selectSql = "SELECT * FROM Inventario WHERE CodObjeto = ?";
+        try (PreparedStatement selectStmt = conn.prepareStatement(selectSql)) {
+            selectStmt.setInt(1, codObjeto);
+            try (ResultSet resultSet = selectStmt.executeQuery()) {
+                if (resultSet.next()) {
+                    // Si el registro existe, actualizar la cantidad restando el valor pasado como parámetro
+                    int cantidadActual = resultSet.getInt("Cantidad");
+                    int nuevaCantidad = cantidadActual - valor;
+                    // Asegurarse de que la nueva cantidad no sea menor que cero
+                    if (nuevaCantidad < 0) {
+                        nuevaCantidad = 0;
+                    }
+                    String updateSql = "UPDATE Inventario SET Cantidad = ? WHERE CodObjeto = ?";
+                    try (PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
+                        updateStmt.setInt(1, nuevaCantidad);
+                        updateStmt.setInt(2, codObjeto);
+                        updateStmt.executeUpdate();
+                    }
+                    System.out.println("Cantidad actualizada en el inventario para el objeto con CodObjeto " + codObjeto);
+                } else {
+                    // Si no existe un registro para el CodObjeto, lanzar una excepción o manejar el caso según lo prefieras
+                    throw new SQLException("No existe un registro en el inventario para el objeto con CodObjeto " + codObjeto);
+                }
+            }
+        }
+    }
+
     public List<InventarioItem> obtenerDatosInventario() {
         List<InventarioItem> inventario = new ArrayList<>();
 
@@ -184,45 +264,32 @@ public class ObjetosData {
         return objetos;
     }
 
-    public int obtenerEstadisticaObjeto(int codObjeto) throws SQLException {
-        String consulta = "SELECT Estadistica FROM Objeto WHERE CodObjeto = ?";
-        try (PreparedStatement statement = conn.prepareStatement(consulta)) {
-            statement.setInt(1, codObjeto);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    return resultSet.getInt("Estadistica");
-                }
+    public boolean tablasEstanVacias() {
+        boolean vacias = true;
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet resultSet = stmt.executeQuery("SELECT COUNT(*) AS Total FROM Objeto");
+            if (resultSet.next()) {
+                int total = resultSet.getInt("Total");
+                vacias = total == 0;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return 0; // Retornar 0 si no se encuentra la estadística del objeto
+        return vacias;
     }
 
-    public void actualizarCantidadInventario(int codObjeto, int valor) throws SQLException {
-        // Verificar si ya existe un registro para el CodObjeto en la tabla de inventario
-        String selectSql = "SELECT * FROM Inventario WHERE CodObjeto = ?";
-        try (PreparedStatement selectStmt = conn.prepareStatement(selectSql)) {
-            selectStmt.setInt(1, codObjeto);
-            try (ResultSet resultSet = selectStmt.executeQuery()) {
-                if (resultSet.next()) {
-                    // Si el registro existe, actualizar la cantidad restando el valor pasado como parámetro
-                    int cantidadActual = resultSet.getInt("Cantidad");
-                    int nuevaCantidad = cantidadActual - valor;
-                    // Asegurarse de que la nueva cantidad no sea menor que cero
-                    if (nuevaCantidad < 0) {
-                        nuevaCantidad = 0;
-                    }
-                    String updateSql = "UPDATE Inventario SET Cantidad = ? WHERE CodObjeto = ?";
-                    try (PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
-                        updateStmt.setInt(1, nuevaCantidad);
-                        updateStmt.setInt(2, codObjeto);
-                        updateStmt.executeUpdate();
-                    }
-                    System.out.println("Cantidad actualizada en el inventario para el objeto con CodObjeto " + codObjeto);
-                } else {
-                    // Si no existe un registro para el CodObjeto, lanzar una excepción o manejar el caso según lo prefieras
-                    throw new SQLException("No existe un registro en el inventario para el objeto con CodObjeto " + codObjeto);
-                }
+    public void eliminarTablas() {
+        // Lista de nombres de tablas
+        List<String> tablas = Arrays.asList("Objeto", "Inventario");
+
+        try (Statement stmt = conn.createStatement()) {
+            // Eliminar cada tabla en la lista
+            for (String tabla : tablas) {
+                stmt.executeUpdate("DROP TABLE IF EXISTS " + tabla);
+                System.out.println("Tabla " + tabla + " eliminada correctamente.");
             }
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar las tablas: " + e.getMessage());
         }
     }
 

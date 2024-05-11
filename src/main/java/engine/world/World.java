@@ -21,7 +21,6 @@ public class World extends Application {
     public World() {
 
         this.barrier = new LinkedList<>();
-
     }
 
 
@@ -44,7 +43,7 @@ public class World extends Application {
 
         MainMenuController controller = loader.getController();
         controller.setStage(primaryStage); // Luego configura el controlador
-        controller.setWorld(new Maps());
+        controller.setWorld(new Maps_BSalud());
     }
 
 

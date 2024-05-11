@@ -1,16 +1,13 @@
 #jugarButton {
     -fx-background-color:
-            #000000,
-            linear-gradient(#7ebcea, #2f4b8f),
-            linear-gradient(#426ab7, #263e75),
-            linear-gradient(#395cab, #223768);
+            linear-gradient(to bottom, #007aff, #4356c1, #433686, #331b52, #1d0025);
     -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
+    -fx-background-radius: 12px;
     -fx-padding: 12 30 12 30;
     -fx-text-fill: white;
     -fx-font-size: 22px;
+    -fx-font-weight: bold;
 }
-
 
 #jugarButton Text {
     -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , 1);
@@ -18,46 +15,39 @@
 
 #configuracionButton {
     -fx-background-color:
-            #000000,
-            linear-gradient(#f2b300, #d98500),
-            linear-gradient(#eaac00, #be7d00),
-            linear-gradient(#e29f00, #b47200);
+            linear-gradient(to bottom, #96a400, #a66605, #8e2f29, #5a0d33, #1d0025);
     -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
+    -fx-background-radius: 12px;
     -fx-padding: 12 30 12 30;
     -fx-text-fill: white;
     -fx-font-size: 22px;
+    -fx-font-weight: bold;
 }
 
 #acercaButton {
     -fx-background-color:
-            #000000,
-            linear-gradient(#66ccff, #005c99),
-            linear-gradient(#3399ff, #005c99),
-            linear-gradient(#66ccff, #005c99);
+            linear-gradient(to bottom, #00ae2e, #008978, #005e8d, #002f66, #1d0025);
     -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
+    -fx-background-radius: 12px;
     -fx-padding: 12 30 12 30;
     -fx-text-fill: white;
     -fx-font-size: 22px;
+    -fx-font-weight: bold;
 }
 
 #salirButton {
-    -fx-background-color:
-            #000000,
-            linear-gradient(#ff6666, #b30000),
-            linear-gradient(#ff6666, #b30000),
-            linear-gradient(#ff6666, #b30000);
+    -fx-background-color: linear-gradient(to bottom, #a30000, #8b0022, #680030, #400031, #1d0025);
     -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
+    -fx-background-radius: 12px;
     -fx-padding: 12 30 12 30;
     -fx-text-fill: white;
     -fx-font-size: 22px;
+    -fx-font-weight: bold;
 }
 
 #jugarButton:hover,
 #configuracionButton:hover,
 #acercaButton:hover,
 #salirButton:hover {
-    -fx-background-color: linear-gradient(to bottom, #2E8B57, #4CAF50);
+    -fx-background-color: linear-gradient(to bottom, #1d0025, #32093e, #4c0b59, #690a73, #88008e);
 }

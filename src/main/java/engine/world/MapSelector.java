@@ -2,7 +2,6 @@ package engine.world;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -23,24 +22,44 @@ public class MapSelector {
 
 
     @FXML
-    void maps1Action(ActionEvent event) {
-        Maps maps = new Maps();
+    void bsaludAction(ActionEvent event) {
+        Maps_BSalud mapsBSalud = new Maps_BSalud();
 
-        maps.setY(65);
-        maps.setX(550);
-        maps.setStage(stage);
-        maps.paradaGuagua(stage);
+        mapsBSalud.setY(65);
+        mapsBSalud.setX(550);
+        mapsBSalud.setStage(stage);
+        mapsBSalud.paradaGuagua(stage);
 
     }
 
     @FXML
-    void maps2Action(ActionEvent event) {
-        Maps2 maps2 = new Maps2();
+    void lalagunaAction(ActionEvent event) {
+        Maps_LaLaguna mapsLaLaguna = new Maps_LaLaguna();
 
-        maps2.setY(65);
-        maps2.setX(550);
-        maps2.setStage(stage);
-        maps2.intercambiador(stage);
+        mapsLaLaguna.setY(65);
+        mapsLaLaguna.setX(550);
+        mapsLaLaguna.setStage(stage);
+        mapsLaLaguna.intercambiador(stage);
+    }
+
+    @FXML
+    void teresitasAction(ActionEvent event) {
+        Maps_Teresitas mapsTeresitas = new Maps_Teresitas();
+
+        mapsTeresitas.setY(205);
+        mapsTeresitas.setX(350);
+        mapsTeresitas.setStage(stage);
+        mapsTeresitas.teresitas01(stage);
+    }
+
+    @FXML
+    void aeropuertoAction(ActionEvent event) {
+        Maps_LaLaguna mapsLaLaguna = new Maps_LaLaguna();
+
+        mapsLaLaguna.setY(715);
+        mapsLaLaguna.setX(375);
+        mapsLaLaguna.setStage(stage);
+        mapsLaLaguna.aeropuerto(stage);
     }
 
     //Getters and Setters

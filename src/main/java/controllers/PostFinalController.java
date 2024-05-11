@@ -1,12 +1,10 @@
 package controllers;
 
 import engine.MusicPlayer;
-import engine.world.Maps;
+import engine.world.Maps_BSalud;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +14,7 @@ import javafx.util.Duration;
 
 public class PostFinalController {
     private Stage stage;
-    private Maps maps = new Maps();
+    private Maps_BSalud mapsBSalud = new Maps_BSalud();
 
     private MainMenuController menu = new MainMenuController();
 
@@ -40,8 +38,8 @@ public class PostFinalController {
         System.out.println("Hola");
     }
 
-    public void setWorld(Maps maps) {
-        this.maps = maps;
+    public void setWorld(Maps_BSalud mapsBSalud) {
+        this.mapsBSalud = mapsBSalud;
     }
 
     public void postFinalPantalla(Stage stage) throws Exception {
@@ -51,7 +49,7 @@ public class PostFinalController {
         stage.show();
         PostFinalController controller = loader.getController();
         controller.setStage(stage);
-        controller.setWorld(new Maps());
+        controller.setWorld(new Maps_BSalud());
     }
 
     public void MainMenu(Stage stage) throws Exception {
@@ -61,6 +59,6 @@ public class PostFinalController {
         stage.show();
         MainMenuController controller = loader.getController();
         controller.setStage(stage);
-        controller.setWorld(new Maps());
+        controller.setWorld(new Maps_BSalud());
     }
 }

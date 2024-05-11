@@ -1,18 +1,13 @@
 package engine.ui.inGameMenu;
 
-import dbo.ObjetosData;
 import dbo.PlayerData;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.util.List;
 
 public class IGStatsController {
 

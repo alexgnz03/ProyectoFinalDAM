@@ -7,13 +7,13 @@ import javafx.animation.Timeline;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.scene.control.Label;
 
 public class Dialog {
 
@@ -53,6 +53,28 @@ public class Dialog {
         dialog.setOpacity(0.7);
 
         System.out.println("DialogBA " + dialog.getOpacity());
+    }
+
+    public void autoDialog(String dialogLine) {
+        // Mostrar el cuadro de diálogo
+        dialogText.setText(""); // Limpiar el texto anterior
+        textIndex = 0; // Reiniciar el índice
+        dialogText.setOpacity(1); // Asegurarse de que el texto sea visible
+        dialog.setOpacity(0.7);
+
+        timeline = new Timeline(new KeyFrame(Duration.seconds(0.05), event -> {
+            if (textIndex <= dialogLine.length()) {
+                dialogText.setText(dialogLine.substring(0, textIndex++));
+                soundEffect();
+            }
+        }));
+        timeline.setCycleCount(dialogLine.length() + 1);
+        timeline.play();
+
+        // Temporizador para cerrar el cuadro de diálogo después de 2 segundos
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        delay.setOnFinished(event -> closeDialog());
+        delay.play();
     }
 
     public void closeDialog(){

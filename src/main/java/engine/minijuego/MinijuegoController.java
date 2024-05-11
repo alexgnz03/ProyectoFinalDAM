@@ -1,15 +1,17 @@
 package engine.minijuego;
 
 import engine.MusicPlayer;
-import engine.world.Maps;
+import engine.world.Maps_BSalud;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,7 +20,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.util.Pair;
 
-import java.io.InputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -27,13 +29,19 @@ public class MinijuegoController implements Initializable {
     @FXML
     private GridPane maingrid;
 
+    @FXML
+    private BorderPane content;
+
+    @FXML
+    private ImageView barraGris;
+
     private Puntuacion puntuacion;
     private Diana dianaActual;
 
     private int dianasAcertadas;
 
     Stage stage;
-    Maps mapsInstance = new Maps();
+    Maps_BSalud mapsBSaludInstance = new Maps_BSalud();
 
     private MusicPlayer musicPlayer;
 
@@ -48,11 +56,11 @@ public class MinijuegoController implements Initializable {
     private Label puntosLabel;
 
     @FXML
-    private BorderPane view;
+    private Pane view;
 
-    @FXML
-    private ImageView manoDoom;
+    private BorderPane doomView = new BorderPane();
 
+    private ImageView manoDoom = new ImageView(new Image("DOOM_1_Pistol_viewmodel.png"));
 
     private int tiempoRestante = 60; // 60 segundos
 
@@ -68,22 +76,30 @@ public class MinijuegoController implements Initializable {
     Image doomGun = new Image("DOOM_1_Pistol_viewmodel.png");
     public void cambiarFondo() {
         // Crea una nueva imagen de fondo (ajusta la ruta según tu proyecto)
+        BackgroundSize size = new BackgroundSize(-1, -1, false, false, false, false);
         Image fondoImagen = new Image("doomFondo.png");
-        BackgroundImage backgroundImage = new BackgroundImage(fondoImagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage backgroundImage = new BackgroundImage(fondoImagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
 
         // Crea un nuevo fondo
         Background fondo = new Background(backgroundImage);
 
         // Establece el nuevo fondo en el BorderPane
-        view.setBackground(fondo);
+        content.setBackground(fondo);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        manoDoom.setX(310);
+//        manoDoom.setY(530);
+        manoDoom.setFitWidth(196);
+        manoDoom.setFitHeight(250);
+        apano();
         puntuacion = new Puntuacion();
         puntosLabel.setText("Puntos: " + puntuacion.getPuntos());
         tiempoLabel.setText("Tiempo: " + tiempoRestante + " s"); // Mostrar tiempo inicial
         manoDoom.setImage(doomGun);
+        DoomCamera camera = new DoomCamera(content);
+        camera.setManoDoom(manoDoom);
         iniciarMinijuego();
         cambiarFondo();
 
@@ -94,15 +110,13 @@ public class MinijuegoController implements Initializable {
         // Resto del código
 
         dianaActual = generarDiana();
-        mostrarDiana();
 
         // Actualizar el temporizador en la interfaz gráfica
         Timeline temporizadorTimeline = new Timeline(new KeyFrame(Duration.seconds(1.25), event -> {
             tiempoRestante--;
             tiempoLabel.setText("Tiempo: " + tiempoRestante + " s");
             if (tiempoRestante <= 0) {
-                mapsInstance.arcade(stage);
-                int dianasAcertadas = obtenerCantidadDianasAcertadas();
+                finDelJuego();
             }
         }));
         temporizadorTimeline.setCycleCount(tiempoRestante); // Establecer la duración del temporizador
@@ -114,8 +128,21 @@ public class MinijuegoController implements Initializable {
     }
 
     private void finDelJuego() {
-        musicPlayer.stop();
-        mapsInstance.arcade(stage);
+        double habilidad = Math.ceil((double) puntuacion.getPuntos() / 20.0);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resultadosDoom.fxml"));
+        FinalScreen controller = new FinalScreen(puntuacion.getPuntos(), (int) habilidad);
+        controller.setStage(stage);
+        loader.setController(controller);
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root, 800, 800);
+        stage.setTitle("Resultados");
+        stage.setScene(scene);
+        stage.show();
     }
 
 
@@ -139,7 +166,7 @@ public class MinijuegoController implements Initializable {
         }));
         timeline.play();
         timeline2.play();
-        puntuacion.sumarPuntos(50);
+        puntuacion.sumarPuntos(1);
         puntosLabel.setText("Puntos: " + puntuacion.getPuntos());
 
         dianasAcertadas++;
@@ -155,16 +182,14 @@ public class MinijuegoController implements Initializable {
             // Obtener la ImageView dentro del StackPane
             ImageView imageView = (ImageView) stackPane.getChildren().get(0);
 
-            // Eliminar la ImageView y su contenedor asociado con Platform.runLater
-            Platform.runLater(() -> {
-                stackPane.getChildren().remove(imageView);
-                maingrid.getChildren().remove(stackPane);
-            });
+            // Eliminar la ImageView y su contenedor asociado
+            stackPane.getChildren().remove(imageView);
+            maingrid.getChildren().remove(stackPane);
         }
         // Actualizar la lista de posiciones ocupadas
         posicionesOcupadas.remove(new Pair<>(dianaActual.getColumna(), dianaActual.getFila()));
-
     }
+
 
 
     private StackPane obtenerStackPaneDianaActual() {
@@ -191,8 +216,7 @@ public class MinijuegoController implements Initializable {
             dianaActual = new Diana();  // Generar una nueva diana si la posición está ocupada
         }
 
-        Image imagenDiana = new Image("/diana.png");
-        ImageView imageView = new ImageView(imagenDiana);
+        ImageView imageView = new ImageView(getClass().getResource("/demon.gif").toExternalForm());
         imageView.setFitWidth(80);
         imageView.setFitHeight(80);
 
@@ -209,7 +233,7 @@ public class MinijuegoController implements Initializable {
         GridPane.setHalignment(stackPane, HPos.CENTER);
         GridPane.setValignment(stackPane, VPos.CENTER);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             // Eliminar la ImageView y su contenedor asociado
             stackPane.getChildren().remove(imageView);
             maingrid.getChildren().remove(stackPane);
@@ -232,5 +256,16 @@ public class MinijuegoController implements Initializable {
 
     private void generarNuevaDiana() {
         mostrarDiana();
+    }
+
+    private void apano(){
+        content.setPrefSize(800, 800);
+        doomView.setPrefSize(196, 250);
+        view.getChildren().add(doomView);
+        view.setPrefSize(800, 800);
+        doomView.getChildren().add(manoDoom);
+//        doomView.toFront();
+        doomView.setLayoutX(310);
+        doomView.setLayoutY(550);
     }
 }
