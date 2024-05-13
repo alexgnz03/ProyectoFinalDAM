@@ -3,6 +3,7 @@ package engine.world;
 import java.util.LinkedList;
 
 import controllers.MainMenuController;
+import engine.MusicPlayerSt;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -44,6 +45,9 @@ public class World extends Application {
         MainMenuController controller = loader.getController();
         controller.setStage(primaryStage); // Luego configura el controlador
         controller.setWorld(new Maps_BSalud());
+
+        MusicPlayerSt.play("/Music/mainmenuMusic.mp3");
+        MusicPlayerSt.setVolume(0.8);
     }
 
 

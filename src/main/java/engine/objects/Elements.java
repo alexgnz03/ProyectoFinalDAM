@@ -1,11 +1,15 @@
 package engine.objects;
 
+import controllers.IntroduccionController;
 import dbo.MonsterLoader;
 import dbo.PlayerData;
 import engine.ui.Dialog;
 import engine.ui.PlayerState;
 import engine.world.*;
 import javafx.animation.AnimationTimer;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -143,15 +147,16 @@ public class Elements {
         double elementY = this.y - 24;
         //Arcade
         if ((x >= elementX && x <= this.x + 120) && (y >= elementY && y <= this.y + 87) && id == 1) {
-            for (Dialog dialog : getDialogs()) {
-                useDialogs(dialog);
-            }
                 try {
-                    if (PlayerData.cargarDato(7) > 20){
-                        int dinero = PlayerData.cargarDato(7)-20;
+                    if (PlayerData.cargarDato(7) > 200){
+                        int dinero = PlayerData.cargarDato(7)-200;
                         PlayerData.guardarDato(7, dinero);
                         mapsLaLaguna.setStage(stage);
                         mapsLaLaguna.pantallaCarga(stage, 3);
+                    } else{
+                        for (Dialog dialog : getDialogs()) {
+                            dialog.autoDialog("Jugar cuesta 200€. No tienes suficiente\ndinero.", 3);
+                        }
                     }
                 } catch (Exception e) {
                     throw new RuntimeException(e);
@@ -160,16 +165,11 @@ public class Elements {
         }
         //Parada 026
         else if (((x >= elementX && x <= this.x + 80) && (y >= elementY && y <= this.y + 180) && id == 2)){
-            for (Dialog dialog : getDialogs()) {
-                useDialogs(dialog);
-            }
-
                 try {
                     mapsBSalud.mapsSelector(stage);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-
         }
         //Carteles móviles
         else if (((x >= elementX && x <= this.x + 70) && (y >= elementY && y <= this.y + 85) && id == 3)){
@@ -186,8 +186,10 @@ public class Elements {
         //TranviaIntercambiador
         else if (((x >= elementX && x <= this.x + 111) && (y >= elementY && y <= this.y + 360) && id == 5)){
             try {
+                mapsLaLaguna.setX(240);
+                mapsLaLaguna.setY(625);
                 mapsLaLaguna.setStage(stage);
-                mapsLaLaguna.trinidad01(stage);
+                mapsLaLaguna.trinidad02(stage);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -195,6 +197,8 @@ public class Elements {
         //TranviaTrinidad02
         else if (((x >= elementX && x <= this.x + 656) && (y >= elementY && y <= this.y + 88) && id == 11)){
             try {
+                mapsLaLaguna.setX(450);
+                mapsLaLaguna.setY(605);
                 mapsLaLaguna.setStage(stage);
                 mapsLaLaguna.intercambiador(stage);
             } catch (Exception e) {
@@ -204,6 +208,8 @@ public class Elements {
         //TranviaTrinidad01
         else if (((x >= elementX && x <= this.x + 272) && (y >= elementY && y <= this.y + 92) && id == 12)){
             try {
+                mapsLaLaguna.setX(450);
+                mapsLaLaguna.setY(605);
                 mapsLaLaguna.setStage(stage);
                 mapsLaLaguna.intercambiador(stage);
             } catch (Exception e) {
@@ -214,15 +220,21 @@ public class Elements {
         else if (((x >= elementX && x <= this.x + 48) && (y >= elementY && y <= this.y + 48) && id == 14)){
             try {
                 if(PlayerData.cargarDato(6) > 5) {
-                        try {
-                            mapsLaLaguna.setStage(stage);
-                            mapsLaLaguna.pantallaCarga(stage, 2);
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
+                    for (Dialog dialog : getDialogs()){
+                        useDialogs(dialog);
+                        if (dialog.getDialog().getOpacity() == 0){
+                            try {
+                                mapsLaLaguna.setStage(stage);
+                                mapsLaLaguna.pantallaCarga(stage, 2);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
                         }
+                    }
+
                 } else {
                     for (Dialog dialog : getDialogs()) {
-                        dialog.autoDialog("No te queda suficiente stamina, recúperate\ndurmiendo y vuelve más tarde.");
+                        dialog.autoDialog("No te queda suficiente stamina, recúperate\ndurmiendo y vuelve más tarde.", 4);
                     }
                 }
             } catch (IOException e) {
@@ -246,20 +258,25 @@ public class Elements {
             try {
                 if(PlayerData.cargarDato(6) > 5) {
                     if (mostrodbo.obtenerCantidadRegistrosMostroDex() >= 6) {
-                        try {
-                            mapsBSalud.setStage(stage);
-                            mapsBSalud.pantallaCarga(stage, 2);
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
+                        for (Dialog dialog : getDialogs()){
+                            useDialogs(dialog);
+                            if (dialog.getDialog().getOpacity() == 0){
+                                try {
+                                    mapsBSalud.setStage(stage);
+                                    mapsBSalud.pantallaCarga(stage, 2);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
                         }
                     } else {
                         for (Dialog dialog : getDialogs()) {
-                            dialog.autoDialog("Lo siento pero aún no puedes trabajar aquí.");
+                            dialog.autoDialog("Lo siento pero aún no puedes trabajar aquí.", 3);
                         }
                     }
                 } else {
                     for (Dialog dialog : getDialogs()) {
-                        dialog.autoDialog("No te queda suficiente stamina, recúperate\ndurmiendo y vuelve más tarde.");
+                        dialog.autoDialog("No te queda suficiente stamina, recúperate\ndurmiendo y vuelve más tarde.", 4);
                     }
                 }
             } catch (IOException e) {
@@ -280,21 +297,52 @@ public class Elements {
             try {
                 if(PlayerData.cargarDato(6) > 5) {
                     if (mostrodbo.obtenerCantidadRegistrosMostroDex() >= 3) {
-                        try {
-                            mapsTeresitas.setStage(stage);
-                            mapsTeresitas.pantallaCarga(stage, 2);
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
+                        for (Dialog dialog : getDialogs()){
+                            useDialogs(dialog);
+                            if (dialog.getDialog().getOpacity() == 0){
+                                try {
+                                    mapsTeresitas.setStage(stage);
+                                    mapsTeresitas.pantallaCarga(stage, 2);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
                         }
                     } else {
                         for (Dialog dialog : getDialogs()) {
-                            dialog.autoDialog("Lo siento pero aún no puedes trabajar aquí.");
+                            dialog.autoDialog("Lo siento pero aún no puedes trabajar aquí.", 3);
                         }
                     }
                 } else {
                     for (Dialog dialog : getDialogs()) {
-                        dialog.autoDialog("No te queda suficiente stamina, recúperate\ndurmiendo y vuelve más tarde.");
+                        dialog.autoDialog("No te queda suficiente stamina, recúperate\ndurmiendo y vuelve más tarde.", 4);
                     }
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        //Aeropuerto
+        else if (((x >= elementX && x <= this.x + 100) && (y >= elementY && y <= this.y + 190) && id == 19)){
+            try {
+                if (PlayerData.cargarDato(7) < 5000){
+                    for (Dialog dialog : getDialogs()){
+                        useDialogs(dialog);}
+                } else {
+                    // Cargar la escena del menú de configuración
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/Introduccion.fxml"));
+                    IntroduccionController controller = new IntroduccionController(2);
+                    controller.setStage(stage);
+                    loader.setController(controller);
+                    Parent root = loader.load();
+
+                    // Pasar el Stage actual al controlador del menú de configuración
+                    controller.setStage(stage);
+
+                    // Establecer la escena del menú de configuración en el Stage actual
+                    Scene scene = new Scene(root, 800, 800);
+                    stage.setScene(scene);
+                    stage.show();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -314,7 +362,9 @@ public class Elements {
     //TODO Seguir esto
     public void carTimer(Player player) {
         x = 800;
-        elements_image.setX(x);
+        elements_image.setX(800);
+        elements_image.setOpacity(1);
+        carSprite();
         timer = new AnimationTimer() {
             public void handle(long now) {
 
@@ -322,25 +372,35 @@ public class Elements {
                 double borde = generarNumeroAleatorio(400, 600);
                 if (x < -borde){
                     x = 800;
+
+                    // Cambiar sprite del coche
+                    carSprite();
                 }
 
                 if (player.getY() < y || player.getY() > y + 179){
-                    x = x-1.5;
+                    x = x-4;
 
                     elements_image.setX(x);
 
                 } else{
-                    if ((player.getX() >= newX-24 && player.getX() <= newX + 230) && (player.getY() > y && player.getY() <= y + 113) && id == 13) {
+                    if ((player.getX() >= newX-24 && player.getX() <= newX + 230) && (player.getY() > y+25 && player.getY() <= y + 113) && id == 13) {
                         elements_image.setOpacity(0.2);
                     } else{
                         elements_image.setOpacity(1);
                     }
                 }
-                System.out.println("pY: " + player.getY() + " Y: " + y );
-                System.out.println(x);
-                System.out.println(newX);
+//                System.out.println("pY: " + player.getY() + " Y: " + y );
+//                System.out.println(x);
+//                System.out.println(newX);
             }
         };
+    }
+
+    private void carSprite(){
+        String[] sprites = {"/Elements/coche.png", "/Elements/coche2.png", "/Elements/coche3.png"};
+        Random random = new Random();
+        int numeroAleatorio = random.nextInt(3);
+        elements_image.setImage(new Image(sprites[numeroAleatorio]));
     }
 
     public void carStop(){
@@ -393,7 +453,7 @@ public class Elements {
         }
 
         // Obtener las rutas de las imágenes de los NPC según el ID proporcionado
-        if (ID >= 1 && ID <= 18) {
+        if (ID >= 1 && ID <= 19) {
             String rutaString = prop.getProperty(String.valueOf(ID));
             if (rutaString != null) {
                 String[] rutas = rutaString.split(",");

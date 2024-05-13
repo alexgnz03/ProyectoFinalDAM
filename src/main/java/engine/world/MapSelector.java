@@ -1,5 +1,6 @@
 package engine.world;
 
+import engine.MusicPlayerSt;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -20,6 +21,13 @@ public class MapSelector {
         this.stage = stage;
     }
 
+    public void initialize() {
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/mapselectorMusic.mp3");
+        MusicPlayerSt.setVolume(volumen);
+    }
+
 
     @FXML
     void bsaludAction(ActionEvent event) {
@@ -27,6 +35,7 @@ public class MapSelector {
 
         mapsBSalud.setY(65);
         mapsBSalud.setX(550);
+        mapsBSalud.musica();
         mapsBSalud.setStage(stage);
         mapsBSalud.paradaGuagua(stage);
 
@@ -36,8 +45,9 @@ public class MapSelector {
     void lalagunaAction(ActionEvent event) {
         Maps_LaLaguna mapsLaLaguna = new Maps_LaLaguna();
 
-        mapsLaLaguna.setY(65);
-        mapsLaLaguna.setX(550);
+        mapsLaLaguna.setY(550);
+        mapsLaLaguna.setX(115);
+        mapsLaLaguna.musica();
         mapsLaLaguna.setStage(stage);
         mapsLaLaguna.intercambiador(stage);
     }
@@ -46,8 +56,9 @@ public class MapSelector {
     void teresitasAction(ActionEvent event) {
         Maps_Teresitas mapsTeresitas = new Maps_Teresitas();
 
-        mapsTeresitas.setY(205);
-        mapsTeresitas.setX(350);
+        mapsTeresitas.setY(550);
+        mapsTeresitas.setX(410);
+        mapsTeresitas.musica();
         mapsTeresitas.setStage(stage);
         mapsTeresitas.teresitas01(stage);
     }
@@ -55,6 +66,11 @@ public class MapSelector {
     @FXML
     void aeropuertoAction(ActionEvent event) {
         Maps_LaLaguna mapsLaLaguna = new Maps_LaLaguna();
+
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/airportMusic.mp3");
+        MusicPlayerSt.setVolume(volumen);
 
         mapsLaLaguna.setY(715);
         mapsLaLaguna.setX(375);

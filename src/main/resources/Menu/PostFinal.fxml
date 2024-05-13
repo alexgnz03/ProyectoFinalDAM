@@ -10,10 +10,10 @@
    <children>
       <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../posFinal.png" />
+            <Image url="@../fondoFinal.png" />
          </image>
       </ImageView>
-      <Button id="jugarButton" fx:id="jugarButton" layoutX="231.0" layoutY="693.0" mnemonicParsing="false" onAction="#jugarAction" prefHeight="74.0" prefWidth="338.0" stylesheets="@style.css" text="Volver al menú :D">
+      <Button id="jugarButton" fx:id="jugarButton" layoutX="531.0" layoutY="703.0" mnemonicParsing="false" onAction="#jugarAction" prefHeight="74.0" prefWidth="214.0" stylesheets="@style.css" text="Salir del juego">
          <font>
             <Font size="33.0" />
          </font>

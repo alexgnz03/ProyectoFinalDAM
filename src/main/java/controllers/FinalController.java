@@ -39,14 +39,4 @@ public class FinalController {
         controller.setStage(stage);
         controller.setWorld(new Maps_BSalud());
     }
-
-    public void MainMenu(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/MainMenu.fxml"));
-        Scene scene = new Scene(loader.load());
-        stage.setScene(scene);
-        stage.show();
-        MainMenuController controller = loader.getController();
-        controller.setStage(stage);
-        controller.setWorld(new Maps_BSalud());
-    }
 }

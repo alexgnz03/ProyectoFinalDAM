@@ -6,16 +6,26 @@ public class TiendaItem {
     private String nombre;
     private double precio;
     private String descripcion;
+    private String sprite;
 
-    public TiendaItem(int codigo, String nombre, double precio, String descripcion) {
+    public TiendaItem(int codigo, String nombre, double precio, String descripcion, String sprite) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
+        this.sprite = sprite;
     }
 
     // Métodos getters y setters para acceder a las propiedades
 
+
+    public String getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(String sprite) {
+        this.sprite = sprite;
+    }
 
     public int getCodigo() {
         return codigo;

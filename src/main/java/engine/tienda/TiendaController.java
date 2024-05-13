@@ -2,12 +2,12 @@ package engine.tienda;
 
 import dbo.ObjetosData;
 import dbo.PlayerData;
+import engine.EffectPlayer;
+import engine.MusicPlayerSt;
 import engine.world.Maps_BSalud;
 import engine.world.Maps_LaLaguna;
 import engine.world.Maps_Teresitas;
-import javafx.animation.FadeTransition;
-import javafx.animation.Interpolator;
-import javafx.animation.ScaleTransition;
+import javafx.animation.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -77,6 +77,11 @@ public class TiendaController {
     public void initialize() {
         objetosData = new ObjetosData();
 
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/shoppingMusic.mp3");
+        MusicPlayerSt.setVolume(volumen);
+
         // Configuración de las columnas
         nombreColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         precioColumn.setCellValueFactory(new PropertyValueFactory<>("precio"));
@@ -94,6 +99,7 @@ public class TiendaController {
         objetosTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 descripcionText.setText(newValue.getDescripcion());
+                objetoImage.setImage(new Image(newValue.getSprite()));
             }
         });
         try {
@@ -150,14 +156,19 @@ public class TiendaController {
         switch (I) {
             case 1:
                 mapsLaLaguna.setStage(stage);
+                mapsLaLaguna.musica();
                 mapsLaLaguna.trinidad03(stage);
                 mapsLaLaguna.timerStart();
                 break;
             case 2:
+                mapsBSalud.setStage(stage);
+                mapsBSalud.musica();
                 mapsBSalud.calleInstituto2(stage);
+                mapsBSalud.timerStart();
                 break;
             case 3:
                 mapsTeresitas.setStage(stage);
+                mapsTeresitas.musica();
                 mapsTeresitas.teresitas07(stage);
                 mapsTeresitas.timerStart();
                 break;
@@ -176,10 +187,25 @@ public class TiendaController {
                 objetosData.insertarDatosInventario(objetoSeleccionado.getCodigo()); // Asumiendo que siempre compras 1 unidad
                 PlayerData.guardarDato(7, (int) (PlayerData.cargarDato(7) - objetoSeleccionado.getPrecio()));
                 dineroQuant.setText(String.valueOf(PlayerData.cargarDato(7)));
+                EffectPlayer efectos;
+                efectos = new EffectPlayer("/Effects/dinero.mp3");
+                efectos.play();
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event2 -> {
+                    efectos.stop();
+                }));
+                timeline.play();
             } catch (SQLException e) {
                 e.printStackTrace();
                 // Manejar cualquier error al insertar en la base de datos
             }
+        } else{
+            EffectPlayer efectos;
+            efectos = new EffectPlayer("/Effects/notRun.mp3");
+            efectos.play();
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event2 -> {
+                efectos.stop();
+            }));
+            timeline.play();
         }
     }
 

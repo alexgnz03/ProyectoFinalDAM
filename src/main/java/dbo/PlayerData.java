@@ -56,7 +56,7 @@ public class PlayerData {
         }
     }
 
-    private static boolean existeArchivo() {
+    public static boolean existeArchivo() {
         File file = new File(ARCHIVO);
         return file.exists();
     }

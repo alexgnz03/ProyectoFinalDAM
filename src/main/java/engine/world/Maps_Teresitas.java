@@ -2,10 +2,10 @@ package engine.world;
 
 
 import com.google.gson.Gson;
+import engine.MusicPlayerSt;
 import engine.combate.peleitas.FightController;
 import engine.jobs.keyLifeGuard.GameController;
-import engine.minijuego.MinijuegoController;
-import engine.jobs.secretaryTyping.JuegoController;
+import engine.miniDoomII.MinijuegoController;
 import engine.objects.Camera;
 import engine.objects.Elements;
 import engine.objects.NPC;
@@ -100,6 +100,13 @@ public class Maps_Teresitas {
         //timerStart();
     }
 
+    public void musica(){
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/teresitasMusic.mp3");
+        MusicPlayerSt.setVolume(volumen);
+    }
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -121,7 +128,7 @@ public class Maps_Teresitas {
         this.barrier = new LinkedList<ObstacleTile>();
 
         //
-        this.stage.setTitle("Aparcamientos");
+        this.stage.setTitle("Las Teresitas");
 
         // Crear un nuevo Pane y agregar ambos root y dialogRoot a este nuevo Pane
         root.setPrefSize(BackgroundImage.getWidth(), BackgroundImage.getHeight());
@@ -139,7 +146,7 @@ public class Maps_Teresitas {
         this.stage.show();
 
         //Mostrar FPS
-        FPSMonitor fps = new FPSMonitor(stage);
+        //FPSMonitor fps = new FPSMonitor(stage);
     }
 
     public void playerBasics(){
@@ -263,9 +270,12 @@ public class Maps_Teresitas {
         //Colisiones
         cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas04.json");
 
+        NPC npc = new NPC(this.root, stage,10, 320, 570, "Right", barrier);
+        this.npc = npc;
 
         playerBasics();
-
+        player.addNPC(npc);
+        npc.addDialogs(dialog, "Mañana tengo que evaluar unas presentaciones\nen el trabajo.", "Pero puedo venir hoy a la playa porque ya preparé todo \nlo que tenía que preparar.");
     }
 
     //Teresitas05
@@ -277,11 +287,17 @@ public class Maps_Teresitas {
 
         worldBasics(BackgroundImage);
 
+        NPC npc = new NPC(this.root, stage,5, 470, 231, "Left", barrier);
+        this.npc = npc;
+
         //Colisiones
         cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas05.json");
 
 
         playerBasics();
+
+        player.addNPC(npc);
+        npc.addDialogs(dialog, "¿Eh? ¿Quieres trabajar como socorrista?\nInteresante.", "Por cierto, mírate Jujutsu, Gojo muere.");
 
     }
     //Teresitas06
@@ -300,10 +316,9 @@ public class Maps_Teresitas {
         this.elements = tienda;
         tienda.elementsBasics(tienda.getX(), tienda.getY(), 91, 172, barrier);
 
-
         playerBasics();
         player.addElements(tienda);
-
+        tienda.addDialogs(dialog, "Ven aquí chaval, a partir de hoy serás\nel nuevo socorrista, felicidades.", "¿Eh, que no sabes nadar?","Eso no importa, tú ponte aquí y ya está.");
     }
     //Teresitas07
     public void teresitas07(Stage stage) {
@@ -314,6 +329,9 @@ public class Maps_Teresitas {
 
         worldBasics(BackgroundImage);
 
+        NPC npc = new NPC(this.root, stage,18, 300, 110, "Down", barrier);
+        this.npc = npc;
+
         //Colisiones
         cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas07.json");
 
@@ -323,6 +341,8 @@ public class Maps_Teresitas {
 
         playerBasics();
         player.addElements(tienda);
+        player.addNPC(npc);
+        npc.addDialogs(dialog, "Odiame por ser otaku.", "Adelante,estas en tu derecho,abla a mis espaldas\ny az de mi vida un infierno,lo aguantare con\nuna sonridsa en la cara,insulta al anime,a", "algun amigo tanbien otaku,y el infierno te parecera un\nhotel conparado conmigo");
     }
     //Teresitas08
     public void teresitas08(Stage stage) {
@@ -333,21 +353,32 @@ public class Maps_Teresitas {
 
         worldBasics(BackgroundImage);
 
+        NPC npc = new NPC(this.root, stage,1, 300, 110, "Down", barrier);
+        this.npc = npc;
+
+        NPC npc2 = new NPC(this.root, stage,2, 170, 505, "Right", barrier);
+        this.npc = npc2;
+
         //Colisiones
         cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas08.json");
 
 
         playerBasics();
 
+        player.addNPC(npc);
+        npc.addDialogs(dialog, "Mi colega el JuanFran está cogiendo olas.","Le viene bien, trabaja demasiado, debe descansar...");
+        player.addNPC(npc2);
+        npc2.addDialogs(dialog, "Creo que están buscando a socorristas para contratar.", "Me lo ofreció insistentemente y casi que\ntuve que huir de allí.", "Al chico se le veía bastante desesperado.");
+
     }
 
-    public void doom(Stage stage) throws Exception {
+    /*public void doom(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tablero.fxml"));
         MinijuegoController minijuego = new MinijuegoController();
         minijuego.setStage(stage);
         loader.setController(minijuego);
         Parent root = loader.load();
-        stage.setTitle("Minijuego de Dianas");
+        stage.setTitle("Mini Doom II");
         stage.setScene(new Scene(root, 800, 800));
 
         BackgroundImage = new Image("doomFondo.png");
@@ -360,7 +391,7 @@ public class Maps_Teresitas {
         MinijuegoController controlador = loader.getController();
         controlador.actualizarTiempo();
 
-    }
+    }*/
 
     public void combate(Stage stage, int i) throws Exception {
         System.out.println("control 1: " + player.getX() + " i: " + i);
@@ -448,7 +479,7 @@ public class Maps_Teresitas {
                 trabajoSocorrista(stage);
                 break;
             case 3:
-                doom(stage);
+                //doom(stage);
                 break;
         }
 
@@ -469,7 +500,7 @@ public class Maps_Teresitas {
             }
             Scene scene = new Scene(root, 800, 800);
             scene.setOnKeyPressed(controller::handleKeyPressed);
-            stage.setTitle("Tienda");
+            stage.setTitle("Socorrista");
             stage.setScene(scene);
             stage.show();
 

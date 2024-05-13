@@ -1,0 +1,64 @@
+#salirButton {
+    -fx-background-color: linear-gradient(to bottom, #a30000, #8b0022, #680030, #400031, #1d0025);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 12px;
+
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+#comprarButton {
+    -fx-background-color:
+            linear-gradient(to bottom, #00ae2e, #008978, #005e8d, #002f66, #1d0025);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 12px;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+#comprarButton:hover,
+#salirButton:hover {
+    -fx-background-color: linear-gradient(to bottom, #1d0025, #32093e, #4c0b59, #690a73, #88008e);
+}
+
+.text-area {
+    -fx-background-color: #4C66A3; /* Cambia el color de fondo del TextArea */
+    -fx-text-fill: #333333; /* Cambia el color del texto del TextArea */
+    -fx-font-size: 14px; /* Cambia el tamaño de fuente del TextArea */
+    -fx-font-family: Arial, sans-serif; /* Cambia la familia de fuente del TextArea */
+    -fx-border-color: #4C66A3; /* Cambia el color del borde del TextArea */
+    -fx-border-width: 8px; /* Cambia el ancho del borde del TextArea */
+}
+
+.label {
+    -fx-text-fill: #333333; /* Cambia el color del texto del Label */
+    -fx-font-size: 14px; /* Cambia el tamaño de fuente del Label */
+    -fx-font-family: Arial, sans-serif; /* Cambia la familia de fuente del Label */
+}
+
+.table-view {
+    -fx-background-color: #947372; /* Cambia el color de fondo de la tabla */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #5e312f; /* Cambia el color de fondo del encabezado de la columna */
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent; /* Hace que el texto del encabezado de la columna sea transparente */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFFFFF; /* Cambia el color del texto del encabezado de la columna */
+}
+
+.table-row-cell {
+    -fx-background-color: #947372; /* Cambia el color de fondo de las celdas de la tabla */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #5e312f; /* Cambia el color de fondo de las celdas seleccionadas */
+}

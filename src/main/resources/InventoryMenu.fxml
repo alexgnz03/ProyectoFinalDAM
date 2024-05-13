@@ -8,12 +8,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <Pane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4c66a3" height="470.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="320.0" />
       <VBox prefHeight="470.0" prefWidth="320.0">
          <children>
-            <TableView fx:id="tablaInventario" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="320.0">
+            <TableView fx:id="tablaInventario" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="320.0" stylesheets="@Css/igInventory.css">
               <columns>
                 <TableColumn fx:id="nombreObjeto" prefWidth="188.0" text="Nombre de Objeto" />
                 <TableColumn fx:id="cantidadObjeto" prefWidth="57.0" text="Cantidad" />
@@ -25,13 +28,16 @@
             <HBox prefHeight="80.0" prefWidth="200.0">
                <children>
                   <ImageView fx:id="objectImage" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
-                  <TextArea fx:id="descripcionObjeto" editable="false" prefHeight="82.0" />
+                  <TextArea fx:id="descripcionObjeto" editable="false" prefHeight="82.0" wrapText="true">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font></TextArea>
                </children>
             </HBox>
             <HBox prefHeight="65.0" prefWidth="320.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#usarAction" prefHeight="72.0" prefWidth="252.0" text="Usar" />
-                  <Button minHeight="60.0" minWidth="70.0" mnemonicParsing="false" onAction="#salirAction" text="Salir" />
+                  <Button id="usarButton" mnemonicParsing="false" onAction="#usarAction" prefHeight="72.0" prefWidth="252.0" stylesheets="@Css/igInventory.css" text="Usar" />
+                  <Button id="salirButton" minHeight="60.0" minWidth="70.0" mnemonicParsing="false" onAction="#salirAction" stylesheets="@Css/igInventory.css" text="Salir" />
                </children>
             </HBox>
          </children>

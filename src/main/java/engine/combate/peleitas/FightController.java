@@ -3,7 +3,7 @@ package engine.combate.peleitas;
 import controllers.FinalController;
 import dbo.MonsterLoader;
 import dbo.PlayerData;
-import engine.MusicPlayer;
+import engine.EffectPlayer;
 import engine.objects.Player;
 import engine.world.Maps_BSalud;
 import javafx.animation.KeyFrame;
@@ -174,8 +174,8 @@ public class FightController {
             case ATAQUEdebil:
                 ataqueAnimation();
                 accion(jugador.damageFisico(monstruo)/2);
-                MusicPlayer efectos;
-                efectos = new MusicPlayer("/Effects/ataque.mp3");
+                EffectPlayer efectos;
+                efectos = new EffectPlayer("/Effects/ataque.mp3");
                 efectos.play();
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
                     efectos.stop();
@@ -194,8 +194,8 @@ public class FightController {
             case ATAQUEmedio:
                 ataqueAnimation();
                 accion(jugador.damageFisico(monstruo));
-                MusicPlayer efectos2;
-                efectos2 = new MusicPlayer("/Effects/ataque.mp3");
+                EffectPlayer efectos2;
+                efectos2 = new EffectPlayer("/Effects/ataque.mp3");
                 efectos2.play();
                 Timeline timeline3 = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
                     efectos2.stop();
@@ -213,8 +213,8 @@ public class FightController {
             case FEmedia:
                 imagenJugador.setImage(playerAttackImage);
                 accion(jugador.damageSkill(monstruo, 1, 1));
-                MusicPlayer efectos3;
-                efectos3 = new MusicPlayer("/Effects/ataqueCritico.mp3");
+                EffectPlayer efectos3;
+                efectos3 = new EffectPlayer("/Effects/ataqueCritico.mp3");
                 efectos3.play();
                 Timeline timeline4 = new Timeline(new KeyFrame(Duration.seconds(0.75), event4 -> {
                     efectos3.stop();
@@ -226,8 +226,8 @@ public class FightController {
                 break;
             case CURAmedia:
                 jugador.setVida(jugador.getVida()+10);
-                MusicPlayer efectosm;
-                efectosm = new MusicPlayer("/Effects/heal.mp3");
+                EffectPlayer efectosm;
+                efectosm = new EffectPlayer("/Effects/heal.mp3");
                 efectosm.play();
                 Timeline timelinem = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
                     efectosm.stop();
@@ -239,8 +239,8 @@ public class FightController {
             case ATAQUEfuerte:
                 ataqueAnimation();
                 accion(jugador.damageFisico(monstruo));
-                MusicPlayer efectos4;
-                efectos4 = new MusicPlayer("/Effects/ataque.mp3");
+                EffectPlayer efectos4;
+                efectos4 = new EffectPlayer("/Effects/ataque.mp3");
                 efectos4.play();
                 Timeline timeline5 = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
                     efectos4.stop();
@@ -258,8 +258,8 @@ public class FightController {
             case FEfuerte:
                 imagenJugador.setImage(playerAttackImage);
                 accion(jugador.damageSkill(monstruo, 1, 2));
-                MusicPlayer efectos5;
-                efectos5 = new MusicPlayer("/Effects/ataqueCritico.mp3");
+                EffectPlayer efectos5;
+                efectos5 = new EffectPlayer("/Effects/ataqueCritico.mp3");
                 efectos5.play();
                 Timeline timeline6 = new Timeline(new KeyFrame(Duration.seconds(0.75), event4 -> {
                     efectos5.stop();
@@ -448,26 +448,24 @@ public class FightController {
             Random random = new Random();
             double probabilidad = random.nextDouble();
             if (probabilidad <= 0.5) {
-                MusicPlayer efectos;
-                efectos = new MusicPlayer("/Effects/runAway.mp3");
+                EffectPlayer efectos;
+                efectos = new EffectPlayer("/Effects/runAway.mp3");
                 efectos.play();
                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.seconds(1.5), event2 -> {
                     efectos.stop();
                 }));
                 timeline2.play();
-                System.out.println("control 9: " + x + " i: " + I);
                 try {
                     PlayerData.guardarDato(0, (int) jugador.getVida());
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                System.out.println("La vida que se ha guardado es: " + jugador.getVida() + " y la vida ya almacenada es: " + PlayerData.cargarDato(0));
                 devolverAMundo(x, y);
             } else {
                 prioridadMonstruo = true;
-                accion(15);
-                MusicPlayer efectos;
-                efectos = new MusicPlayer("/Effects/notRun.mp3");
+                accion(50);
+                EffectPlayer efectos;
+                efectos = new EffectPlayer("/Effects/notRun.mp3");
                 efectos.play();
                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.seconds(1.5), event2 -> {
                     efectos.stop();
@@ -572,8 +570,8 @@ public class FightController {
             } else if (monstruo.Muerto() && !monstruoMuerto) {
                 monsterLoader.actualizarRegistrado(idDelMonstruo);
                 monstruoMuerto = true;
-                MusicPlayer efectos;
-                efectos = new MusicPlayer("/Effects/Win.mp3");
+                EffectPlayer efectos;
+                efectos = new EffectPlayer("/Effects/Win.mp3");
                 efectos.play();
                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.seconds(1), event2 -> {
                     efectos.stop();
@@ -601,16 +599,14 @@ public class FightController {
     }
 
     private void devolverAMundo(double x, double y){
-        System.out.println("control 10: " + x + " i: " + I);
         mapsBSalud.setStage(stage);
         mapsBSalud.setX(x - 24);
         mapsBSalud.setY(y - 24);
+        mapsBSalud.musica();
 
         if (mapsBSalud.getTimer() != null){
             mapsBSalud.getTimer().stop();
         }
-
-        System.out.println("control 11: " + x + " i: " + I);
 
         switch (I) {
             case 1:
@@ -660,7 +656,6 @@ public class FightController {
         }
 
         mapsBSalud.timerStart();
-        System.out.println("control 12: " + x + " i: " + I);
 
     }
 

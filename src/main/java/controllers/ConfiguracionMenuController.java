@@ -1,6 +1,7 @@
 package controllers;
 
-import engine.MusicPlayer;
+import engine.EffectPlayer;
+import engine.MusicPlayerSt;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
@@ -15,7 +16,6 @@ import java.io.IOException;
 
 public class ConfiguracionMenuController {
     private Stage stage;
-    private MusicPlayer musicPlayer;
 
     @FXML
     private Slider volumeSlider;
@@ -25,13 +25,11 @@ public class ConfiguracionMenuController {
     }
 
     public void initialize() {
-        musicPlayer = MusicPlayer.getInstance("/Music/MainMenu.mp3"); // Obtener la instancia única
-        musicPlayer.play();
-        volumeSlider.setValue(musicPlayer.getVolume() * 100);
+        volumeSlider.setValue(MusicPlayerSt.getVolume() * 100);
         volumeSlider.valueProperty().addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable observable) {
-                musicPlayer.setVolume(volumeSlider.getValue()/100);
+                MusicPlayerSt.setVolume(volumeSlider.getValue()/100);
             }
         });
     }
@@ -39,8 +37,6 @@ public class ConfiguracionMenuController {
     @FXML
     void volverAction(ActionEvent event) {
         try {
-            // Detener la música si es necesario
-            musicPlayer.stop();
 
             // Cargar la escena del menú principal
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/MainMenu.fxml"));
@@ -51,8 +47,6 @@ public class ConfiguracionMenuController {
 
             // Pasar el Stage actual al controlador del menú principal
             controller.setStage(stage);
-
-            controller.setVolume(volumeSlider.getValue());
 
             // Establecer la escena del menú principal en el Stage
             Scene scene = new Scene(root);

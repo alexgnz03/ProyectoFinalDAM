@@ -30,10 +30,15 @@ public class PlayerState {
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
-        health.setLayoutX(83);
+        scene.getStylesheets().add(getClass().getResource("/Css/healthBar.css").toExternalForm());
+
+        health.getStyleClass().add("health-bar");
+        stamina.getStyleClass().add("stamina-bar");
+
+        health.setLayoutX(50);
         health.setLayoutY(28);
-        health.setPrefWidth(156);
-        health.setPrefHeight(18);
+        health.setPrefWidth(180);
+        health.setPrefHeight(25);
         try {
             health.setProgress((double) PlayerData.cargarDato(0) /100);
         } catch (IOException e) {
@@ -47,13 +52,15 @@ public class PlayerState {
             throw new RuntimeException(e);
         }
 
-        stamina.setLayoutX(83);
-        stamina.setLayoutY(46);
-        stamina.setPrefWidth(156);
-        stamina.setPrefHeight(9);
+        stamina.setLayoutX(50);
+        stamina.setLayoutY(53);
+        stamina.setPrefWidth(180);
+        stamina.setPrefHeight(12);
 
         this.root = root;
         this.stage = stage;
+
+
     }
 
     public static void actualizarSalud(int nuevoValor) {

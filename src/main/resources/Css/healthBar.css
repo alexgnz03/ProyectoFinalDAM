@@ -1,0 +1,21 @@
+/* Estilo para la barra de progreso de salud */
+.health-bar .track {
+    -fx-background-color: #CCCCCC; /* Color de fondo */
+}
+
+.health-bar .bar {
+    -fx-background-color: #437337; /* Color de la barra */
+}
+
+.health-bar.below-threshold .bar {
+    -fx-background-color: #FF0000; /* Color de la barra cuando está por debajo del umbral */
+}
+
+/* Estilo para la barra de progreso de stamina */
+.stamina-bar .track {
+    -fx-background-color: #CCCCCC; /* Color de fondo */
+}
+
+.stamina-bar .bar {
+    -fx-background-color: #353675; /* Color de la barra */
+}

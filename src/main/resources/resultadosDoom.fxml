@@ -19,7 +19,7 @@
          <font>
             <Font name="Unispace-Bold" size="40.0" />
          </font></Label>
-      <Button layoutX="303.0" layoutY="604.0" mnemonicParsing="false" onAction="#salirAction" prefHeight="64.0" prefWidth="194.0" style="-fx-background-color: #6f2525; -fx-border-color: #460d0d; -fx-border-width: 4;" text="Salir" textFill="WHITE">
+      <Button id="salirButton" layoutX="287.0" layoutY="604.0" mnemonicParsing="false" onAction="#salirAction" prefHeight="81.0" prefWidth="228.0" stylesheets="@Css/tienda.css" text="Salir" textFill="WHITE">
          <font>
             <Font size="27.0" />
          </font></Button>

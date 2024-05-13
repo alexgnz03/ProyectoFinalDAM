@@ -4,56 +4,59 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="backgroundImage" fitHeight="470.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="titleLabel" alignment="CENTER" layoutX="79.0" layoutY="14.0" prefHeight="40.0" prefWidth="165.0" text="Tus Stats">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9786a3" height="470.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="320.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#503961" height="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="320.0" />
+      <Label fx:id="titleLabel" alignment="CENTER" layoutX="79.0" layoutY="14.0" prefHeight="40.0" prefWidth="165.0" text="Tus Stats" textFill="WHITE">
          <font>
-            <Font size="28.0" />
+            <Font name="Arial Bold" size="28.0" />
          </font>
       </Label>
-      <Label fx:id="ataqueLabel" layoutX="14.0" layoutY="87.0" prefHeight="37.0" prefWidth="87.0" text="Ataque:">
+      <Label fx:id="ataqueLabel" layoutX="14.0" layoutY="87.0" prefHeight="37.0" prefWidth="105.0" text="Ataque:">
          <font>
-            <Font size="22.0" />
+            <Font name="Arial Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="atMagicoLabel" layoutX="14.0" layoutY="124.0" prefHeight="37.0" prefWidth="165.0" text="Ataque mágico:">
+      <Label fx:id="atMagicoLabel" layoutX="14.0" layoutY="124.0" prefHeight="37.0" prefWidth="195.0" text="Ataque mágico:">
          <font>
-            <Font size="22.0" />
+            <Font name="Arial Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="defnsaLabel" layoutX="14.0" layoutY="161.0" prefHeight="37.0" prefWidth="96.0" text="Defensa:">
+      <Label fx:id="defnsaLabel" layoutX="14.0" layoutY="161.0" prefHeight="37.0" prefWidth="126.0" text="Defensa:">
          <font>
-            <Font size="22.0" />
+            <Font name="Arial Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="defMagicaLabel" layoutX="14.0" layoutY="198.0" prefHeight="37.0" prefWidth="172.0" text="Defensa mágica:">
+      <Label fx:id="defMagicaLabel" layoutX="14.0" layoutY="198.0" prefHeight="37.0" prefWidth="207.0" text="Defensa mágica:">
          <font>
-            <Font size="22.0" />
+            <Font name="Arial Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="ataqueStat" layoutX="110.0" layoutY="90.0" text="Label">
+      <Label fx:id="ataqueStat" layoutX="237.0" layoutY="91.0" text="Label">
          <font>
-            <Font size="22.0" />
+            <Font name="Arial" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="atMagicoStat" layoutX="186.0" layoutY="127.0" text="Label">
+      <Label fx:id="atMagicoStat" layoutX="237.0" layoutY="128.0" text="Label">
          <font>
-            <Font size="22.0" />
+            <Font name="Arial" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="defensaStat" layoutX="116.0" layoutY="164.0" text="Label">
+      <Label fx:id="defensaStat" layoutX="237.0" layoutY="165.0" text="Label">
          <font>
-            <Font size="22.0" />
+            <Font name="Arial" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="defMagicaStat" layoutX="192.0" layoutY="201.0" text="Label">
+      <Label fx:id="defMagicaStat" layoutX="237.0" layoutY="202.0" text="Label">
          <font>
-            <Font size="22.0" />
+            <Font name="Arial" size="25.0" />
          </font>
       </Label>
-      <Button layoutX="19.0" layoutY="419.0" mnemonicParsing="false" onAction="#volverAction" prefHeight="37.0" prefWidth="77.0" text="Volver" />
+      <Button id="salirButton" layoutX="19.0" layoutY="410.0" mnemonicParsing="false" onAction="#volverAction" prefHeight="48.0" prefWidth="105.0" stylesheets="@Css/igInventory.css" text="Volver" />
    </children>
 </Pane>

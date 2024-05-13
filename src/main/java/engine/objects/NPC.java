@@ -31,6 +31,8 @@ public class NPC {
     ArrayList<String> frases = new ArrayList<>();
     int nFrases;
     int nActualFrases = 1;
+    private String shadowRoute = "shadow.png";
+    private ImageView shadow = new ImageView(new Image(shadowRoute));
 
 
     private List<Dialog> dialogs = new ArrayList<>();
@@ -65,6 +67,11 @@ public class NPC {
         this.x = x;
         this.y = y;
         this.id = ID;
+
+        shadow.setImage(new Image(shadowRoute));
+        this.root.getChildren().add(shadow);
+        shadow.setX(x+10);
+        shadow.setY(y+42);
 
         NPCSprites(ID, defaultDirection);
         NPC.this.NPCReactions();

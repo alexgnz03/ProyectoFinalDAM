@@ -9,18 +9,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5e312f" height="470.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="320.0" />
       <VBox prefHeight="470.0" prefWidth="320.0">
          <children>
-            <Label fx:id="mostrodexLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="325.0" text="MostroDex" textAlignment="CENTER">
+            <Label fx:id="mostrodexLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="320.0" text="MostroDex" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TableView fx:id="tablaMostroDex" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="320.0">
+            <TableView fx:id="tablaMostroDex" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="320.0" stylesheets="@Css/igMostroDex.css">
               <columns>
                 <TableColumn fx:id="idMostro" prefWidth="24.0" text="ID" />
                   <TableColumn fx:id="nombreMostro" prefWidth="78.0" text="Nombre" />
@@ -36,8 +38,11 @@
             <HBox prefHeight="75.0" prefWidth="320.0">
                <children>
                   <ImageView fx:id="mostroImage" fitHeight="79.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
-                  <TextArea fx:id="descripcionMostro" editable="false" prefHeight="40.0" prefWidth="170.0" />
-                  <Button minHeight="60.0" minWidth="70.0" mnemonicParsing="false" onAction="#salirAction" prefHeight="89.0" prefWidth="70.0" text="Salir" />
+                  <TextArea fx:id="descripcionMostro" editable="false" prefHeight="40.0" prefWidth="170.0" wrapText="true">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font></TextArea>
+                  <Button id="salirButton" minHeight="60.0" minWidth="70.0" mnemonicParsing="false" onAction="#salirAction" prefHeight="79.0" prefWidth="85.0" stylesheets="@Css/igMostroDex.css" text="Salir" />
                </children>
             </HBox>
          </children>

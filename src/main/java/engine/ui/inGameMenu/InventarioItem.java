@@ -5,15 +5,26 @@ public class InventarioItem {
     private String nombre;
     private int cantidad;
     private String descripcion;
+    private String sprite;
 
-    public InventarioItem(int codigo, String nombre, int cantidad, String descripcion) {
+    public InventarioItem(int codigo, String nombre, int cantidad, String descripcion, String sprite) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.descripcion = descripcion;
+        this.sprite = sprite;
     }
 
     // Métodos getters y setters para acceder a las propiedades
+
+    public String getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(String sprite) {
+        this.sprite = sprite;
+    }
+
     public int getCodigo() {
         return codigo;
     }

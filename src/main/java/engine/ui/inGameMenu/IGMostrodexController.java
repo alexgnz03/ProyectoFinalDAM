@@ -1,12 +1,6 @@
 package engine.ui.inGameMenu;
 
 import dbo.MonsterLoader;
-import dbo.ObjetosData;
-import dbo.PlayerData;
-import engine.MusicPlayer;
-import engine.ui.PlayerState;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,10 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 public class IGMostrodexController {

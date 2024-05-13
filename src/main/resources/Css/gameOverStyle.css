@@ -4,26 +4,30 @@
 
 #reintentarButton {
     -fx-background-color:
-                #000000,
-                linear-gradient(#183152, #001F3D),
-                linear-gradient(#183152, #001F3D),
-                linear-gradient(#183152, #001F3D);
+                linear-gradient(to bottom, #00ae2e, #008978, #005e8d, #002f66, #1d0025);
         -fx-background-insets: 0,1,2,3;
-        -fx-background-radius: 3,2,2,2;
+        -fx-background-radius: 12px;
+        -fx-padding: 12 30 12 30;
         -fx-text-fill: white;
+        -fx-font-size: 22px;
+        -fx-font-weight: bold;
 }
 
 
 
 #volverMenuButton {
-    -fx-background-color:
-                #000000,
-                linear-gradient(#990000, #330000),
-                linear-gradient(#990000, #330000),
-                linear-gradient(#990000, #330000);
-    -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
-    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to bottom, #a30000, #8b0022, #680030, #400031, #1d0025);
+        -fx-background-insets: 0,1,2,3;
+        -fx-background-radius: 12px;
+        -fx-padding: 12 30 12 30;
+        -fx-text-fill: white;
+        -fx-font-size: 22px;
+        -fx-font-weight: bold;
+}
+
+#volverMenuButton:hover,
+#reintentarButton:hover {
+    -fx-background-color: linear-gradient(to bottom, #1d0025, #32093e, #4c0b59, #690a73, #88008e);
 }
 
 #labelStyle {

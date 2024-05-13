@@ -1,6 +1,7 @@
 package engine.jobs.keyLifeGuard;
 
 import controllers.PantallaResultadosController;
+import engine.MusicPlayerSt;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -37,6 +38,10 @@ public class GameController {
     private int tiempoRestante;
     private Timeline temporizador;
     public void initialize() {
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/socorristaMusic.mp3");
+        MusicPlayerSt.setVolume(volumen);
         mostrarSiguienteTecla();
         tiempoRestante = 60; // 60 segundos
 
@@ -88,7 +93,7 @@ public class GameController {
 
     private void mostrarResultados() {
         temporizador.stop();
-        dinero = gameModel.getPuntuacion()*10;
+        dinero = gameModel.getPuntuacion()*2;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resultados.fxml"));
         PantallaResultadosController controller = new PantallaResultadosController(gameModel.getPuntuacion(), dinero, 2);
         controller.setStage(stage);

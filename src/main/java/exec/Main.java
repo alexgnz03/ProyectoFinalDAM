@@ -3,6 +3,7 @@ package exec;
 import dbo.MonsterLoader;
 import dbo.ObjetosData;
 import dbo.PlayerData;
+import engine.MusicPlayerSt;
 import engine.world.World;
 
 import java.io.IOException;
@@ -17,6 +18,8 @@ public class Main {
 
         MonsterLoader monster = new MonsterLoader();
         monster.crearTablas();
+
+
 
 //        try {
 //            PlayerData.guardarDato(0, 100);

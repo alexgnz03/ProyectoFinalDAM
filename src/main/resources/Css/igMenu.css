@@ -1,0 +1,38 @@
+#inventoryButton {
+    -fx-background-color: #b5a157;
+    -fx-background-radius: 12px;
+}
+
+#configButton {
+    -fx-background-color: #c2c2c2;
+    -fx-background-radius: 12px;
+}
+
+#ayudaButton {
+    -fx-background-color: #a4d5db;
+    -fx-background-radius: 12px;
+}
+
+#mostrodexButton {
+    -fx-background-color: #c26969;
+    -fx-background-radius: 12px;
+}
+
+#cvButton {
+    -fx-background-color: #81cc97;
+    -fx-background-radius: 12px;
+}
+
+#statsButton {
+    -fx-background-color: #c381cc;
+    -fx-background-radius: 12px;
+}
+
+#inventoryButton:hover,
+#configButton:hover,
+#mostrodexButton:hover,
+#cvButton:hover,
+#ayudaButton:hover,
+#statsButton:hover {
+    -fx-background-color: #969696;
+}

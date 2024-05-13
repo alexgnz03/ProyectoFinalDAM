@@ -1,5 +1,6 @@
 package controllers;
 
+import dbo.CVData;
 import dbo.PlayerData;
 import engine.world.Maps_LaLaguna;
 import engine.world.Maps_BSalud;
@@ -73,6 +74,14 @@ public class PantallaResultadosController {
         }
         switch(i){
             case 1:
+                try {
+                    if(puntuacion > CVData.cargarDato(0)){
+                        CVData.guardarDato(0, puntuacion);
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                mapsLaLaguna.musica();
                 mapsLaLaguna.setStage(stage);
                 mapsLaLaguna.setX(315);
                 mapsLaLaguna.setY(580);
@@ -80,11 +89,27 @@ public class PantallaResultadosController {
                 mapsLaLaguna.timerStart();
                 break;
             case 2:
+                try {
+                    if(puntuacion > CVData.cargarDato(1)){
+                        CVData.guardarDato(1, puntuacion);
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                mapsTeresitas.musica();
                 mapsTeresitas.setStage(stage);
                 mapsTeresitas.teresitas06(stage);
                 mapsTeresitas.timerStart();
                 break;
             case 3:
+                try {
+                    if(puntuacion > CVData.cargarDato(2)){
+                        CVData.guardarDato(2, puntuacion);
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                mapsBSalud.musica();
                 mapsBSalud.setStage(stage);
                 mapsBSalud.lobbyInstituto(stage);
                 mapsBSalud.timerStart();

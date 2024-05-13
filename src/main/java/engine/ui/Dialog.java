@@ -1,13 +1,12 @@
 package engine.ui;
 
-import engine.MusicPlayer;
+import engine.EffectPlayer;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -55,7 +54,7 @@ public class Dialog {
         System.out.println("DialogBA " + dialog.getOpacity());
     }
 
-    public void autoDialog(String dialogLine) {
+    public void autoDialog(String dialogLine, int seconds) {
         // Mostrar el cuadro de diálogo
         dialogText.setText(""); // Limpiar el texto anterior
         textIndex = 0; // Reiniciar el índice
@@ -72,7 +71,7 @@ public class Dialog {
         timeline.play();
 
         // Temporizador para cerrar el cuadro de diálogo después de 2 segundos
-        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        PauseTransition delay = new PauseTransition(Duration.seconds(seconds));
         delay.setOnFinished(event -> closeDialog());
         delay.play();
     }
@@ -84,8 +83,8 @@ public class Dialog {
     }
 
     public void soundEffect(){
-        MusicPlayer efectos;
-        efectos = new MusicPlayer("/Effects/typeWriting.mp3");
+        EffectPlayer efectos;
+        efectos = new EffectPlayer("/Effects/typeWriting.mp3");
         efectos.play();
         Timeline soundline = new Timeline(new KeyFrame(Duration.seconds(0.15), event -> {
             efectos.stop();

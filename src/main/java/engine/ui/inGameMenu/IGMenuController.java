@@ -1,11 +1,13 @@
 package engine.ui.inGameMenu;
 
+import dbo.PlayerData;
 import engine.tienda.TiendaController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -32,13 +34,18 @@ public class IGMenuController {
     private ImageView wallpaper;
 
     @FXML
-    void configAction(ActionEvent event) {
+    private Label dineroLabel;
 
+    public void initialize() {
+        try {
+            dineroLabel.setText("Dinero: " + PlayerData.cargarDato(7) + "€");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void inventoryAction(ActionEvent event) {
-        System.out.println("Mostrando inventario");
         gameMenu.cargarInventario();
 
     }
@@ -49,13 +56,23 @@ public class IGMenuController {
     }
 
     @FXML
-    void salirAction(ActionEvent event) {
-
+    void cvAction(ActionEvent event) {
+        gameMenu.cargarCV();
     }
 
     @FXML
     void mostroDexAction(ActionEvent event) {
         gameMenu.cargarMostroDex();
+    }
+
+    @FXML
+    void configAction(ActionEvent event) {
+        gameMenu.cargarConfig();
+    }
+
+    @FXML
+    void ayudaAction(ActionEvent event) {
+        gameMenu.cargarAyuda();
     }
 
 }

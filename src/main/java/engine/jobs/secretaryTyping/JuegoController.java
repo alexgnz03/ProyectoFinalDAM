@@ -1,6 +1,7 @@
 package engine.jobs.secretaryTyping;
 
 import controllers.PantallaResultadosController;
+import engine.MusicPlayerSt;
 import engine.world.Maps_LaLaguna;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -38,6 +39,11 @@ public class JuegoController {
     private int dinero;
 
     public void initialize() {
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/secretarioMusic.mp3");
+        MusicPlayerSt.setVolume(volumen);
+
         modelo = new JuegoModelo();
         nuevaPalabra();
 
@@ -48,7 +54,7 @@ public class JuegoController {
             if (tiempoRestante <= 0) {
                 mostrarResultados();
             } else {
-                tiempoLabel.setText("Tiempo restante: " + tiempoRestante + " segundos");
+                tiempoLabel.setText("Tiempo restante: " + tiempoRestante);
             }
         }));
         temporizador.setCycleCount(Timeline.INDEFINITE);
@@ -73,7 +79,7 @@ public class JuegoController {
 
     private void mostrarResultados() {
         temporizador.stop();
-        dinero = modelo.getPuntaje()*10;
+        dinero = modelo.getPuntaje()*15;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resultados.fxml"));
         PantallaResultadosController controller = new PantallaResultadosController(modelo.getPuntaje(), dinero, 3);
         controller.setStage(stage);

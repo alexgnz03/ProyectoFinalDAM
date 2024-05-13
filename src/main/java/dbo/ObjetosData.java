@@ -43,7 +43,8 @@ public class ObjetosData {
                 + "    Descripcion VARCHAR(500),\n"
                 + "    PrecioObjeto DECIMAL(10,2),\n"
                 + "    Estadistica INTEGER,\n"
-                + "    Potencia INTEGER\n"
+                + "    Potencia INTEGER,\n"
+                + "    Sprite TEXT\n"
                 + ");\n";
         String script2 = "CREATE TABLE IF NOT EXISTS Inventario (\n"
                 + "    CodInventario INTEGER PRIMARY KEY AUTOINCREMENT,\n"
@@ -69,14 +70,14 @@ public class ObjetosData {
             return;
         }
         try {
-            insertarDatosObjeto("Café", "Café con leche. Aumenta ligeramente la vida", 10, 0,5);
-            insertarDatosObjeto("Powerking", "Bebida energética ligera. Cura la salud un poco", 20, 0,12);
-            insertarDatosObjeto("Monster Verde", "Bebida energética clásica y potente para despertarte en un santiamén. Cura bastante la salud", 50, 0,30);
-            insertarDatosObjeto("Monster Blanco", "Bebida energética aún más potente. El precio es por la inflación claramente. Cura extremadamente la salud.", 100, 0,80);
-            insertarDatosObjeto("Attack Boost", "Mejora tu ataque base.", 100, 1,1);
-            insertarDatosObjeto("Defense Boost", "Mejora tu defensa base.", 100, 2,1);
-            insertarDatosObjeto("MagAttack Boost", "Mejora tu ataque mágico base.", 100, 3,1);
-            insertarDatosObjeto("MagDefense Boost", "Mejora tu defensa mágica base.", 100, 4,1);
+            insertarDatosObjeto("Café", "Café con leche. Aumenta ligeramente la vida", 10, 0,5,"Tienda/cafeSprite.png");
+            insertarDatosObjeto("Powerking", "Bebida energética ligera. Cura la salud un poco", 20, 0,12,"Tienda/powerKingSprite.png");
+            insertarDatosObjeto("Monster Verde", "Bebida energética clásica y potente para despertarte en un santiamén. Cura bastante la salud", 50, 0,30,"Tienda/monsterSprite.png");
+            insertarDatosObjeto("Monster Blanco", "Bebida energética aún más potente. El precio es por la inflación claramente. Cura extremadamente la salud.", 100, 0,80,"Tienda/monsterBlancoSprite.png");
+            insertarDatosObjeto("Attack Boost", "Mejora tu ataque base.", 100, 1,1,"Tienda/attackBoostSprite.png");
+            insertarDatosObjeto("Defense Boost", "Mejora tu defensa base.", 100, 2,1,"Tienda/defenseBoostSprite.png");
+            insertarDatosObjeto("MagAttack Boost", "Mejora tu ataque mágico base.", 100, 3,1,"Tienda/magicAttackBoostSprite.png");
+            insertarDatosObjeto("MagDefense Boost", "Mejora tu defensa mágica base.", 100, 4,1,"Tienda/magicDefenseBoostSprite.png");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -93,9 +94,9 @@ public class ObjetosData {
         }
     }
 
-    public void insertarDatosObjeto(String nomObjeto, String descripcion, double precioObjeto, int stat, int potencia) throws SQLException {
+    public void insertarDatosObjeto(String nomObjeto, String descripcion, double precioObjeto, int stat, int potencia, String sprite) throws SQLException {
         System.out.println("Se está accediendo a insertar datos");
-        String sql = "INSERT INTO Objeto (NomObjeto, Descripcion, PrecioObjeto, Estadistica, Potencia) VALUES ('" + nomObjeto + "', '" + descripcion + "', '" + precioObjeto + "', '" + stat + "', '" + potencia + "')";
+        String sql = "INSERT INTO Objeto (NomObjeto, Descripcion, PrecioObjeto, Estadistica, Potencia, Sprite) VALUES ('" + nomObjeto + "', '" + descripcion + "', '" + precioObjeto + "', '" + stat + "', '" + potencia + "', '" + sprite + "')";
         try (Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
             System.out.println("Datos del objeto insertados correctamente.");
@@ -220,7 +221,7 @@ public class ObjetosData {
     public List<InventarioItem> obtenerDatosInventario() {
         List<InventarioItem> inventario = new ArrayList<>();
 
-        String sql = "SELECT Objeto.CodObjeto, Objeto.NomObjeto, Inventario.Cantidad, Objeto.Descripcion FROM Inventario " +
+        String sql = "SELECT Objeto.CodObjeto, Objeto.NomObjeto, Inventario.Cantidad, Objeto.Descripcion, Objeto.Sprite FROM Inventario " +
                 "INNER JOIN Objeto ON Inventario.CodObjeto = Objeto.CodObjeto";
 
         try (Statement stmt = conn.createStatement();
@@ -230,8 +231,9 @@ public class ObjetosData {
                 String nombre = rs.getString("NomObjeto");
                 int cantidad = rs.getInt("Cantidad");
                 String descripcion = rs.getString("Descripcion");
+                String sprite = rs.getString("Sprite");
 
-                InventarioItem item = new InventarioItem(codObjeto, nombre, cantidad, descripcion);
+                InventarioItem item = new InventarioItem(codObjeto, nombre, cantidad, descripcion, sprite);
                 inventario.add(item);
             }
         } catch (SQLException e) {
@@ -253,8 +255,9 @@ public class ObjetosData {
                 String nomObjeto = rs.getString("NomObjeto");
                 String descripcion = rs.getString("Descripcion");
                 double precioObjeto = rs.getDouble("PrecioObjeto");
+                String sprite = rs.getString("Sprite");
 
-                TiendaItem item = new TiendaItem(codObjeto, nomObjeto, precioObjeto, descripcion);
+                TiendaItem item = new TiendaItem(codObjeto, nomObjeto, precioObjeto, descripcion, sprite);
                 objetos.add(item);
             }
         } catch (SQLException e) {

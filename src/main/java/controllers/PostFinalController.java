@@ -1,6 +1,7 @@
 package controllers;
 
-import engine.MusicPlayer;
+import engine.EffectPlayer;
+import engine.MusicPlayerSt;
 import engine.world.Maps_BSalud;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -19,14 +20,7 @@ public class PostFinalController {
     private MainMenuController menu = new MainMenuController();
 
     public void initialize() {
-        MusicPlayer efectos;
-        efectos = new MusicPlayer("/Effects/screamer.mp3");
-        efectos.play();
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            efectos.stop();
-            Platform.exit();
-        }));
-        timeline.play();
+
     }
 
     public void setStage(Stage stage) {
@@ -35,7 +29,7 @@ public class PostFinalController {
     }
     @FXML
     void jugarAction(ActionEvent event) {
-        System.out.println("Hola");
+        Platform.exit();
     }
 
     public void setWorld(Maps_BSalud mapsBSalud) {
@@ -60,5 +54,12 @@ public class PostFinalController {
         MainMenuController controller = loader.getController();
         controller.setStage(stage);
         controller.setWorld(new Maps_BSalud());
+    }
+
+    public void musica(){
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/lalagunaMusic.mp3");
+        MusicPlayerSt.setVolume(volumen);
     }
 }

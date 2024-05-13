@@ -1,14 +1,11 @@
 package engine.ui.inGameMenu;
 
-import controllers.MainMenuController;
-import engine.MusicPlayer;
-import engine.tienda.TiendaController;
+import engine.EffectPlayer;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -96,8 +93,8 @@ public class InGameMenu {
     }
 
     public void soundEffect(){
-        MusicPlayer efectos;
-        efectos = new MusicPlayer("/Effects/typeWriting.mp3");
+        EffectPlayer efectos;
+        efectos = new EffectPlayer("/Effects/typeWriting.mp3");
         efectos.play();
         Timeline soundline = new Timeline(new KeyFrame(Duration.seconds(0.15), event -> {
             efectos.stop();
@@ -157,14 +154,51 @@ public class InGameMenu {
             IGMostrodexController controller = new IGMostrodexController();
             loader.setController(controller);
             controller.setGameMenu(this);
-            Pane statsPane = loader.load();
-            menuPane.getChildren().setAll(statsPane);
+            Pane mostrodexPane = loader.load();
+            menuPane.getChildren().setAll(mostrodexPane);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void cargarCV() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cvMenu.fxml"));
+            IGCVController controller = new IGCVController();
+            loader.setController(controller);
+            controller.setGameMenu(this);
+            Pane cvPane = loader.load();
+            menuPane.getChildren().setAll(cvPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void cargarAyuda() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/igAyudaMenu.fxml"));
+            IGHelpController controller = new IGHelpController();
+            loader.setController(controller);
+            controller.setGameMenu(this);
+            Pane cvPane = loader.load();
+            menuPane.getChildren().setAll(cvPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cargarConfig() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/igconfigMenu.fxml"));
+            IGConfigController controller = new IGConfigController();
+            loader.setController(controller);
+            controller.setGameMenu(this);
+            Pane cvPane = loader.load();
+            menuPane.getChildren().setAll(cvPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     //Getters y Setters
     public ImageView getSmartphone() {

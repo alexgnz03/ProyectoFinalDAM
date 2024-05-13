@@ -2,8 +2,7 @@ package engine.ui.inGameMenu;
 
 import dbo.ObjetosData;
 import dbo.PlayerData;
-import engine.MusicPlayer;
-import engine.tienda.TiendaItem;
+import engine.EffectPlayer;
 import engine.ui.PlayerState;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,8 +13,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
 import javafx.util.Duration;
 
@@ -67,6 +66,7 @@ public class IGInventoryController {
         tablaInventario.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 descripcionObjeto.setText(newValue.getDescripcion());
+                objectImage.setImage(new Image(newValue.getSprite()));
             }
         });
     }
@@ -101,8 +101,8 @@ public class IGInventoryController {
                     PlayerData.guardarDato(estadistica, nuevaEstadistica);
                     PlayerState.actualizarSalud(PlayerData.cargarDato(0));
 
-                    MusicPlayer efectos;
-                    efectos = new MusicPlayer("/Effects/heal.mp3");
+                    EffectPlayer efectos;
+                    efectos = new EffectPlayer("/Effects/heal.mp3");
                     efectos.play();
                     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.75), event2 -> {
                         efectos.stop();
@@ -126,8 +126,8 @@ public class IGInventoryController {
                 throw new RuntimeException(e);
             }
         } else {
-            MusicPlayer efectos;
-            efectos = new MusicPlayer("/Effects/notRun.mp3");
+            EffectPlayer efectos;
+            efectos = new EffectPlayer("/Effects/notRun.mp3");
             efectos.play();
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event2 -> {
                 efectos.stop();

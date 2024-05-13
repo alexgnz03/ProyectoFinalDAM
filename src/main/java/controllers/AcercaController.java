@@ -1,8 +1,5 @@
 package controllers;
 
-import engine.MusicPlayer;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -92,8 +92,8 @@ public class Player {
                 int dy = 0;
 
                 if (Player.this.moveUp) {
-                    dy -= 3;
-                    my = -3;
+                    dy -= 4;
+                    my = -4;
                     mx = 0;
                     if (Player.this.switchWhenZero == 0) {
                         character_image.setImage(Player.this.walkingUpImageList.get(Player.this.upCount % 3));
@@ -103,8 +103,8 @@ public class Player {
                         --Player.this.switchWhenZero;
                     }
                 } else if (Player.this.moveDown) {
-                    dy += 3;
-                    my = 3;
+                    dy += 4;
+                    my = 4;
                     mx = 0;
                     if (Player.this.switchWhenZero == 0) {
                         character_image.setImage(Player.this.walkingDownImageList.get(Player.this.downCount % 3));
@@ -114,8 +114,8 @@ public class Player {
                         --Player.this.switchWhenZero;
                     }
                 } else if (Player.this.moveRight) {
-                    dx += 3;
-                    mx = 3;
+                    dx += 4;
+                    mx = 4;
                     my = 0;
                     if (Player.this.switchWhenZero == 0) {
                         character_image.setImage(Player.this.walkingRightImageList.get(Player.this.rightCount % 3));
@@ -125,8 +125,8 @@ public class Player {
                         --Player.this.switchWhenZero;
                     }
                 } else if (Player.this.moveLeft) {
-                    dx -= 3;
-                    mx = -3;
+                    dx -= 4;
+                    mx = -4;
                     my = 0;
                     if (Player.this.switchWhenZero == 0) {
                         character_image.setImage(Player.this.walkingLeftImageList.get(Player.this.leftCount % 3));

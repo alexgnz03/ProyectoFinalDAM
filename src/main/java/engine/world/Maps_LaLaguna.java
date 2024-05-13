@@ -2,11 +2,11 @@ package engine.world;
 
 
 import com.google.gson.Gson;
+import engine.MusicPlayerSt;
 import engine.jobs.mcClicker.ClickerController;
-import engine.minijuego.MinijuegoController;
+import engine.miniDoomII.MinijuegoController;
 //import engine.jobs.minijuego1.JuegoController;
 //import engine.jobs.minijuego2.GameController;
-import engine.jobs.keyLifeGuard.GameController;
 import engine.objects.Camera;
 import engine.objects.Elements;
 import engine.objects.NPC;
@@ -93,12 +93,21 @@ public class Maps_LaLaguna {
 
     private int i = 0;
 
+
+
     //Constructor
 
     public Maps_LaLaguna() {
 
         this.barrier = new LinkedList<>();
-        //timerStart();
+
+    }
+
+    public void musica(){
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/lalagunaMusic.mp3");
+        MusicPlayerSt.setVolume(volumen);
     }
 
     public void setStage(Stage stage) {
@@ -122,7 +131,7 @@ public class Maps_LaLaguna {
         this.barrier = new LinkedList<ObstacleTile>();
 
         //
-        this.stage.setTitle("Aparcamientos");
+        this.stage.setTitle("La Laguna");
 
         // Crear un nuevo Pane y agregar ambos root y dialogRoot a este nuevo Pane
         root.setPrefSize(BackgroundImage.getWidth(), BackgroundImage.getHeight());
@@ -140,7 +149,7 @@ public class Maps_LaLaguna {
         this.stage.show();
 
         //Mostrar FPS
-        FPSMonitor fps = new FPSMonitor(stage);
+        //FPSMonitor fps = new FPSMonitor(stage);
     }
 
     public void playerBasics(){
@@ -195,11 +204,6 @@ public class Maps_LaLaguna {
         //Colisiones
         cargarColisionesDesdeJSON("/Maps/LaLaguna/intercambiador.json");
 
-        //NPCs
-
-        NPC npc = new NPC(this.root, stage, 2, 630, 150,"left", barrier);
-        this.npc = npc;
-
         // Elements
         Elements parada = new Elements(this.root, stage, 2, 26, 482);
 
@@ -218,11 +222,8 @@ public class Maps_LaLaguna {
         this.elements = element;
         element.elementsBasics(element.getX(), element.getY(), 91, 314, barrier);
 
-        player.addNPC(npc);
         player.addElements(element);
         player.addElements(parada);
-        npc.addDialogs(dialog, "...", "pepe", "cxzxc", "Hola mi amigo", "Cómo estás hoy", "Yo muy bien");
-        parada.addDialogs(dialog, "pipo");
 
         System.out.println("Character x + y = " + player.getX() + " " + player.getY());
 
@@ -266,9 +267,7 @@ public class Maps_LaLaguna {
         player.addElements(front);
 
         player.addNPC(npc);
-        npc.addDialogs(dialog, "¿Cuál es la forma orientada a objetos para volverse rico? \nHerencia");
-
-        timerStart();
+        npc.addDialogs(dialog, "Tengo un restaurante aquí en La Laguna.", "Pero desde que abrieron ese McDon't ya nadie va...", "...");
     }
 
     //Trinidad02
@@ -308,6 +307,7 @@ public class Maps_LaLaguna {
         npc.addDialogs(dialog, "No es Gracias, es 'arigatou'", "No es Adiós, es 'Sayonara'", "No es idiota, es 'Baka'", "No es Te Quiero, es 'Daisuki'", "No es Te Amo, es 'Aishiteru'", "No es Hola, es 'Konnichiwa'", "No es Buenos Días, es 'Ohayo'", "No es Buenas Noches, es 'Kombawa'", "No es ser raro, es ser OTAKU <3");
         npc2.addDialogs(dialog, "He venido con mi novio a comer al McDon't pero lleva un\nrato balbuceando cosas sin sentido", "Como siga así lo dejo.");
 
+        timerStart();
     }
 
     //Trinidad03
@@ -327,9 +327,13 @@ public class Maps_LaLaguna {
         NPC npc = new NPC(this.root, stage,3, 357, 563, "Up", barrier);
         this.npc = npc;
 
+        NPC npc2 = new NPC(this.root, stage,7, 200, 108, "Left", barrier);
+        this.npc = npc2;
+
         playerBasics();
 
         player.addNPC(npc);
+        player.addNPC(npc2);
 
         carBasics();
 
@@ -341,6 +345,7 @@ public class Maps_LaLaguna {
         player.addElements(tranvia);
 
         npc.addDialogs(dialog,"...");
+        npc2.addDialogs(dialog,"¿Eh, vas al Mr Snack?","No te lo recomiendo. \nEstá carísimo últimamente.", "Pero bueno, allá tú con tus decisiones...");
     }
 
     //Trinidad04
@@ -388,7 +393,7 @@ public class Maps_LaLaguna {
         front.elementsBasicsNC(front.getX(), front.getY());
         player.addElements(front);
 
-        npc.addDialogs(dialog,"...");
+        npc.addDialogs(dialog,"*Respira agitadamente* Nya~ Ho-Ho-Hola... ^w^");
     }
 
     //TrinidadCatedral
@@ -425,7 +430,7 @@ public class Maps_LaLaguna {
         playerBasics();
 
         player.addElements(dependiente);
-        dependiente.addDialogs(dialog, "¿Eh? \n¿Vienes a trabajar?", "Bueno, está bien, tú sabrás lo que \nhaces supongo...");
+        dependiente.addDialogs(dialog, "¿Eh? \n¿Vienes a trabajar aquí?", "Bueno, está bien, tú sabrás \nlo que haces supongo...");
     }
 
     //casa
@@ -448,6 +453,7 @@ public class Maps_LaLaguna {
 
         player.addElements(cama);
         cama.addDialogs(dialog, "STAMINA RECUPERADA");
+        timerStart();
     }
 
     //catedral01
@@ -458,10 +464,16 @@ public class Maps_LaLaguna {
         BackgroundImage = new Image("catedral01.png");
         worldBasics(BackgroundImage);
 
+        NPC npc = new NPC(this.root, stage,15, 550, 565, "Left", barrier);
+        this.npc = npc;
+
         //Colisiones
         cargarColisionesDesdeJSON("/Maps/LaLaguna/catedral01.json");
 
         playerBasics();
+        player.addNPC(npc);
+
+        npc.addDialogs(dialog, "¿Por qué hay un salón arcade al lado de la iglesia?", "Osea no tiene sentido. En la vida real no hay nada de eso \nahí.", "¿De hecho por qué hay un salón arcade en pleno 2024?", "¿Y que sentido tiene que por jugar a una máquina \narcade te aumenten estadísticas de combate?", "¿Que clase de persona diseñó este videojuego?");
 
     }
 
@@ -473,11 +485,21 @@ public class Maps_LaLaguna {
         BackgroundImage = new Image("catedral02.png");
         worldBasics(BackgroundImage);
 
+        NPC npc = new NPC(this.root, stage,11, 405, 460, "Right", barrier);
+        this.npc = npc;
+        NPC npc2 = new NPC(this.root, stage,9, 465, 460, "Left", barrier);
+        this.npc = npc2;
+
         //Colisiones
         cargarColisionesDesdeJSON("/Maps/LaLaguna/catedral02.json");
 
         playerBasics();
 
+        player.addNPC(npc);
+
+        npc.addDialogs(dialog, "(No entiendes absolutamente nada de lo que están \ndiciendo)");
+        player.addNPC(npc2);
+        npc2.addDialogs(dialog, "(No entiendes absolutamente nada de lo que están \ndiciendo)");
     }
 
     //arcade
@@ -509,11 +531,20 @@ public class Maps_LaLaguna {
         BackgroundImage = new Image("aeropuerto.png");
         worldBasics(BackgroundImage);
 
+        Elements azafata = new Elements(this.root, stage, 19, 435, 325);
+        this.elements = azafata;
+        azafata.elementsBasics(azafata.getX(), azafata.getY(), 48, 48, barrier);
+
         //Colisiones
         cargarColisionesDesdeJSON("/Maps/LaLaguna/aeropuerto.json");
 
 
         playerBasics();
+
+        player.addElements(azafata);
+        azafata.addDialogs(dialog, "¿Eh? Este billete cuesta 5000€", "Lo siento. Pero vuelve cuando tengas el dinero.");
+
+        timerStart();
     }
 
     public void pantallaCarga (Stage stage, int I) throws Exception {
@@ -556,11 +587,11 @@ public class Maps_LaLaguna {
 
     public void minijuego(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tablero.fxml"));
-        MinijuegoController minijuego = new MinijuegoController();
+        MinijuegoController minijuego = new MinijuegoController(1);
         minijuego.setStage(stage);
         loader.setController(minijuego);
         Parent root = loader.load();
-        stage.setTitle("Minijuego de Dianas");
+        stage.setTitle("Mini Doom II");
         stage.setScene(new Scene(root, 800, 800));
 
         BackgroundImage = new Image("doomFondo.png");
@@ -626,7 +657,7 @@ public class Maps_LaLaguna {
 
     public void doom(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tablero.fxml"));
-        MinijuegoController minijuego = new MinijuegoController();
+        MinijuegoController minijuego = new MinijuegoController(1);
         minijuego.setStage(stage);
         loader.setController(minijuego);
         Parent root = loader.load();
@@ -971,6 +1002,7 @@ public class Maps_LaLaguna {
         //aeropuerto
         else if (player.getX() >= 0.0 && player.getX() <= 800.0 && player.getY() >= 750.0 && player.getY() <= 800.0 && i == 12) {
             // Hacer algo si las escenas son iguales
+            System.out.println("Hello");
             player.getTimer().stop();
             timer.stop();
 
@@ -981,7 +1013,6 @@ public class Maps_LaLaguna {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            timer.start();
         }
 
         else {

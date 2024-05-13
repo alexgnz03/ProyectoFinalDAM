@@ -1,6 +1,7 @@
 package engine.combate.peleitas;
 import controllers.MainMenuController;
 import engine.world.Maps_BSalud;
+import engine.world.Maps_LaLaguna;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,8 @@ public class GameOverController {
 
     Stage stage;
     Maps_BSalud mapsBSalud = new Maps_BSalud();
+
+    Maps_LaLaguna maps = new Maps_LaLaguna();
     MainMenuController mainMenu = new MainMenuController();
 
     public void setStage(Stage stage) {
@@ -20,9 +23,11 @@ public class GameOverController {
     }
     @FXML
     void reintentarAction(ActionEvent event) {
-        mapsBSalud.setY(65);
-        mapsBSalud.setX(550);
-        mapsBSalud.paradaGuagua(stage);
+        maps.setY(430);
+        maps.setX(315);
+        maps.musica();
+        maps.setStage(stage);
+        maps.casa(stage);
     }
 
     @FXML

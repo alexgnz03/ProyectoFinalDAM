@@ -2,10 +2,12 @@ package engine.world;
 
 
 import com.google.gson.Gson;
+import dbo.CVData;
 import dbo.ObjetosData;
 import dbo.PlayerData;
+import engine.MusicPlayerSt;
 import engine.combate.peleitas.FightController;
-import engine.minijuego.MinijuegoController;
+import engine.miniDoomII.MinijuegoController;
 import engine.jobs.secretaryTyping.JuegoController;
 import engine.objects.Camera;
 import engine.objects.Player;
@@ -22,6 +24,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -103,6 +106,13 @@ public class Maps_BSalud {
         //timerStart();
     }
 
+    public void musica(){
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/lasaludMusic.mp3");
+        MusicPlayerSt.setVolume(volumen);
+    }
+
     public void setStage(Stage stage) {
         this.stage = stage;
 
@@ -127,7 +137,7 @@ public class Maps_BSalud {
         this.barrier = new LinkedList<ObstacleTile>();
 
         //
-        this.stage.setTitle("Aparcamientos");
+        this.stage.setTitle("Barrio de La Salud");
 
         // Crear un nuevo Pane y agregar ambos root y dialogRoot a este nuevo Pane
         root.setPrefSize(BackgroundImage.getWidth(), BackgroundImage.getHeight());
@@ -145,7 +155,7 @@ public class Maps_BSalud {
         this.stage.show();
 
         //Mostrar FPS
-        FPSMonitor fps = new FPSMonitor(stage);
+        //FPSMonitor fps = new FPSMonitor(stage);
     }
 
     public void playerBasics(){
@@ -185,6 +195,7 @@ public class Maps_BSalud {
         i = 6;
 
         PlayerData p = new PlayerData();
+        CVData c = new CVData();
 
         BackgroundImage = new Image("paradaGuagua.png");
 
@@ -200,8 +211,8 @@ public class Maps_BSalud {
 
         //NPCs
 
-//        NPC npc = new NPC(this.root, stage, scene, 2, 630, 150,"left", barrier);
-//        this.npc = npc;
+        NPC npc = new NPC(this.root, stage, 14, 680, 225, "Left", barrier);
+        this.npc = npc;
 
         playerBasics();
         player.setY(65);
@@ -214,6 +225,8 @@ public class Maps_BSalud {
 
         System.out.println("Character x + y = " + player.getX() + " " + player.getY());
 
+        player.addNPC(npc);
+        npc.addDialogs(dialog, "Llevo aquí dos meses y la 026 sigue sin pasar...");
         timerStart();
 
         //Debug
@@ -249,7 +262,7 @@ public class Maps_BSalud {
 
         //NPCs
 
-        NPC npc3 = new NPC(this.root, stage, 3, 300, 550, "right", barrier);
+        NPC npc3 = new NPC(this.root, stage, 3, 300, 250, "right", barrier);
 
         this.npc = npc3;
 
@@ -257,7 +270,7 @@ public class Maps_BSalud {
 
         player.addNPC(npc3);
 
-        npc3.addDialogs(dialog, "Me cago en Java");
+        npc3.addDialogs(dialog, "¿Por qué hay un instituto aquí?");
 
         System.out.println(player.getNPCs()); //DEBUG
 
@@ -280,26 +293,11 @@ public class Maps_BSalud {
 
         this.npc = npc;
 
-        NPC npc2 = new NPC(this.root, stage, 2, 400, 650,"left", barrier);
-
-        this.npc = npc2;
-
-        NPC npc3 = new NPC(this.root, stage, 1, 50, 150,"up", barrier);
-
-        this.npc = npc3;
-
         playerBasics();
 
         player.addNPC(npc);
-        player.addNPC(npc2);
-        player.addNPC(npc3);
 
-        npc.addDialogs(dialog, "¿Cuál es la forma orientada a objetos para volverse rico? \nHerencia");
-        npc2.addDialogs(dialog, "Tuviste piedad, gracias :D");
-        npc3.addDialogs(dialog, "4 días para conseguir que los diálogos funcionen :')");
-
-        System.out.println(player.getNPCs());
-
+        npc.addDialogs(dialog, "Lo de empresas... A veces la vida es muy injusta...");
 
     }
 
@@ -307,13 +305,6 @@ public class Maps_BSalud {
     public void plaza(Stage stage) {
 
         //DEBUG
-        try {
-            PlayerData.guardarDato(7, 100);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        //
 
         i = 3;
 
@@ -325,13 +316,13 @@ public class Maps_BSalud {
 
         //NPCs
 
-        NPC npc = new NPC(this.root, stage, 7, 330, 540,"up", barrier);
+        NPC npc = new NPC(this.root, stage, 13, 330, 540,"up", barrier);
         this.npc = npc;
 
         playerBasics();
 
         player.addNPC(npc);
-        npc.addDialogs(dialog, "...");
+        npc.addDialogs(dialog, "Estoy estudiando primero de DAM y queda poco \npara los finales. \nEs mucho estrés...", "Que ganitas de estar en segundo que solo son \n6 meses y seguro que es más relajado.");
 
     }
     public void plaza2(Stage stage) {
@@ -349,16 +340,11 @@ public class Maps_BSalud {
         NPC npc = new NPC(this.root, stage, 8, 40, 310,"right", barrier);
         this.npc = npc;
 
-        NPC npc2 = new NPC(this.root, stage, 5, 370, 530,"up", barrier);
-        this.npc = npc2;
-
         playerBasics();
 
         player.addNPC(npc);
-        player.addNPC(npc2);
 
-        npc.addDialogs(dialog, "...");
-        npc2.addDialogs(dialog, "...");
+        npc.addDialogs(dialog, "...", "...","...","...","...","¿Vas a seguir mirándome?");
     }
 
     public void arcade(Stage stage) {
@@ -378,6 +364,7 @@ public class Maps_BSalud {
 
         playerBasics();
         player.addElements(element);
+        element.addDialogs(dialog, "AVISO: Jugar cuesta 20€, comprueba que tengas\n dinero suficiente...");
 
     }
 
@@ -399,7 +386,7 @@ public class Maps_BSalud {
         playerBasics();
 
         player.addNPC(npc);
-        npc.addDialogs(dialog, "...");
+        npc.addDialogs(dialog, "¿20 pavos un monster? ¿Hasta donde vamos a \nllegar?", "Y encima han quitado el power coco del alteza.", "Esto es una vergüenza...");
     }
 
     //placita
@@ -420,7 +407,7 @@ public class Maps_BSalud {
         playerBasics();
 
         player.addNPC(npc);
-        npc.addDialogs(dialog, "...");
+        npc.addDialogs(dialog, "¿Sabes? Yo estudié aquí...", "Pero tuve que dejarlo por cosas más\nimportantes.", "...", "O eso creo.");
 
     }
 
@@ -441,7 +428,7 @@ public class Maps_BSalud {
         this.elements = element;
         element.elementsBasics(element.getX(), element.getY(), 60, 148, barrier);
 
-        Elements secretario = new Elements(this.root, stage, 16, 465, 556);
+        Elements secretario = new Elements(this.root, stage, 16, 210, 262);
         this.elements = secretario;
         secretario.elementsBasics(secretario.getX(), secretario.getY(), 48, 48, barrier);
 
@@ -458,7 +445,7 @@ public class Maps_BSalud {
         player.addElements(element);
         player.addElements(secretario);
         element.addDialogs(dialog, "La secretaría está cerrada.\nVuelva en otro momento a ver si tiene más suerte. \nCampeón.");
-        secretario.addDialogs(dialog, "¿Seguro que quieres trabajar aquí chaval?");
+        secretario.addDialogs(dialog, "¿Seguro que quieres trabajar aquí chaval?\nAllá tú, pero es muy duro eh...", "3 horas al día durante 3 días a la semana.\nUn infierno.", "¿Te parece poco?\nPues que sepas que trabajo más que\nla mayoría de profesores aquí.");
 
     }
 
@@ -613,7 +600,7 @@ public class Maps_BSalud {
 
     public void doom(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tablero.fxml"));
-        MinijuegoController minijuego = new MinijuegoController();
+        MinijuegoController minijuego = new MinijuegoController(2);
         minijuego.setStage(stage);
         loader.setController(minijuego);
         Parent root = loader.load();
@@ -633,33 +620,33 @@ public class Maps_BSalud {
     }
 
     public void combate(Stage stage, int i) throws Exception {
-        System.out.println("control 1: " + player.getX() + " i: " + i);
+
         timer.stop();
         player.getTimer().stop();
-        System.out.println("control 2: " + player.getX() + " i: " + i);
+
+
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/fightMusic.mp3");
+        System.out.println("Volumen: " + MusicPlayerSt.getVolume());
+        MusicPlayerSt.setVolume(volumen);
+
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fight.fxml"));
         FightController fight = new FightController(1, player.getX(), player.getY());
 
-        System.out.println("control 3: " + player.getX() + " i: " + i);
         fight.setI(i);
         fight.setStage(stage);
 
-        System.out.println("control 4: " + player.getX() + " i: " + i);
         loader.setController(fight);
         Parent root = loader.load();
 
-        System.out.println("control 5: " + player.getX() + " i: " + i);
         Scene scene = new Scene(root, 800, 800);
         stage.setTitle("Fight");
 
-        System.out.println("control 6: " + player.getX() + " i: " + i);
         stage.setScene(scene);
         stage.show();
 
-        System.out.println("control 7: " + player.getX() + " i: " + i);
-
-        System.out.println("control 8: " + player.getX() + " i: " + i);
     }
 
     public void tienda(Stage stage, int id) throws Exception {
@@ -727,7 +714,7 @@ public class Maps_BSalud {
 
     public void trabajoSecretario(Stage stage) throws Exception {
         FadeOut(() -> {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Jobs/keyLifeGuard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Jobs/secretaryTyping.fxml"));
             JuegoController controller = new JuegoController();
             controller.setStage(stage);
             loader.setController(controller);
@@ -738,9 +725,17 @@ public class Maps_BSalud {
                 throw new RuntimeException(e);
             }
             Scene scene = new Scene(root, 800, 800);
+
             stage.setTitle("Secretario");
             stage.setScene(scene);
             stage.show();
+
+            TextField textField = controller.getPalabraTextField();
+            textField.setOnKeyPressed(event -> {
+                if (event.getCode().toString().equals("ENTER")) {
+                    controller.comprobarPalabra();
+                }
+            });
 
             //controller.FadeIn();
 
@@ -806,7 +801,7 @@ public class Maps_BSalud {
         if (!player.isMoving()) {
             return false;
         }
-        double probability = 0.001;
+        double probability = 0.0015;
 
         // Generar un número aleatorio entre 0 y 1
         double randomValue = random.nextDouble();
@@ -841,7 +836,7 @@ public class Maps_BSalud {
     }
 
     private void mapsChanger() {
-        if (shouldStartRandomCombat() && i != 6 && i != 9) {
+        if (shouldStartRandomCombat() && i != 6 && i != 9 && i != 5) {
             startRandomCombat();
         }
         //CalleInstituto
@@ -980,12 +975,8 @@ public class Maps_BSalud {
 
             x = 370;
             y = 725;
-            //arcade(stage);
-            try {
-                mapsSelector(stage);
-            }catch (Exception ex){
-            }
-            //timer.start();
+            arcade(stage);
+            timer.start();
         }
 
         //arcade
@@ -1036,16 +1027,16 @@ public class Maps_BSalud {
             timer.start();
         }
 
-        else if (player.getX() >= 757.0 && player.getX() <= 778.0 && player.getY() >= 0.0 && player.getY() <= 800.0 && i == 9) {
-            // Hacer algo si las escenas son iguales
-            player.getTimer().stop();
-            timer.stop();
-
-            x = 25;
-            y = 690;
-            lobbyInstituto2(stage);
-            timer.start();
-        }
+//        else if (player.getX() >= 757.0 && player.getX() <= 778.0 && player.getY() >= 0.0 && player.getY() <= 800.0 && i == 9) {
+//            // Hacer algo si las escenas son iguales
+//            player.getTimer().stop();
+//            timer.stop();
+//
+//            x = 25;
+//            y = 690;
+//            lobbyInstituto2(stage);
+//            timer.start();
+//        }
 
         //lobbyInstituto2.json
         else if (player.getX() >= 0.0 && player.getX() <= 30.0 && player.getY() >= 0.0 && player.getY() <= 800.0 && i == 10) {

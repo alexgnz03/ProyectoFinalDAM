@@ -1,6 +1,6 @@
 package engine.combate.peleitas;
 
-import engine.MusicPlayer;
+import engine.EffectPlayer;
 import engine.ui.Dialog;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -221,8 +221,8 @@ public class Monstruo {
             damage = vidaJugador;
         }
 
-        MusicPlayer efectos;
-        efectos = new MusicPlayer("/Effects/enemyAttack.mp3");
+        EffectPlayer efectos;
+        efectos = new EffectPlayer("/Effects/enemyAttack.mp3");
         efectos.play();
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.75), event -> {
             efectos.stop();

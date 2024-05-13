@@ -1,6 +1,7 @@
 package engine.jobs.mcClicker;
 
 import controllers.PantallaResultadosController;
+import engine.MusicPlayerSt;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -30,6 +31,11 @@ public class ClickerController {
     private int dinero;
     private int puntuacion;
     public void initialize() {
+        double volumen;
+        volumen = MusicPlayerSt.getVolume();
+        MusicPlayerSt.play("/Music/mcdontMusic.mp3");
+        MusicPlayerSt.setVolume(volumen);
+
         model = new ClickerModel(this);
         tiempoRestante = 60; // 60 segundos
 
@@ -57,7 +63,7 @@ public class ClickerController {
 
     private void mostrarResultados() {
         temporizador.stop();
-        dinero = puntuacion;
+        dinero = puntuacion/10;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resultados.fxml"));
         PantallaResultadosController controller = new PantallaResultadosController(puntuacion, dinero, 1);
         controller.setStage(stage);
