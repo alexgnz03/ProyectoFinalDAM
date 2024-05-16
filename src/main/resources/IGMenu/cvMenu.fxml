@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="backgroundImage" fitHeight="470.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#81cc97" height="470.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="320.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#539165" height="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="320.0" />
+      <Label alignment="CENTER" layoutX="34.0" layoutY="15.0" prefHeight="40.0" prefWidth="253.0" text="Currículum Vitae" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="87.0" prefHeight="37.0" prefWidth="126.0" text="McDon't:">
+         <font>
+            <Font name="Arial Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="124.0" prefHeight="37.0" prefWidth="195.0" text="Socorrista:">
+         <font>
+            <Font name="Arial Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="161.0" prefHeight="37.0" prefWidth="144.0" text="Secretario:">
+         <font>
+            <Font name="Arial Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="243.0" prefHeight="37.0" prefWidth="207.0" text="MiniDoom II:">
+         <font>
+            <Font name="Arial Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="mcdontStat" layoutX="237.0" layoutY="91.0" text="Label">
+         <font>
+            <Font name="Arial" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="socorristaStat" layoutX="237.0" layoutY="128.0" text="Label">
+         <font>
+            <Font name="Arial" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="secretarioStat" layoutX="237.0" layoutY="165.0" text="Label">
+         <font>
+            <Font name="Arial" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="doomStat" layoutX="237.0" layoutY="247.0" text="Label">
+         <font>
+            <Font name="Arial" size="25.0" />
+         </font>
+      </Label>
+      <Button id="salirButton" layoutX="19.0" layoutY="410.0" mnemonicParsing="false" onAction="#volverAction" prefHeight="48.0" prefWidth="105.0" stylesheets="@../Css/igInventory.css" text="Volver" />
+   </children>
+</Pane>

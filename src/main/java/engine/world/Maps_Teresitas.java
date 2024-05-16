@@ -3,16 +3,11 @@ package engine.world;
 
 import com.google.gson.Gson;
 import engine.MusicPlayerSt;
-import engine.combate.peleitas.FightController;
-import engine.jobs.keyLifeGuard.GameController;
-import engine.miniDoomII.MinijuegoController;
-import engine.objects.Camera;
-import engine.objects.Elements;
-import engine.objects.NPC;
-import engine.objects.Player;
+import engine.combate.FightController;
+import engine.entities.*;
+import engine.jobs.keylifeguard.LifeGuardController;
 import engine.tienda.TiendaController;
 import engine.ui.Dialog;
-import engine.ui.FPSMonitor;
 import engine.ui.PlayerState;
 import engine.ui.inGameMenu.InGameMenu;
 import javafx.animation.*;
@@ -63,7 +58,7 @@ public class Maps_Teresitas {
         this.scene = scene;
     }
 
-    private ImageView character_image = new ImageView(new Image("Down2.png"));
+    private ImageView character_image = new ImageView(new Image("Player/Down2.png"));
 
     public void setX(double x) {
         this.x = x;
@@ -181,27 +176,17 @@ public class Maps_Teresitas {
         player.addMenu(inGameMenu);
     }
 
-    public void carBasics() {
-        car = new Elements(this.root, stage, 13, 0, 350);
-        car.elements_image.setOpacity(0);
-
-        this.elements = car;
-        car.elementsBasicsNC(car.getX(), car.getY());
-        car.carTimer(player);
-        car.timer.start();
-    }
-
     //Teresitas01
     public void teresitas01(Stage stage) {
 
         i = 0;
 
-        BackgroundImage = new Image("/Teresitas/teresitas01.png");
+        BackgroundImage = new Image("/Maps/Fondos/Teresitas/teresitas01.png");
 
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas01.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/Teresitas/teresitas01.json");
 
         Elements element = new Elements(this.root, stage, 2, 520, 405);
 
@@ -225,12 +210,12 @@ public class Maps_Teresitas {
 
         i = 1;
 
-        BackgroundImage = new Image("/Teresitas/teresitas02.png");
+        BackgroundImage = new Image("/Maps/Fondos/Teresitas/teresitas02.png");
 
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas02.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/Teresitas/teresitas02.json");
 
 
         playerBasics();
@@ -242,14 +227,14 @@ public class Maps_Teresitas {
 
         i = 2;
 
-        BackgroundImage = new Image("/Teresitas/teresitas03.png");
+        BackgroundImage = new Image("/Maps/Fondos/Teresitas/teresitas03.png");
 
         worldBasics(BackgroundImage);
 
         System.out.println("2x: " + player.getX() + " y: " + player.getY());
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas03.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/Teresitas/teresitas03.json");
 
 
         playerBasics();
@@ -263,12 +248,12 @@ public class Maps_Teresitas {
 
         i = 3;
 
-        BackgroundImage = new Image("/Teresitas/teresitas04.png");
+        BackgroundImage = new Image("/Maps/Fondos/Teresitas/teresitas04.png");
 
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas04.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/Teresitas/teresitas04.json");
 
         NPC npc = new NPC(this.root, stage,10, 320, 570, "Right", barrier);
         this.npc = npc;
@@ -283,7 +268,7 @@ public class Maps_Teresitas {
 
         i = 4;
 
-        BackgroundImage = new Image("/Teresitas/teresitas05.png");
+        BackgroundImage = new Image("/Maps/Fondos/Teresitas/teresitas05.png");
 
         worldBasics(BackgroundImage);
 
@@ -291,7 +276,7 @@ public class Maps_Teresitas {
         this.npc = npc;
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas05.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/Teresitas/teresitas05.json");
 
 
         playerBasics();
@@ -305,12 +290,12 @@ public class Maps_Teresitas {
 
         i = 5;
 
-        BackgroundImage = new Image("/Teresitas/teresitas06.png");
+        BackgroundImage = new Image("/Maps/Fondos/Teresitas/teresitas06.png");
 
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas06.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/Teresitas/teresitas06.json");
 
         Elements tienda = new Elements(this.root, stage, 18, 140, 270);
         this.elements = tienda;
@@ -325,7 +310,7 @@ public class Maps_Teresitas {
 
         i = 6;
 
-        BackgroundImage = new Image("/Teresitas/teresitas07.png");
+        BackgroundImage = new Image("/Maps/Fondos/Teresitas/teresitas07.png");
 
         worldBasics(BackgroundImage);
 
@@ -333,7 +318,7 @@ public class Maps_Teresitas {
         this.npc = npc;
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas07.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/Teresitas/teresitas07.json");
 
         Elements tienda = new Elements(this.root, stage, 17, 468, 414);
         this.elements = tienda;
@@ -349,7 +334,7 @@ public class Maps_Teresitas {
 
         i = 7;
 
-        BackgroundImage = new Image("/Teresitas/teresitas08.png");
+        BackgroundImage = new Image("/Maps/Fondos/Teresitas/teresitas08.png");
 
         worldBasics(BackgroundImage);
 
@@ -360,7 +345,7 @@ public class Maps_Teresitas {
         this.npc = npc2;
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/Teresitas/teresitas08.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/Teresitas/teresitas08.json");
 
 
         playerBasics();
@@ -372,34 +357,13 @@ public class Maps_Teresitas {
 
     }
 
-    /*public void doom(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tablero.fxml"));
-        MinijuegoController minijuego = new MinijuegoController();
-        minijuego.setStage(stage);
-        loader.setController(minijuego);
-        Parent root = loader.load();
-        stage.setTitle("Mini Doom II");
-        stage.setScene(new Scene(root, 800, 800));
-
-        BackgroundImage = new Image("doomFondo.png");
-
-        Background background = new Background(new BackgroundImage[]{new BackgroundImage(BackgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size)});
-        this.root.setBackground(background);
-
-        stage.show();
-
-        MinijuegoController controlador = loader.getController();
-        controlador.actualizarTiempo();
-
-    }*/
-
     public void combate(Stage stage, int i) throws Exception {
         System.out.println("control 1: " + player.getX() + " i: " + i);
         timer.stop();
         player.getTimer().stop();
         System.out.println("control 2: " + player.getX() + " i: " + i);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fight.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Combate/fight.fxml"));
         FightController fight = new FightController(1, player.getX(), player.getY());
 
         System.out.println("control 3: " + player.getX() + " i: " + i);
@@ -424,8 +388,7 @@ public class Maps_Teresitas {
     }
 
     public void tienda(Stage stage, int id) throws Exception {
-        FadeOut(() -> {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tiendaMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Tienda/tiendaMenu.fxml"));
             TiendaController tiendaController = new TiendaController();
             tiendaController.setStage(stage);
             tiendaController.setI(id);
@@ -441,16 +404,13 @@ public class Maps_Teresitas {
             stage.setScene(scene);
             stage.show();
 
-            //controller.FadeIn();
-
 
             player = new Player(this.root, scene, this.barrier, character_image);
-        });
     }
 
     public void pantallaCarga (Stage stage, int I) throws Exception {
-        BackgroundImage = new Image("pantallaCarga.png");
-        final String[] CAMINAR_IMAGENES = {"Down1.png", "Down2.png", "Down3.png"};
+        BackgroundImage = new Image("Maps/pantallaCarga.png");
+        final String[] CAMINAR_IMAGENES = {"Player/Down1.png", "Player/Down2.png", "Player/Down3.png"};
         final int DURACION_FRAME_MILLIS = 100; // Duración de cada frame en milisegundos
         final int[] indiceImagenActual = {0};
         ImageView animacion = new ImageView();
@@ -471,6 +431,9 @@ public class Maps_Teresitas {
         worldBasics(BackgroundImage);
         this.root.getChildren().add(animacion);
         timeline.play();
+        PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+        pause.setOnFinished(event -> {
+            try {
         switch (I){
             case 1:
                 tienda(stage, 3);
@@ -482,14 +445,16 @@ public class Maps_Teresitas {
                 //doom(stage);
                 break;
         }
-
-//        playerBasics();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+        pause.play();
     }
 
     public void trabajoSocorrista(Stage stage) throws Exception {
-        FadeOut(() -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Jobs/keyLifeGuard.fxml"));
-            GameController controller = new GameController();
+            LifeGuardController controller = new LifeGuardController();
             controller.setStage(stage);
             loader.setController(controller);
             Parent root = null;
@@ -503,28 +468,6 @@ public class Maps_Teresitas {
             stage.setTitle("Socorrista");
             stage.setScene(scene);
             stage.show();
-
-            //controller.FadeIn();
-        });
-    }
-
-    public static void FadeOut(Runnable onFadeOutComplete) {
-        Rectangle nuevoContenido = new Rectangle(800, 800, Color.BLACK);
-        nuevoContenido.setOpacity(0); // Iniciar con opacidad 0 para el FadeIn
-
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(5), nuevoContenido);
-        fadeIn.setFromValue(0);
-        fadeIn.setToValue(1);
-        fadeIn.play();
-
-        // Agregar un evento para manejar el final de la transición
-        fadeIn.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                // Llamar a la acción después de que la transición haya terminado
-                onFadeOutComplete.run();
-            }
-        });
     }
 
     public void createObstacleTile(double w, double h, double x, double y) {
@@ -552,59 +495,7 @@ public class Maps_Teresitas {
         }
     }
 
-    public int getSumadorCombate() {
-        return sumadorCombate;
-    }
-
-    public void setSumadorCombate(int sumadorCombate) {
-        this.sumadorCombate = sumadorCombate;
-    }
-
-//    private boolean shouldStartRandomCombat() {
-//        // Verificar si el personaje se está moviendo
-//        if (!player.isMoving()) {
-//            return false;
-//        }
-//        double probability = 0.001;
-//
-//        // Generar un número aleatorio entre 0 y 1
-//        double randomValue = random.nextDouble();
-//
-//        // Verificar si el número aleatorio es menor que la probabilidad
-//        return randomValue < probability;
-//    }ç
-
-
-
-    private void startRandomCombat() {
-        System.out.println("¡Combate aleatorio!");
-        System.out.println(player.getX());
-
-        this.root = new Pane();
-
-        try {
-            combate(stage, i);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void mapsSelector(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MapsSelector.fxml"));
-        MapSelector controller = new MapSelector();
-        controller.setStage(stage);
-        loader.setController(controller);
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 800, 800);
-        stage.setTitle("Tienda");
-        stage.setScene(scene);
-        stage.show();
-    }
-
     private void mapsChanger() {
-//        if (shouldStartRandomCombat() && i != 6 && i != 9) {
-//            startRandomCombat();
-//        }
         //teresitas01
         if (player.getX() >= 757.0 && player.getX() <= 778.0 && player.getY() >= 0.0 && player.getY() <= 800.0 && i == 0) {
             // Hacer algo si las escenas son iguales
@@ -799,7 +690,7 @@ public class Maps_Teresitas {
             player.getTimer().stop();
             timer.stop();
 
-            x = player.getX() + 680;
+            x = player.getX() + 670;
             y = player.getY() - 24;
             teresitas07(stage);
             timer.start();

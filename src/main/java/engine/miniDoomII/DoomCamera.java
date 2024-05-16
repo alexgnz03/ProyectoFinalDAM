@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.transform.Scale;
 import javafx.scene.input.MouseEvent;
 
+//Movimiento de la cámara al apuntar
 public class DoomCamera {
 
     private AnimationTimer timer;

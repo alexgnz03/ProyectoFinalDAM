@@ -1,7 +1,6 @@
 package engine.ui.inGameMenu;
 
-import dbo.CVData;
-import dbo.PlayerData;
+import engine.dbo.CVData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

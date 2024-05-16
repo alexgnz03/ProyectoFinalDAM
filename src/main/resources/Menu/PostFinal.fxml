@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PostFinalController">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engine.menu.PostFinalController">
    <children>
       <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../fondoFinal.png" />
+            <Image url="@../Video/fondoFinal.png" />
          </image>
       </ImageView>
       <Button id="jugarButton" fx:id="jugarButton" layoutX="531.0" layoutY="703.0" mnemonicParsing="false" onAction="#jugarAction" prefHeight="74.0" prefWidth="214.0" stylesheets="@style.css" text="Salir del juego">

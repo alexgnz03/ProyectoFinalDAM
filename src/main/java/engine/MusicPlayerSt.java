@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+// Clase para la música, estática
 public class MusicPlayerSt {
     private static MediaPlayer mediaPlayer;
 

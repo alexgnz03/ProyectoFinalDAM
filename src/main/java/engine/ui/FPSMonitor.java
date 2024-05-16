@@ -11,6 +11,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+//Esta clase es puramente para el testeo, con el método de abajo podemos ver los fps del juego
 public class FPSMonitor {
 
     public FPSMonitor(Stage stage) {

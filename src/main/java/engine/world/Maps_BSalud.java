@@ -2,20 +2,16 @@ package engine.world;
 
 
 import com.google.gson.Gson;
-import dbo.CVData;
-import dbo.ObjetosData;
-import dbo.PlayerData;
+import engine.dbo.CVData;
+import engine.dbo.ObjetosData;
+import engine.dbo.PlayerData;
 import engine.MusicPlayerSt;
-import engine.combate.peleitas.FightController;
+import engine.combate.FightController;
+import engine.entities.*;
 import engine.miniDoomII.MinijuegoController;
-import engine.jobs.secretaryTyping.JuegoController;
-import engine.objects.Camera;
-import engine.objects.Player;
-import engine.objects.Elements;
-import engine.objects.NPC;
+import engine.jobs.secretarytyping.SecretaryController;
 import engine.tienda.TiendaController;
 import engine.ui.Dialog;
-import engine.ui.FPSMonitor;
 import engine.ui.PlayerState;
 import engine.ui.inGameMenu.InGameMenu;
 import javafx.animation.*;
@@ -68,7 +64,7 @@ public class Maps_BSalud {
         this.scene = scene;
     }
 
-    private ImageView character_image = new ImageView(new Image("Down2.png"));
+    private ImageView character_image = new ImageView(new Image("Player/Down2.png"));
 
     public void setX(double x) {
         this.x = x;
@@ -189,6 +185,8 @@ public class Maps_BSalud {
         player.addMenu(inGameMenu);
     }
 
+    //Mapas
+
     //Parada guagua
     public void paradaGuagua(Stage stage) {
 
@@ -197,12 +195,12 @@ public class Maps_BSalud {
         PlayerData p = new PlayerData();
         CVData c = new CVData();
 
-        BackgroundImage = new Image("paradaGuagua.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/paradaGuagua.png");
 
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/paradaGuagua.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/paradaGuagua.json");
 
         Elements element = new Elements(this.root, stage, 2, 675, 30);
 
@@ -219,46 +217,20 @@ public class Maps_BSalud {
         player.setX(550);
 
         player.addElements(element);
-        element.addDialogs(dialog, "Parada de la 026", "parada");
-//        player.addNPC(npc);
-//        npc.addDialogs(dialog, "...", "pepe", "cxzxc", "Hola mi amigo", "Cómo estás hoy", "Yo muy bien");
-
-        System.out.println("Character x + y = " + player.getX() + " " + player.getY());
 
         player.addNPC(npc);
         npc.addDialogs(dialog, "Llevo aquí dos meses y la 026 sigue sin pasar...");
         timerStart();
-
-        //Debug
-        ObjetosData ob = new ObjetosData();
-//        try {
-//            //ob.insertarDatosObjeto("refresco", "bebida refrescante", 5);
-//            ob.mostrarDatosObjeto();
-////            ob.insertarDatosInventario(8);
-////            ob.mostrarDatosInventario();
-//        } catch (SQLException ex){
-//            System.out.println("Error al insertar: " + ex);
-//        }
     }
 
     public void calleInstituto(Stage stage) {
 
-//        MonsterLoader mostro = new MonsterLoader();
-//        mostro.crearTablas();
-//        mostro.insertarRegistros();
-
-//        try {
-//            PlayerData.guardarDato(0, 20);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-
         i = 1;
 
-        BackgroundImage = new Image("calleInstituto.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/calleInstituto.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/calleInstituto.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/calleInstituto.json");
 
         //NPCs
 
@@ -281,11 +253,11 @@ public class Maps_BSalud {
 
         i = 2;
 
-        BackgroundImage = new Image("calleinstituto2.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/calleinstituto2.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/calleInstituto2.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/calleInstituto2.json");
 
         //NPCs
 
@@ -308,11 +280,11 @@ public class Maps_BSalud {
 
         i = 3;
 
-        BackgroundImage = new Image("plaza.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/plaza.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/plaza.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/plaza.json");
 
         //NPCs
 
@@ -329,11 +301,11 @@ public class Maps_BSalud {
 
         i = 4;
 
-        BackgroundImage = new Image("plaza2.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/plaza2.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/plaza2.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/plaza2.json");
 
         //NPCs
 
@@ -351,11 +323,11 @@ public class Maps_BSalud {
 
         i = 5;
 
-        BackgroundImage = new Image("arcade.png");
+        BackgroundImage = new Image("Maps/Fondos/arcade.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/arcade.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/arcade.json");
 
         Elements element = new Elements(this.root, stage, 1, 545, 340);
 
@@ -373,11 +345,11 @@ public class Maps_BSalud {
 
         i = 7;
 
-        BackgroundImage = new Image("instituto-plaza.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/instituto-plaza.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/institutoPlaza.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/institutoPlaza.json");
 
         //NPCs
         NPC npc = new NPC(this.root, stage, 1, 290, 265,"right", barrier);
@@ -394,11 +366,11 @@ public class Maps_BSalud {
 
         i = 8;
 
-        BackgroundImage = new Image("placita.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/placita.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/placita.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/placita.json");
 
         //NPCs
         NPC npc = new NPC(this.root, stage, 4, 425, 640,"down", barrier);
@@ -416,11 +388,11 @@ public class Maps_BSalud {
 
         i = 9;
 
-        BackgroundImage = new Image("lobby_instituto.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/lobby_instituto.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/lobbyInstituto.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/lobbyInstituto.json");
 
         //Elements
         Elements element = new Elements(this.root, stage, 4, 204, 145);
@@ -434,14 +406,14 @@ public class Maps_BSalud {
 
         //NPCs
 
-        NPC npc = new NPC(this.root, stage, 12, 370, 350,"left", barrier);
+        NPC npc = new NPC(this.root, stage, 12, 380, 380,"left", barrier);
 
         this.npc = npc;
 
         playerBasics();
 
         player.addNPC(npc);
-        npc.addDialogs(dialog, "Tengo sueño");
+        npc.addDialogs(dialog, "Deja la puerta abierta porfa.");
         player.addElements(element);
         player.addElements(secretario);
         element.addDialogs(dialog, "La secretaría está cerrada.\nVuelva en otro momento a ver si tiene más suerte. \nCampeón.");
@@ -454,11 +426,11 @@ public class Maps_BSalud {
 
         i = 10;
 
-        BackgroundImage = new Image("lobby2_instituto.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/lobby2_instituto.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/lobbyInstituto2.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/lobbyInstituto2.json");
 
         Elements element = new Elements(this.root, stage,3, 425, 30);
 
@@ -490,11 +462,11 @@ public class Maps_BSalud {
 
         i = 11;
 
-        BackgroundImage = new Image("subida_instituto.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/subida_instituto.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/subidaInstituto.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/subidaInstituto.json");
 
         playerBasics();
 
@@ -505,11 +477,11 @@ public class Maps_BSalud {
 
         i = 12;
 
-        BackgroundImage = new Image("subida_instituto2.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/subida_instituto2.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/subidaInstituto2.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/subidaInstituto2.json");
 
         //NPCs
 
@@ -536,11 +508,11 @@ public class Maps_BSalud {
 
         i = 13;
 
-        BackgroundImage = new Image("lobby_aulas.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/lobby_aulas.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/lobbyAulas.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/lobbyAulas.json");
 
         //Elements
         Elements element = new Elements(this.root, stage, 4, 628, 32);
@@ -559,11 +531,11 @@ public class Maps_BSalud {
 
         i = 14;
 
-        BackgroundImage = new Image("lobby_aulas2.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/lobby_aulas2.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/lobbyAulas2.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/lobbyAulas2.json");
 
         //NPCs
 
@@ -581,11 +553,11 @@ public class Maps_BSalud {
 
         i = 15;
 
-        BackgroundImage = new Image("aula.png");
+        BackgroundImage = new Image("Maps/Fondos/B_LaSalud/aula.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/B_LaSalud/aula.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/B_LaSalud/aula.json");
 
         //NPCs
         NPC npc = new NPC(this.root, stage, 11, 185, 235,"down", barrier);
@@ -598,8 +570,9 @@ public class Maps_BSalud {
         npc.addDialogs(dialog, "Tengo sueño");
     }
 
+    // Utilidades extra
     public void doom(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tablero.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Doom2mini/doomView.fxml"));
         MinijuegoController minijuego = new MinijuegoController(2);
         minijuego.setStage(stage);
         loader.setController(minijuego);
@@ -607,7 +580,7 @@ public class Maps_BSalud {
         stage.setTitle("Minijuego de Dianas");
         stage.setScene(new Scene(root, 800, 800));
 
-        BackgroundImage = new Image("doomFondo.png");
+        BackgroundImage = new Image("Doom2mini/doomFondo.png");
 
         Background background = new Background(new BackgroundImage[]{new BackgroundImage(BackgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size)});
         this.root.setBackground(background);
@@ -632,7 +605,7 @@ public class Maps_BSalud {
         MusicPlayerSt.setVolume(volumen);
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fight.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Combate/fight.fxml"));
         FightController fight = new FightController(1, player.getX(), player.getY());
 
         fight.setI(i);
@@ -650,8 +623,7 @@ public class Maps_BSalud {
     }
 
     public void tienda(Stage stage, int id) throws Exception {
-        FadeOut(() -> {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tiendaMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Tienda/tiendaMenu.fxml"));
             TiendaController tiendaController = new TiendaController();
             tiendaController.setStage(stage);
             tiendaController.setI(id);
@@ -671,12 +643,11 @@ public class Maps_BSalud {
 
 
             player = new Player(this.root, scene, this.barrier, character_image);
-        });
     }
 
     public void pantallaCarga (Stage stage, int I) throws Exception {
-        BackgroundImage = new Image("pantallaCarga.png");
-        final String[] CAMINAR_IMAGENES = {"Down1.png", "Down2.png", "Down3.png"};
+        BackgroundImage = new Image("Maps/pantallaCarga.png");
+        final String[] CAMINAR_IMAGENES = {"Player/Down1.png", "Player/Down2.png", "Player/Down3.png"};
         final int DURACION_FRAME_MILLIS = 100; // Duración de cada frame en milisegundos
         final int[] indiceImagenActual = {0};
         ImageView animacion = new ImageView();
@@ -697,6 +668,9 @@ public class Maps_BSalud {
         worldBasics(BackgroundImage);
         this.root.getChildren().add(animacion);
         timeline.play();
+        PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+        pause.setOnFinished(event -> {
+            try {
         switch (I){
             case 1:
                 tienda(stage, 2);
@@ -708,14 +682,15 @@ public class Maps_BSalud {
                 doom(stage);
                 break;
         }
-
-//        playerBasics();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public void trabajoSecretario(Stage stage) throws Exception {
-        FadeOut(() -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Jobs/secretaryTyping.fxml"));
-            JuegoController controller = new JuegoController();
+            SecretaryController controller = new SecretaryController();
             controller.setStage(stage);
             loader.setController(controller);
             Parent root = null;
@@ -737,30 +712,7 @@ public class Maps_BSalud {
                 }
             });
 
-            //controller.FadeIn();
-
-
             player = new Player(this.root, scene, this.barrier, character_image);
-        });
-    }
-
-    public static void FadeOut(Runnable onFadeOutComplete) {
-        Rectangle nuevoContenido = new Rectangle(800, 800, Color.BLACK);
-        nuevoContenido.setOpacity(0); // Iniciar con opacidad 0 para el FadeIn
-
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(5), nuevoContenido);
-        fadeIn.setFromValue(0);
-        fadeIn.setToValue(1);
-        fadeIn.play();
-
-        // Agregar un evento para manejar el final de la transición
-        fadeIn.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                // Llamar a la acción después de que la transición haya terminado
-                onFadeOutComplete.run();
-            }
-        });
     }
 
     public void createObstacleTile(double w, double h, double x, double y) {
@@ -786,14 +738,6 @@ public class Maps_BSalud {
             e.printStackTrace();
             System.out.println("Error al cargar la ruta");
         }
-    }
-
-    public int getSumadorCombate() {
-        return sumadorCombate;
-    }
-
-    public void setSumadorCombate(int sumadorCombate) {
-        this.sumadorCombate = sumadorCombate;
     }
 
     private boolean shouldStartRandomCombat() {
@@ -824,7 +768,7 @@ public class Maps_BSalud {
     }
 
     public void mapsSelector(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MapsSelector.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Maps/MapSelector/MapsSelector.fxml"));
         MapSelector controller = new MapSelector();
         controller.setStage(stage);
         loader.setController(controller);
@@ -835,6 +779,8 @@ public class Maps_BSalud {
         stage.show();
     }
 
+
+    // Cambiar mapa según la posición del player y el mapa actual
     private void mapsChanger() {
         if (shouldStartRandomCombat() && i != 6 && i != 9 && i != 5) {
             startRandomCombat();

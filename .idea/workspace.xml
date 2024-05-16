@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="IESCanariasSimulator:jar28" />
+      <artifact name="IESCanariasSimulator:jar29" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -29,89 +29,266 @@
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar26.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar27.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar28.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar29.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar6.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar7.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar8.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dbo/CVData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/MusicPlayerSt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGCVController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGConfigController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGHelpController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Css/healthBar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Css/igInventory.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Css/igMenu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Css/igMostroDex.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cvMenu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/igAyudaMenu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/igconfigMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/IESCanariasSimulator_jar5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar2/IESCanariasSimulator.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar2/IESCanariasSimulator.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar3/IESCanariasSimulator.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar3/IESCanariasSimulator.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar4/IESCanariasSimulator.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar4/IESCanariasSimulator.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar5/IESCanariasSimulator.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar5/IESCanariasSimulator.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar/IESCanariasSimulator.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar2/IESCanariasSimulator.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar3/IESCanariasSimulator.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar4/IESCanariasSimulator.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar5/IESCanariasSimulator.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar5/prueba.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AcercaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AcercaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ConfiguracionMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ConfiguracionMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/FinalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/FinalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/IntroduccionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/IntroduccionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PantallaResultadosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PantallaResultadosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PostFinalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PostFinalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbo/ObjetosData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbo/ObjetosData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbo/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbo/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/MusicPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/EffectPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/FightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/FightController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/GameOverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/GameOverController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/Monstruo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/Monstruo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/keyLifeGuard/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/jobs/keyLifeGuard/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/mcClicker/ClickerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/jobs/mcClicker/ClickerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/secretaryTyping/JuegoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/jobs/secretaryTyping/JuegoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/minijuego/Diana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/Diana.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/minijuego/DoomCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/DoomCamera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/minijuego/FinalScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/FinalScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/minijuego/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/minijuego/MinijuegoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/MinijuegoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/minijuego/Puntuacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/Puntuacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/objects/Elements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/objects/Elements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/objects/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/objects/NPC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/objects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/objects/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AcercaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/menu/AcercaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ConfiguracionMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/menu/ConfiguracionMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/FinalController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/IntroduccionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/menu/IntroduccionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/menu/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PantallaResultadosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/menu/PantallaResultadosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PostFinalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/menu/PostFinalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbo/CVData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/dbo/CVData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbo/MonsterLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/dbo/MonsterLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbo/ObjetosData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/dbo/ObjetosData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbo/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/dbo/PlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/EffectPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/EffectPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/MusicPlayerSt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/MusicPlayerSt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/Carta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/FightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/FightController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/FinPeleaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/Fran.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/GameOverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/GameOverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/Monstruo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/Monstruo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/combate/peleitas/TipoCarta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/combate/TipoCarta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/keyLifeGuard/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/jobs/keylifeguard/LifeGuardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/keyLifeGuard/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/jobs/keylifeguard/GameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/keyLifeGuard/Launch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/keyLifeGuard/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/mcClicker/ClickerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/jobs/mcclicker/ClickerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/mcClicker/ClickerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/jobs/mcclicker/ClickerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/mcClicker/Launch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/secretaryTyping/JuegoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/jobs/secretarytyping/SecretaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/secretaryTyping/JuegoModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/jobs/secretarytyping/JuegoModelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/secretaryTyping/JuegoVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/jobs/secretarytyping/JuegoVista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/secretaryTyping/Launch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/jobs/secretaryTyping/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/DoomCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/DoomCamera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/FinalScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/FinalScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/MinijuegoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/miniDoomII/MinijuegoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/objects/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/entities/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/objects/Elements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/entities/Elements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/objects/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/entities/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/objects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/tienda/TiendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/tienda/TiendaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/tienda/TiendaItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/tienda/TiendaItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/Dialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/FPSMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/FPSMonitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/PlayerState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGCVController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGCVController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGInventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGInventoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGMostrodexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGMostrodexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGStatsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/IGStatsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/InGameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/InGameMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/InventarioItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/ui/inGameMenu/InventarioItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/world/MapSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/world/MapSelector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/world/Maps_BSalud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/world/Maps_BSalud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/world/Maps_LaLaguna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/world/Maps_LaLaguna.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/world/Maps_Teresitas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/world/Maps_Teresitas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/world/ObstacleTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/entities/ObstacleTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/world/World.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/exec/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exec/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Css/gameOverStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Css/gameOverStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Effects/2014-07-28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Effects/4473823088_775666561d_h.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Effects/Co-Evaluación IESCanariasSimulator.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Elements/coche.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Elements/coche.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/InGameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/InGameMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/InventoryMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/InventoryMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Jobs/secretaryTyping.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Jobs/secretaryTyping.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Menu/Introduccion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/Introduccion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/1202931356_painelemental.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/1202931356_painelemental.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AcercaDe.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/AcercaDe.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AcercaDe.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/AcercaDe.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AcercaDeText.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/AcercaDeText.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/CardBar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Combate/CardBar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Configuracion.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/Configuracion.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Configuracion.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Configuracion.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/Configuracion.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ConfiguracionText.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DOOM_1_Pistol_viewmodel.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/DOOM_1_Pistol_viewmodel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DOOM_1_Pistol_viewmodel2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/DOOM_1_Pistol_viewmodel2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Down1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Down1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Down1_HD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Down1_HD.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Down2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Down2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Down2_HD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Down2_HD.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Down3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Down3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Down3_HD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Down3_HD.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Effects/IMG-20160328-WA0009.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FinPelea.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FinalFight.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FinalFightFondo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FondoMenu.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/FondoMenu.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FondoMenu.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/FondoMenu.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GameOver.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GameOver/GameOver.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/InGameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/IGMenu/InGameMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/InventoryMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/IGMenu/InventoryMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Jobs/mcClicker.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Jobs/mcClicker.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Left1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Left1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Left2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Left2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Left3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Left3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/arcade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/arcade.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/aula.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/aula.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/calleInstituto.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/calleInstituto.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/calleInstituto2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/calleInstituto2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/institutoPlaza.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/institutoPlaza.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/lobbyAulas.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/lobbyAulas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/lobbyAulas2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/lobbyAulas2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/lobbyInstituto.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/lobbyInstituto.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/lobbyInstituto2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/lobbyInstituto2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/paradaGuagua.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/paradaGuagua.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/placita.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/placita.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/plaza.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/plaza.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/plaza2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/plaza2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/subidaInstituto.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/subidaInstituto.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/B_LaSalud/subidaInstituto2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/B_LaSalud/subidaInstituto2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/aeropuerto.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/aeropuerto.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/arcade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/arcade.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/casa.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/casa.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/catedral01.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/catedral01.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/catedral02.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/catedral02.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/intercambiador.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/intercambiador.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/mcdont.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/mcdont.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidad01.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/trinidad01.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidad02.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/trinidad02.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidad03.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/trinidad03.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidad04.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/trinidad04.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidad05.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/trinidad05.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/LaLaguna/trinidadCatedral.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/LaLaguna/trinidadCatedral.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/Teresitas/teresitas01.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/Teresitas/teresitas01.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/Teresitas/teresitas02.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/Teresitas/teresitas02.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/Teresitas/teresitas03.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/Teresitas/teresitas03.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/Teresitas/teresitas04.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/Teresitas/teresitas04.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/Teresitas/teresitas05.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/Teresitas/teresitas05.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/Teresitas/teresitas06.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/Teresitas/teresitas06.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/Teresitas/teresitas07.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/Teresitas/teresitas07.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Maps/Teresitas/teresitas08.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Colisiones/Teresitas/teresitas08.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MapsSelector.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/MapSelector/MapsSelector.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Menu/AcercaMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/AcercaMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Menu/Configuracion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/Configuracion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Menu/Final.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Menu/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/MainMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Menu/PostFinal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Menu/PostFinal.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MostroDexMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MostroDexMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Properties/elements_rutas.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Properties/elements_rutas.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/casa.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/casa.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fondoFinal.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fondoFinal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/playerInfoMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/playerInfoMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/resultados.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resultados.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/resultadosDoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resultadosDoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MostroDexMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/IGMenu/MostroDexMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PantallaInicio.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Right1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Right1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Right2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Right2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Right2_HD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Right2_HD.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Right3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Right3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Teresitas/teresitas.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/Teresitas/teresitas.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Teresitas/teresitas01.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/Teresitas/teresitas01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Teresitas/teresitas02.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/Teresitas/teresitas02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Teresitas/teresitas03.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/Teresitas/teresitas03.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Teresitas/teresitas04.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/Teresitas/teresitas04.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Teresitas/teresitas05.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/Teresitas/teresitas05.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Teresitas/teresitas06.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/Teresitas/teresitas06.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Teresitas/teresitas07.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/Teresitas/teresitas07.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Teresitas/teresitas08.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/Teresitas/teresitas08.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Up1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Up1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Up2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Up2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Up2_HD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Up2_HD.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Up3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Up3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Up3_HD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/Up3_HD.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/aeropuerto.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/aeropuerto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/aeropuertoIcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/aeropuertoIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/MapSelector/aeropuertoIcon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/alteza.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tienda/alteza.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/arcade.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/arcade.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/arcadeMachine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/aula.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/aula.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/barraGris.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/barraGris.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/calavera1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GameOver/calavera1.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/calleInstituto.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/calleInstituto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/calleinstituto2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/calleinstituto2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/cartelmovil.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/casa.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/casa.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/catedral.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/catedral.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/catedral01.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/catedral01.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/catedral01.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/catedral01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/catedral02.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/catedral02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/cvMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/IGMenu/cvMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/datosJugador.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/demon.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/demon.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/demondead.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/demondead.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dialog_box.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/dialog_box.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dialog_box2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/diana.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/diana.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/doomFondo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/doomFondo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/doomfinalscreen.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/doomfinalscreen.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fight.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Combate/fight.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fondo-de-pantalla-aesthetic-luna.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fondoFinal.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Video/fondoFinal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/healthBarL.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Combate/healthBarL.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/healthBarL.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Combate/healthBarL.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/healthBarR.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Combate/healthBarR.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/iesCanariasIcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/igAyudaMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/IGMenu/igAyudaMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/igconfigMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/IGMenu/igconfigMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/instituto-plaza.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/instituto-plaza.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/intercambiador.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/intercambiador.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/intercambiador.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/intercambiador.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lalagunaIcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lalagunaIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/MapSelector/lalagunaIcon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lasaludIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/MapSelector/lasaludIcon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lobby2_instituto.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/lobby2_instituto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lobby_aulas.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/lobby_aulas.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lobby_aulas.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/lobby_aulas.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lobby_aulas2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/lobby_aulas2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lobby_instituto.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/lobby_instituto.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lobby_instituto.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/lobby_instituto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapa.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/MapSelector/mapa.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mcdont.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/mcdont.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/monsterdata.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mrsnack.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tienda/mrsnack.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/objetosdata.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/paindeath_showcase.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pantallaCarga.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/pantallaCarga.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parada026.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/paradaGuagua.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/paradaGuagua.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parque.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Combate/parque.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/placita.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/placita.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/playerInfoMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/IGMenu/playerInfoMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plaza.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/plaza.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plaza2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/plaza2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/posFinal.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/posFinal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/puerta.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reports/Diana.jrxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resultados.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Jobs/resultados.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resultadosDoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/resultadosDoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resultadosFondo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Jobs/resultadosFondo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shadow.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/shadow.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shadow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Player/shadow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/subida_instituto.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/subida_instituto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/subida_instituto2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/B_LaSalud/subida_instituto2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tablero.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Doom2mini/doomView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tablerov2.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/teresitasIcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/teresitasIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/MapSelector/teresitasIcon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tiendaMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tienda/tiendaMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tiendaPlaya.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tienda/tiendaPlaya.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tranvia-v.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Elements/tranvia-v.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad01.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad01f.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad01f.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad02.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad02f.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad02f.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad03.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad03.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad03f.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad03f.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad04.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad04.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad04f.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad04f.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad05.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad05.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidad05f.ase" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidad05f.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trinidadCatedral.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Maps/Fondos/LaLaguna/trinidadCatedral.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,33 +327,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AppLauncher.executor": "Run",
-    "Application.Main (1).executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.MainMenuController.executor": "Run",
-    "Application.World.executor": "Run",
-    "Application.engine.minijuego.Main.executor": "Run",
-    "Application.engine.peleitas.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/cooph/Documents/GitHub/ProyectoFinalDAM/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.16308594",
-    "project.structure.side.proportion": "0.4275862",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainMenuController.executor&quot;: &quot;Run&quot;,
+    &quot;Application.World.executor&quot;: &quot;Run&quot;,
+    &quot;Application.engine.minijuego.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.engine.peleitas.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/cooph/Documents/GitHub/ProyectoFinalDAM/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.16308594&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4275862&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources" />
@@ -186,11 +363,11 @@
       <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources\Maps\LaLaguna" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources\Jobs" />
-      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources" />
-      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources\Menu" />
-      <recent name="C:\Users\cooph\Documents\GitHub\IESCanariasSimulator\src\main\resources\Menu" />
-      <recent name="C:\Users\cooph\Documents\GitHub\IESCanariasSimulator\src\main\resources\Effects" />
+      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources\Maps" />
+      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources\Player" />
+      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources\Maps\Fondos\LaLaguna" />
+      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources\Elements" />
+      <recent name="C:\Users\cooph\Documents\GitHub\ProyectoFinalDAM\src\main\resources\Tienda" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />

@@ -2,7 +2,8 @@ package engine.world;
 
 import java.util.LinkedList;
 
-import controllers.MainMenuController;
+import engine.entities.ObstacleTile;
+import engine.menu.MainMenuController;
 import engine.MusicPlayerSt;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

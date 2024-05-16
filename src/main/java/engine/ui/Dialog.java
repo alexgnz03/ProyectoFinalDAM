@@ -16,7 +16,7 @@ import javafx.util.Duration;
 
 public class Dialog {
 
-    ImageView dialog = new ImageView(new Image("dialog_box.png"));
+    ImageView dialog = new ImageView(new Image("Player/dialog_box.png"));
     Text dialogText = new Text();
     private int textIndex = 0;
     Pane root;
@@ -54,6 +54,7 @@ public class Dialog {
         System.out.println("DialogBA " + dialog.getOpacity());
     }
 
+    // Diálogos sin necesidad de pasárselos al npc o element
     public void autoDialog(String dialogLine, int seconds) {
         // Mostrar el cuadro de diálogo
         dialogText.setText(""); // Limpiar el texto anterior

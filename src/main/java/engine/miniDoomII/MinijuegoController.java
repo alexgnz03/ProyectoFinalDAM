@@ -61,7 +61,7 @@ public class MinijuegoController implements Initializable {
 
     private BorderPane doomView = new BorderPane();
 
-    private ImageView manoDoom = new ImageView(new Image("DOOM_1_Pistol_viewmodel.png"));
+    private ImageView manoDoom = new ImageView(new Image("Doom2mini/DOOM_1_Pistol_viewmodel.png"));
 
     private int tiempoRestante = 60; // 60 segundos
 
@@ -77,11 +77,11 @@ public class MinijuegoController implements Initializable {
 
     private List<Pair<Integer, Integer>> posicionesOcupadas = new ArrayList<>();
 
-    Image doomGun = new Image("DOOM_1_Pistol_viewmodel.png");
+    Image doomGun = new Image("Doom2mini/DOOM_1_Pistol_viewmodel.png");
     public void cambiarFondo() {
         // Crea una nueva imagen de fondo (ajusta la ruta según tu proyecto)
         BackgroundSize size = new BackgroundSize(-1, -1, false, false, false, false);
-        Image fondoImagen = new Image("doomFondo.png");
+        Image fondoImagen = new Image("Doom2mini/doomFondo.png");
         BackgroundImage backgroundImage = new BackgroundImage(fondoImagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
 
         // Crea un nuevo fondo
@@ -131,13 +131,9 @@ public class MinijuegoController implements Initializable {
         temporizadorTimeline.play();
     }
 
-    private int obtenerCantidadDianasAcertadas() {
-        return dianasAcertadas;
-    }
-
     private void finDelJuego() {
         double habilidad = Math.ceil((double) puntuacion.getPuntos() / 20.0);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resultadosDoom.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Doom2mini/resultadosDoom.fxml"));
         FinalScreen controller = new FinalScreen(puntuacion.getPuntos(), (int) habilidad, escenario);
         controller.setStage(stage);
         loader.setController(controller);
@@ -160,8 +156,8 @@ public class MinijuegoController implements Initializable {
 
 
     private void clicEnDiana() {
-        Image doomGun = new Image("DOOM_1_Pistol_viewmodel.png");
-        Image doomGun2 = new Image("DOOM_1_Pistol_viewmodel2.png");
+        Image doomGun = new Image("Doom2mini/DOOM_1_Pistol_viewmodel.png");
+        Image doomGun2 = new Image("Doom2mini/DOOM_1_Pistol_viewmodel2.png");
         manoDoom.setImage(doomGun2);
         EffectPlayer efectos;
         efectos = new EffectPlayer("/Effects/DoomPistol.mp3");
@@ -224,7 +220,7 @@ public class MinijuegoController implements Initializable {
             dianaActual = new Diana();  // Generar una nueva diana si la posición está ocupada
         }
 
-        ImageView imageView = new ImageView(getClass().getResource("/demon.gif").toExternalForm());
+        ImageView imageView = new ImageView(getClass().getResource("/Doom2mini/demon.gif").toExternalForm());
         imageView.setFitWidth(80);
         imageView.setFitHeight(80);
 
@@ -252,14 +248,6 @@ public class MinijuegoController implements Initializable {
         timeline.play();
 
         return dianaActual;
-    }
-
-
-    private int calcularVelocidad() {
-        // Puedes ajustar la lógica según tus necesidades
-        int velocidadBase = 6;  // Velocidad base en segundos
-        int velocidad = Math.max(1, velocidadBase - puntuacion.getPuntos() / 50);  // Ajustar según la puntuación
-        return velocidad;
     }
 
     private void generarNuevaDiana() {

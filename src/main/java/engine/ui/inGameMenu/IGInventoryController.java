@@ -1,7 +1,7 @@
 package engine.ui.inGameMenu;
 
-import dbo.ObjetosData;
-import dbo.PlayerData;
+import engine.dbo.ObjetosData;
+import engine.dbo.PlayerData;
 import engine.EffectPlayer;
 import engine.ui.PlayerState;
 import javafx.animation.KeyFrame;

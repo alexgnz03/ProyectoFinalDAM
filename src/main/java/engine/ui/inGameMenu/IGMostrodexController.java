@@ -1,6 +1,6 @@
 package engine.ui.inGameMenu;
 
-import dbo.MonsterLoader;
+import engine.dbo.MonsterLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

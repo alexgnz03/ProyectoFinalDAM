@@ -104,7 +104,7 @@ public class InGameMenu {
 
     public void cargarMenu() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/InGameMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/IGMenu/InGameMenu.fxml"));
 
             IGMenuController controller = new IGMenuController();
             loader.setController(controller);
@@ -124,7 +124,7 @@ public class InGameMenu {
 
     public void cargarInventario() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/InventoryMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/IGMenu/InventoryMenu.fxml"));
             IGInventoryController controller = new IGInventoryController();
             loader.setController(controller);
             controller.setGameMenu(this);
@@ -137,7 +137,7 @@ public class InGameMenu {
 
     public void cargarStats() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/playerInfoMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/IGMenu/playerInfoMenu.fxml"));
             IGStatsController controller = new IGStatsController();
             loader.setController(controller);
             controller.setGameMenu(this);
@@ -150,7 +150,7 @@ public class InGameMenu {
 
     public void cargarMostroDex() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MostroDexMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/IGMenu/MostroDexMenu.fxml"));
             IGMostrodexController controller = new IGMostrodexController();
             loader.setController(controller);
             controller.setGameMenu(this);
@@ -163,7 +163,7 @@ public class InGameMenu {
 
     public void cargarCV() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cvMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/IGMenu/cvMenu.fxml"));
             IGCVController controller = new IGCVController();
             loader.setController(controller);
             controller.setGameMenu(this);
@@ -176,7 +176,7 @@ public class InGameMenu {
 
     public void cargarAyuda() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/igAyudaMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/IGMenu/igAyudaMenu.fxml"));
             IGHelpController controller = new IGHelpController();
             loader.setController(controller);
             controller.setGameMenu(this);
@@ -189,7 +189,7 @@ public class InGameMenu {
 
     public void cargarConfig() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/igconfigMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/IGMenu/igconfigMenu.fxml"));
             IGConfigController controller = new IGConfigController();
             loader.setController(controller);
             controller.setGameMenu(this);

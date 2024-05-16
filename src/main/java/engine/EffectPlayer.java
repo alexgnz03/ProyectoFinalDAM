@@ -5,6 +5,7 @@ import javafx.scene.media.MediaPlayer;
 
 import java.util.Objects;
 
+// Clase para los efectos de sonido, no estática
 public class EffectPlayer {
     private static EffectPlayer instance;
     private MediaPlayer mediaPlayer;

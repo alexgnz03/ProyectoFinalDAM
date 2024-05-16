@@ -3,17 +3,13 @@ package engine.world;
 
 import com.google.gson.Gson;
 import engine.MusicPlayerSt;
-import engine.jobs.mcClicker.ClickerController;
+import engine.entities.*;
+import engine.jobs.mcclicker.ClickerController;
 import engine.miniDoomII.MinijuegoController;
 //import engine.jobs.minijuego1.JuegoController;
 //import engine.jobs.minijuego2.GameController;
-import engine.objects.Camera;
-import engine.objects.Elements;
-import engine.objects.NPC;
-import engine.objects.Player;
 import engine.tienda.TiendaController;
 import engine.ui.Dialog;
-import engine.ui.FPSMonitor;
 import engine.ui.PlayerState;
 import engine.ui.inGameMenu.InGameMenu;
 import javafx.animation.*;
@@ -64,7 +60,7 @@ public class Maps_LaLaguna {
         this.scene = scene;
     }
 
-    private ImageView character_image = new ImageView(new Image("Down2.png"));
+    private ImageView character_image = new ImageView(new Image("Player/Down2.png"));
 
     public void setX(double x) {
         this.x = x;
@@ -92,8 +88,6 @@ public class Maps_LaLaguna {
     private Stage stage;
 
     private int i = 0;
-
-
 
     //Constructor
 
@@ -130,7 +124,6 @@ public class Maps_LaLaguna {
         //Colisiones
         this.barrier = new LinkedList<ObstacleTile>();
 
-        //
         this.stage.setTitle("La Laguna");
 
         // Crear un nuevo Pane y agregar ambos root y dialogRoot a este nuevo Pane
@@ -197,12 +190,12 @@ public class Maps_LaLaguna {
 
         i = 0;
 
-        BackgroundImage = new Image("intercambiador.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/intercambiador.png");
 
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/intercambiador.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/intercambiador.json");
 
         // Elements
         Elements parada = new Elements(this.root, stage, 2, 26, 482);
@@ -228,17 +221,6 @@ public class Maps_LaLaguna {
         System.out.println("Character x + y = " + player.getX() + " " + player.getY());
 
         timerStart();
-
-        //Debug
-//        ObjetosData ob = new ObjetosData();
-//        try {
-//            //ob.insertarDatosObjeto("refresco", "bebida refrescante", 5);
-//            ob.mostrarDatosObjeto();
-////            ob.insertarDatosInventario(8);
-////            ob.mostrarDatosInventario();
-//        } catch (SQLException ex){
-//            System.out.println("Error al insertar: " + ex);
-//        }
     }
 
     //Trinidad01
@@ -247,10 +229,10 @@ public class Maps_LaLaguna {
         i = 1;
 
 
-        BackgroundImage = new Image("trinidad01.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/trinidad01.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidad01.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/trinidad01.json");
 
         //NPCs
         NPC npc = new NPC(this.root, stage,13, 692, 201, "left", barrier);
@@ -275,10 +257,10 @@ public class Maps_LaLaguna {
 
         i = 2;
 
-        BackgroundImage = new Image("trinidad02.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/trinidad02.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidad02.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/trinidad02.json");
 
         //NPCs
         NPC npc = new NPC(this.root, stage,17, 174, 110, "Down", barrier);
@@ -315,10 +297,10 @@ public class Maps_LaLaguna {
 
         i = 3;
 
-        BackgroundImage = new Image("trinidad03.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/trinidad03.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidad03.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/trinidad03.json");
 
         Elements tranvia = new Elements(this.root, stage, 11, 144, 468);
         this.elements = tranvia;
@@ -353,10 +335,10 @@ public class Maps_LaLaguna {
 
         i = 4;
 
-        BackgroundImage = new Image("trinidad04.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/trinidad04.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidad04.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/trinidad04.json");
 
         playerBasics();
 
@@ -375,10 +357,10 @@ public class Maps_LaLaguna {
 
         i = 5;
 
-        BackgroundImage = new Image("trinidad05.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/trinidad05.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidad05.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/trinidad05.json");
 
         NPC npc = new NPC(this.root, stage,16, 173, 160, "Down", barrier);
         this.npc = npc;
@@ -401,10 +383,10 @@ public class Maps_LaLaguna {
 
         i = 6;
 
-        BackgroundImage = new Image("trinidadCatedral.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/trinidadCatedral.png");
         worldBasics(BackgroundImage);
 
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/trinidadCatedral.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/trinidadCatedral.json");
 
 
         playerBasics();
@@ -416,11 +398,11 @@ public class Maps_LaLaguna {
 
         i = 7;
 
-        BackgroundImage = new Image("mcdont.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/mcdont.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/mcdont.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/mcdont.json");
 
         //NPCs
         Elements dependiente = new Elements(this.root, stage, 14, 445, 530);
@@ -438,11 +420,11 @@ public class Maps_LaLaguna {
 
         i = 8;
 
-        BackgroundImage = new Image("casa.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/casa.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/casa.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/casa.json");
 
         //NPCs
         Elements cama = new Elements(this.root, stage, 15, 184, 388);
@@ -461,14 +443,14 @@ public class Maps_LaLaguna {
 
         i = 9;
 
-        BackgroundImage = new Image("catedral01.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/catedral01.png");
         worldBasics(BackgroundImage);
 
         NPC npc = new NPC(this.root, stage,15, 550, 565, "Left", barrier);
         this.npc = npc;
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/catedral01.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/catedral01.json");
 
         playerBasics();
         player.addNPC(npc);
@@ -482,7 +464,7 @@ public class Maps_LaLaguna {
 
         i = 10;
 
-        BackgroundImage = new Image("catedral02.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/catedral02.png");
         worldBasics(BackgroundImage);
 
         NPC npc = new NPC(this.root, stage,11, 405, 460, "Right", barrier);
@@ -491,7 +473,7 @@ public class Maps_LaLaguna {
         this.npc = npc2;
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/catedral02.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/catedral02.json");
 
         playerBasics();
 
@@ -507,11 +489,11 @@ public class Maps_LaLaguna {
 
         i = 11;
 
-        BackgroundImage = new Image("arcade.png");
+        BackgroundImage = new Image("Maps/Fondos/arcade.png");
         worldBasics(BackgroundImage);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/arcade.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/arcade.json");
 
         Elements element = new Elements(this.root, stage, 1, 545, 340);
 
@@ -528,7 +510,7 @@ public class Maps_LaLaguna {
 
         i = 12;
 
-        BackgroundImage = new Image("aeropuerto.png");
+        BackgroundImage = new Image("Maps/Fondos/LaLaguna/aeropuerto.png");
         worldBasics(BackgroundImage);
 
         Elements azafata = new Elements(this.root, stage, 19, 435, 325);
@@ -536,7 +518,7 @@ public class Maps_LaLaguna {
         azafata.elementsBasics(azafata.getX(), azafata.getY(), 48, 48, barrier);
 
         //Colisiones
-        cargarColisionesDesdeJSON("/Maps/LaLaguna/aeropuerto.json");
+        cargarColisionesDesdeJSON("/Maps/Colisiones/LaLaguna/aeropuerto.json");
 
 
         playerBasics();
@@ -548,8 +530,8 @@ public class Maps_LaLaguna {
     }
 
     public void pantallaCarga (Stage stage, int I) throws Exception {
-        BackgroundImage = new Image("pantallaCarga.png");
-        final String[] CAMINAR_IMAGENES = {"Down1.png", "Down2.png", "Down3.png"};
+        BackgroundImage = new Image("Maps/pantallaCarga.png");
+        final String[] CAMINAR_IMAGENES = {"Player/Down1.png", "Player/Down2.png", "Player/Down3.png"};
         final int DURACION_FRAME_MILLIS = 100; // Duración de cada frame en milisegundos
         final int[] indiceImagenActual = {0};
         ImageView animacion = new ImageView();
@@ -570,45 +552,31 @@ public class Maps_LaLaguna {
         worldBasics(BackgroundImage);
         this.root.getChildren().add(animacion);
         timeline.play();
-        switch (I){
-            case 1:
-                tienda(stage, 1);
-                break;
-            case 2:
-                mcClicker(stage);
-                break;
-            case 3:
-                doom(stage);
-                break;
-        }
+        PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+        pause.setOnFinished(event -> {
+            try {
+                switch (I) {
+                    case 1:
+                        tienda(stage, 1);
+                        break;
+                    case 2:
+                        mcClicker(stage);
+                        break;
+                    case 3:
+                        doom(stage);
+                        break;
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+        pause.play();
 
 //        playerBasics();
     }
 
-    public void minijuego(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tablero.fxml"));
-        MinijuegoController minijuego = new MinijuegoController(1);
-        minijuego.setStage(stage);
-        loader.setController(minijuego);
-        Parent root = loader.load();
-        stage.setTitle("Mini Doom II");
-        stage.setScene(new Scene(root, 800, 800));
-
-        BackgroundImage = new Image("doomFondo.png");
-
-        Background background = new Background(new BackgroundImage[]{new BackgroundImage(BackgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size)});
-        this.root.setBackground(background);
-
-        stage.show();
-
-        MinijuegoController controlador = loader.getController();
-        controlador.actualizarTiempo();
-
-    }
-
     public void tienda(Stage stage, int id) throws Exception {
-        FadeOut(() -> {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tiendaMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Tienda/tiendaMenu.fxml"));
             tiendaController = new TiendaController();
             tiendaController.setStage(stage);
             tiendaController.setI(id);
@@ -624,15 +592,11 @@ public class Maps_LaLaguna {
             stage.setScene(scene);
             stage.show();
 
-            //controller.FadeIn();
-
 
             player = new Player(this.root, scene, this.barrier, character_image);
-        });
     }
 
     public void mcClicker(Stage stage) throws Exception {
-        FadeOut(() -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Jobs/mcClicker.fxml"));
             ClickerController controller = new ClickerController();
             controller.setStage(stage);
@@ -647,24 +611,18 @@ public class Maps_LaLaguna {
             stage.setTitle("McClicker");
             stage.setScene(scene);
             stage.show();
-
-            //controller.FadeIn();
-
-
-//            player = new Player(this.root, scene, this.barrier, character_image);
-        });
     }
 
     public void doom(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tablero.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Doom2mini/doomView.fxml"));
         MinijuegoController minijuego = new MinijuegoController(1);
         minijuego.setStage(stage);
         loader.setController(minijuego);
         Parent root = loader.load();
-        stage.setTitle("Minijuego de Dianas");
+        stage.setTitle("Doom II mini");
         stage.setScene(new Scene(root, 800, 800));
 
-        BackgroundImage = new Image("doomFondo.png");
+        BackgroundImage = new Image("Doom2mini/doomFondo.png");
 
         Background background = new Background(new BackgroundImage[]{new BackgroundImage(BackgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size)});
         this.root.setBackground(background);
@@ -678,27 +636,8 @@ public class Maps_LaLaguna {
 
     }
 
-    public static void FadeOut(Runnable onFadeOutComplete) {
-        Rectangle nuevoContenido = new Rectangle(800, 800, Color.BLACK);
-        nuevoContenido.setOpacity(0); // Iniciar con opacidad 0 para el FadeIn
-
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(5), nuevoContenido);
-        fadeIn.setFromValue(0);
-        fadeIn.setToValue(1);
-        fadeIn.play();
-
-        // Agregar un evento para manejar el final de la transición
-        fadeIn.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                // Llamar a la acción después de que la transición haya terminado
-                onFadeOutComplete.run();
-            }
-        });
-    }
-
     public void mapsSelector(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MapsSelector.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Maps/MapSelector/MapsSelector.fxml"));
         MapSelector controller = new MapSelector();
         controller.setStage(stage);
         loader.setController(controller);
@@ -733,45 +672,6 @@ public class Maps_LaLaguna {
             System.out.println("Error al cargar la ruta");
         }
     }
-
-    public int getSumadorCombate() {
-        return sumadorCombate;
-    }
-
-    public void setSumadorCombate(int sumadorCombate) {
-        this.sumadorCombate = sumadorCombate;
-    }
-
-//    private boolean shouldStartRandomCombat() {
-//        // Verificar si el personaje se está moviendo
-//        if (!isMoving()) {
-//            return false;
-//        }
-//        double probability = 0.001;
-//
-//        // Generar un número aleatorio entre 0 y 1
-//        double randomValue = random.nextDouble();
-//
-//        // Verificar si el número aleatorio es menor que la probabilidad
-//        return randomValue < probability;
-//    }
-//
-//    private void startRandomCombat() {
-//        System.out.println("¡Combate aleatorio!");
-//        System.out.println(x);
-//
-//        this.timer.stop();
-//        this.root = new Pane();
-//
-//        mapsInstance.setX(290);
-//        mapsInstance.setY(102);
-//        try {
-//            sumador += 1;
-//            mapsInstance.combate(stage, i);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     private void mapsChanger() {
         //Trinidad01

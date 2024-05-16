@@ -19,9 +19,9 @@
          </font>
       </Label>
       <Button id="salirButton" layoutX="19.0" layoutY="410.0" mnemonicParsing="false" onAction="#volverAction" prefHeight="48.0" prefWidth="105.0" stylesheets="@Css/igInventory.css" text="Volver" />
-      <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="80.0" prefHeight="296.0" prefWidth="290.0" text="El objetivo es conseguir 5000€ e ir al aeropuerto, para ello puedes desbloquear nuevos trabajos registrando enemigos en la MostroDex. Hay un trabajo en cada zona, y para iniciarlo debes interactuar con el NPC a cargo. Para moverte entre localizaciones interactua con el tranvía y las paradas de guaguas" wrapText="true">
+      <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="80.0" prefHeight="296.0" prefWidth="290.0" text="El objetivo es conseguir 5000€ e ir al aeropuerto, para ello puedes desbloquear nuevos trabajos registrando enemigos en la MostroDex. Hay un trabajo en cada zona, y para iniciarlo debes interactuar con el NPC a cargo. Para moverte entre localizaciones interactúa con el tranvía y las paradas de guaguas. La estamina se gasta al trabajar, en caso de que llegue a cero vuelve a casa y duerme en la cama." wrapText="true">
          <font>
-            <Font name="Arial Bold" size="14.0" />
+            <Font name="Arial Bold" size="17.0" />
          </font>
       </Label>
    </children>

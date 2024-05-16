@@ -1,7 +1,7 @@
 package engine.tienda;
 
-import dbo.ObjetosData;
-import dbo.PlayerData;
+import engine.dbo.ObjetosData;
+import engine.dbo.PlayerData;
 import engine.EffectPlayer;
 import engine.MusicPlayerSt;
 import engine.world.Maps_BSalud;
@@ -110,51 +110,22 @@ public class TiendaController {
 
         switch (I){
             case 1:
-                fondoImage.setImage(new Image("mrsnack.png"));
+                fondoImage.setImage(new Image("Tienda/mrsnack.png"));
                 break;
             case 2:
-                fondoImage.setImage(new Image("alteza.png"));
+                fondoImage.setImage(new Image("Tienda/alteza.png"));
                 break;
             case 3:
-                fondoImage.setImage(new Image("tiendaPlaya.png"));
+                fondoImage.setImage(new Image("Tienda/tiendaPlaya.png"));
                 break;
         }
-    }
-
-    public void FadeIn() {
-        Rectangle nuevoContenido = new Rectangle(800, 800, Color.BLACK);
-        nuevoContenido.setOpacity(100); // Iniciar con opacidad 0 para el FadeIn
-
-        view.getChildren().add(nuevoContenido); // Agregar el nuevo contenido
-
-        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), nuevoContenido);
-        fadeOut.setFromValue(1);
-        fadeOut.setToValue(0);
-        fadeOut.play();
-    }
-
-    public void IrisTransition(){
-        Rectangle nuevoContenido = new Rectangle(800, 800, Color.BLACK);
-        nuevoContenido.setOpacity(100); // Iniciar con opacidad 0 para el FadeIn
-
-        view.getChildren().add(nuevoContenido); // Agregar el nuevo contenido
-
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.40), nuevoContenido);
-        scaleTransition.setFromX(1); // Escala inicial en X
-        scaleTransition.setFromY(1); // Escala inicial en Y
-        scaleTransition.setToX(0); // Escala final en X
-        scaleTransition.setToY(0); // Escala final en Y
-
-        // Invertimos el valor de la interpolación para simular un iris que se abre
-        scaleTransition.setInterpolator(Interpolator.LINEAR);
-
-        // Reproducimos la animación
-        scaleTransition.play();
     }
 
     private void devolverAMundo(){
         switch (I) {
             case 1:
+                mapsLaLaguna.setX(175);
+                mapsLaLaguna.setY(220);
                 mapsLaLaguna.setStage(stage);
                 mapsLaLaguna.musica();
                 mapsLaLaguna.trinidad03(stage);

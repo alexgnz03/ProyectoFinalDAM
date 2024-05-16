@@ -1,7 +1,7 @@
 package engine.miniDoomII;
 
-import dbo.CVData;
-import dbo.PlayerData;
+import engine.dbo.CVData;
+import engine.dbo.PlayerData;
 import engine.world.Maps_BSalud;
 import engine.world.Maps_LaLaguna;
 import javafx.event.ActionEvent;
