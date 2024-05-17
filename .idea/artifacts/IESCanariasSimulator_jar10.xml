@@ -2,7 +2,7 @@
   <artifact type="jar" name="IESCanariasSimulator:jar10">
     <output-path>$PROJECT_DIR$/out/artifacts/IESCanariasSimulator_jar10</output-path>
     <root id="archive" name="IESCanariasSimulator.jar">
-      <element id="module-output" name="IESCanariasSimulator" />
+      <element id="module-output" name="WorkingSimulator" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17.0.6/javafx-base-17.0.6-win.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17.0.6/javafx-graphics-17.0.6.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar" path-in-jar="/" />
